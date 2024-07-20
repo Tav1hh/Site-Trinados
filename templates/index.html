@@ -1,0 +1,325 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sax-Club</title>
+    <style>
+        :root{
+            --cor1:#EBD065;
+            --cor2:#08080A;
+            --cor3:#1F1700;
+        }
+        *{
+            margin: 0px;
+            padding: 0px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        header{
+            background-color: var(--cor2);
+            color: var(--cor1);
+            display: flex;
+            align-items: center;
+            padding: 0px 15px;
+            justify-content: space-around;
+            height: 50px;
+        }
+        header h1{
+            font-size: 1.4em;
+        }
+        header h1 a{
+            color: var(--cor1);
+            text-decoration: none;
+        }
+        header h1, .navegacao{
+            width: 300px;
+            text-align: center;
+        }
+        .psq{
+            display: flex;
+            align-items: baseline;
+        }
+        .psq input{
+            border: 0px;
+            background-color: white;
+            padding: 0px 10px;
+            width: 300px;
+            height: 30px;
+            margin: 0px;
+            border-radius: 5px 0px 0px 5px;
+        }
+        
+        .psq button{
+            border: 0px solid;
+            background-color: white;
+            height: 30px;
+            margin: 0px;
+            border-radius: 0px 5px 5px 0px;
+            width: 55px;
+        }
+        .psq button:hover {
+            background-color: #EBD065;
+        }
+
+        .navegacao{
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        .navegacao a{
+            color: var(--cor1);
+            text-decoration: none;
+            margin: 0px 5px;
+            padding: 8px;
+            border-radius: 3px;
+        }
+        .navegacao a:hover{
+            background-color: #1F1700;
+        }
+        .icon{
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: gray;
+        }
+        
+        .icon img{
+            width: 100%;
+            border-radius: 50%;
+        }
+
+
+        /**MENU**/
+        .menu{
+            display: flex;
+            align-items: center;
+            height: 18px;
+            justify-content: center;
+            background-color: var(--cor2);
+        }
+        
+        .menu a {
+            margin: 0px 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--cor1);
+            padding: 3px;
+            background-color: black;
+        }
+        /*Main*/
+        main{
+            padding: 10px;
+            background-color: black;
+            padding-bottom: 100px;
+        }
+        main div img{
+            height: 300px;
+        }
+        .imagem-principal{
+            display: flex;
+            height: 300px;
+            padding: 3px;
+            margin: 0px 20px;
+            border-radius: 20px;
+            background-color: white;
+            align-items: center;
+            justify-content: center;
+        }
+        h2{
+            color: white;
+            text-align: center;
+            padding: 15px;
+
+        }
+
+        /*Musicas e cards*/
+        ::-webkit-scrollbar{
+            width: 0px;
+            text-decoration: dotted;
+        }
+        .musicas{
+            display: flex;
+            overflow: auto;
+            scroll-snap-type: y mandatory;
+        }
+        .musicas a{
+            text-decoration: none;
+        }
+        .musicas a:hover{
+            text-decoration: underline;
+        }
+        .cards{
+            text-align: center;
+            width: 180px;
+            padding: 8px;
+            border-radius: 8px;
+            margin: 5px;
+            flex-shrink: 0;
+            object-fit: cover;
+            scroll-behavior: smooth;
+            background-color: var(--cor2);
+
+        }
+        .cards:hover{
+            transition: 1s;
+            background-color: rgb(26, 24, 24);
+        }
+        .cards img{
+            border-radius: 10px;
+        }
+        .cards p{
+            color: white;
+        }
+
+
+
+
+
+
+
+        /*Media Query*/
+        .mobile{
+            display: none;
+        }
+        @media screen and (max-width:800px) {
+            header h1, .navegacao, .some, .saxmg{
+                display: none;
+            }
+            footer{
+                height: 50px;
+            }
+            header{
+                justify-content: center;
+            }
+            .psq input{
+                max-width: 250px;
+            }
+            .mobile{
+                position: fixed;
+                display: flex;
+                width: 100vw;
+                bottom: 0;
+                padding: 10px;
+                background-color: #08080A;
+                justify-content: space-evenly;
+                align-items: center;
+            }
+            .mobile a img{
+                color: white;
+
+            }
+        }
+
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <header>
+        <h1><a href="/admin">Sax-Club</a></h1>
+        <nav class="psq">
+            <input type="search" placeholder="Pesquisar">
+            <button>Buscar</button>
+        </nav>
+        <nav class="navegacao">
+            <a href="#">Convidar</a>
+            <a href="#">Sobre</a>
+            <button class="icon"><img src="{% static 'images/perfil.jpg' %}" alt="perfil"></button>
+        </nav>
+        <nav class="mobile">
+            <button class="icon"><img src="{% static 'images/icon-sheet.jpeg' %}" alt="Partituras"></button>
+            <button class="icon"><img src="{% static 'images/artistas.jpg' %}" alt="Artistas"></button>
+            <button class="icon"><img src="{% static 'images/perfil.jpg' %}" alt="Perfil"></button>
+        </nav>
+    </header>
+    <nav class="menu">
+        <a href="#">Jazz</a>
+        <a href="#">Classico</a>
+        <a class="some" href="#">Casamento</a>
+        <a href="#">Filmes e Series</a>
+        <a href="#">MPB</a>
+        <a class="some" href="#">Transcrições</a>
+    </nav>
+
+    <main>
+        <div class="imagem-principal">
+            <img class="saxmg" src="{% static 'images/Saxophone.jpg' %}"  alt="">
+            <img src="{% static 'images/Jazz-Sax.jpg' %}" alt="">
+            <img class="saxmg" src="{% static 'images/Saxophone.jpg' %}" alt="">
+        </div>
+        <h2>Top Partituras</h2>
+        <section class="musicas">
+            {%for musica in music%}
+            <a href="Pag/Part.html">
+                <div class="cards">
+                    <img src="{% static 'images/Saxophone.jpg' %}" alt="Partitura">
+                    <p>{{musica}}</p>
+                </div>
+            </a>
+            {%empty%}
+            <a href="Pag/Part.html">
+                <div class="cards">
+                    <img src="{% static 'images/Saxophone.jpg' %}" alt="Partitura">
+                    <p>...</p>
+                </div>
+            </a>
+            {%endfor%}
+        </section>
+        <h2>Transcrições</h2>]
+        <section class="musicas">
+            {%for musica in music%}
+            <a href="Pag/Part.html">
+                <div class="cards">
+                    <img src="{% static 'images/Saxophone.jpg' %}" alt="Partitura">
+                    <p>{{musica}}</p>
+                </div>
+            </a>
+            {%empty%}
+            <a href="Pag/Part.html">
+                <div class="cards">
+                    <img src="{% static 'images/Saxophone.jpg' %}" alt="Partitura">
+                    <p>...</p>
+                </div>
+            </a>
+            {%endfor%}
+        </section>
+        <h2>Filmes e Series</h2>
+        <section class="musicas">
+            {%for musica in music%}
+            <a href="Pag/Part.html">
+                <div class="cards">
+                    <img src="{% static 'images/Saxophone.jpg' %}" alt="Partitura">
+                    <p>{{musica}}</p>
+                </div>
+            </a>
+            {%empty%}
+            <a href="Pag/Part.html">
+                <div class="cards">
+                    <img src="{% static 'images/Saxophone.jpg' %}" alt="Partitura">
+                    <p>...</p>
+                </div>
+            </a>
+            {%endfor%}
+        </section>
+        <h2>MPB</h2>
+        <section class="musicas">
+            {%for musica in music%}
+            <a href="Pag/Part.html">
+                <div class="cards">
+                    <img src="{% static 'images/Saxophone.jpg' %}" alt="Partitura">
+                    <p>{{musica}}</p>
+                </div>
+            </a>
+            {%empty%}
+            <a href="Pag/Part.html">
+                <div class="cards">
+                    <img src="{% static 'images/Saxophone.jpg' %}" alt="Partitura">
+                    <p>...</p>
+                </div>
+            </a>
+            {%endfor%}
+        </section>
+    </main>
+
+</body>
+</html>
