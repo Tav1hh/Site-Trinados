@@ -99,6 +99,7 @@ button img:hover{
 
 /**MENU**/
 .menu{
+    overflow:auto;
     margin: auto;
     display: flex;
     height: 40px;
