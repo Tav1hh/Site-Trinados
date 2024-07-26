@@ -204,8 +204,9 @@ h2{
 
 @media screen and (max-width:600px){
 
-    .some{
+    .mobile{
         display: none;
+        
     }
     
 }
