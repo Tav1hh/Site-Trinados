@@ -199,10 +199,10 @@ h2{
     width: 100%;
     border-radius: 10px;
     background-size: cover;
-    
+
 }
 
-@media screen and (max-width:500px){
+@media screen and (max-width:600px){
 
     .some{
         display: none;
