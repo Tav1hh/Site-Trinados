@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
+    transition: width 1s;
 }
 
 body{
@@ -32,6 +33,7 @@ main{
 }
 
 .campo input{
+    border: 1px solid black;
     width: 49%;
     height: 40px;
     border-radius: 5px;
@@ -47,6 +49,7 @@ main{
 
 .container textarea{
     padding: 10px;
+    border: 1px solid black;
     border-radius: 10px;
     width: 49%;
 }
@@ -67,4 +70,31 @@ h2{
     font-size: 1.2em;
     border-radius: 10px;
     margin: 3px 0px;
+}
+
+@media screen and (max-width:550px){
+
+
+    main{
+        width: 100%;
+    }
+
+    .campo, .container{
+        display: block;
+    }
+
+    .campo input{
+        width: 100%;
+        margin-bottom: 3px;
+        display: block;
+    }
+
+    .container textarea{
+        width: 100%;
+        height: 150px;
+    }
+
+    .container .tags-enviar{
+        width: 100%;
+    }
 }
