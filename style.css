@@ -202,11 +202,14 @@ h2{
 
 }
 
-@media screen and (max-width:600px){
+/* @media screen and (max-width:600px){
 
+    .menu{
+        justify-content: space-evenly;
+    }
     .mobile{
         display: none;
-        
+
     }
     
-}
+} */
