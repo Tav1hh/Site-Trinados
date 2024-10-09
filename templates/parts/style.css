@@ -84,6 +84,9 @@ header h1, header nav{
     text-align: center;
     width: 137px
 }
+header h1 a {
+    color: white;
+}
 
 header nav{
     display: flex;
@@ -219,12 +222,4 @@ h2{
     border-radius: 10px;
     background-size: cover;
 
-}
-
-@media screen and (max-width:600px){
-    .mobile{
-        display: none;
-
-    }
-    
 }
