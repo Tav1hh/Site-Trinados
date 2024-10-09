@@ -128,6 +128,8 @@ header button img:hover{
 .menu a{
     color: var(--cor1);
     padding: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
 }
 .menu a:hover{
     transition: 0.3s;
