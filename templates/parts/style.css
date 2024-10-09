@@ -62,7 +62,7 @@ form button[type="submit"] {
     margin: 0;
     border: 1px solid transparent;
     border-radius: inherit;
-    background: transparent url("imagens/search.png") no-repeat center;
+    background: transparent url("../../imagens/search.png") no-repeat center;
     background-color: #08080A;
     background-size: 22px;
     cursor: pointer;
@@ -115,15 +115,13 @@ header button img:hover{
 
 /**MENU**/
 .menu{
-    overflow:auto;
-    margin: auto;
     display: flex;
+    margin-top: 10px;
     height: 40px;
     align-items: center;
     background-color: black;
-    justify-content: space-between;
-    max-width: 500px;
-    width: 100%;
+    justify-content: center;
+    gap: 20px;
 
 }
 
@@ -132,7 +130,20 @@ header button img:hover{
     padding: 10px;
 }
 .menu a:hover{
+    transition: 0.3s;
+    background-color: #333;
+    border-radius: 5px;
     color: #ffcc00;
+}
+
+.menu select {
+    background-color: white;
+    border-radius: 5px;
+    padding: 8px;
+}
+
+.menu select option {
+    background-color: white;
 }
 
 /*Main*/
@@ -153,6 +164,10 @@ main > div img{
     background-color: white;
     align-items: center;
     justify-content: center;
+}
+
+.imagem-principal iframe {
+    border-radius: 5px;
 }
 
 h2{

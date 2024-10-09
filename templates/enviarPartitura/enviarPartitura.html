@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviar Partitura</title>
+    <link rel="stylesheet" href="enviar.css">
+</head>
+<body>
+    <nav>
+        <button onclick="javascript:history.go(-1)"></button>
+        <a href="enviarPartitura.html">Enviar Partitura</a>
+        <a href="criarAuthor.html">Criar Author</a>
+        <a href="criarMusica.html">Criar Música</a>
+    </nav>
+    <header>
+        <h1>Envie uma Partitura</h1>
+    </header>
+    <main>
+            <form action="">
+                <section class="classificacoes">
+                    <div>
+                        <label for="inome_musica">Nome:</label>
+                        <select name="nome_musica" id="inome_musica">
+                            <option value="Aquarela do Brasil">Aquarela do Brasil</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="instrumento">Instrumento:</label>
+                        <select name="instrumento" id="Instrumento">
+                            <option value="Sax Alto">Sax Alto</option>
+                            <option value="Sax Tenor">Sax Tenor</option>
+                            <option value="Clarinete">Clarinete</option>
+                        </select>
+                    </div>
+                </section>
+                <section class="arquivos">
+                    <div>
+                        <label for="ipart1" id="ilabel1" onclick="addEventListener('change',selecionou('ipart1','ilabel1'))">Partitura - PDF</label>
+                        <input type="file" name="part" id="ipart1">
+                    </div>
+                    <div>
+                        <label for="ipart2" id="ilabel2" onclick="addEventListener('change',selecionou('ipart2','ilabel2'))">Partitura - PNG</label>
+                        <input type="file" name="part" id="ipart2">
+                    </div>
+                    <div>
+                        <label for="ipart3" id="ilabel3" onclick="addEventListener('change',selecionou('ipart3','ilabel3'))">Partitura - MSC</label>
+                        <input type="file" name="part" id="ipart3">
+                    </div>
+                </section>
+                <div class="btns">
+                    <input type="submit">
+                </div>
+            </form>
+
+        </form>
+    </main>
+    <footer>
+        <p>&copy;2024 Otávio Santiago</p>
+    </footer>
+
+    <script>
+
+        function selecionou(ipart,ilabel) {
+
+            const fileInput = document.getElementById(ipart);
+            const fileLabel = document.getElementById(ilabel);
+            
+            fileInput.addEventListener('change', () => {
+                if (fileInput.files.length > 0) {
+                    fileLabel.style.backgroundColor = 'green';
+                    fileLabel.textContent = `Arquivo selecionado: ${fileInput.files[0].name}`;
+                } else {
+                    fileLabel.style.backgroundColor = '#333';
+                    fileLabel.textContent = 'Escolher arquivo';
+                }
+            })
+        }
+    </script>
+</body>
+</html>
