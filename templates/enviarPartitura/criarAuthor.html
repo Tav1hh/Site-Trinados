@@ -8,35 +8,33 @@
 </head>
 <body>
     <nav>
-        <button onclick="javascript:history.go(-1)"></button>
-        <a href="enviarPartitura.html">Partitura</a>
+        <button onclick="javascript:location.href = '/Site-SaxClub'"></button>
         <a href="criarAuthor.html">Author</a>
-        <a href="criarMusica.html">Música</a>
+        <a href="criarMusica.php">Música</a>
     </nav>
     <header>
         <h1>Crie um Author</h1>
     </header>
     <main>
-            <form action="author.php">
-                <section class="classificacoes">
-                    <div>
-                        <label for="inome_author">Nome:</label>
-                        <input type="text" name="nome_author" id="inomeauthor" placeholder="Nome do Author">
+            <form action="author.php" method="post" enctype="multipart/form-data">
+                    <section class="classificacoes">
+                        <div>
 
+                            <label for="inome_author">Nome:</label>
+                            <input type="text" name="nome_author" id="inome_author" placeholder="Nome do Author">
+                        </div>
+                    </section>
+                    <section class="arquivos">
+                        <div>
+                            
+                            <label for="ipart1" id="ilabel1" onclick = 'addEventListener("change", selecionou("ipart1","ilabel1"))'>Foto 1:1 - PNG</label>
+                            <input type="file" name="part" id="ipart1">
+                        </div>
+                    </section>
+                    <div class="btns">
+                        <input type="submit" value="Enviar">
                     </div>
-                </section>
-                <section class="arquivos">
-                    <div>
-                        <label for="ipart1" id="ilabel1" onclick="addEventListener('change',selecionou('ipart1','ilabel1'))">Foto 1:1 - PNG</label>
-                        <input type="file" name="part" id="ipart1">
-                    </div>
-                </section>
-                <div class="btns">
-                    <input type="submit">
-                </div>
             </form>
-
-        </form>
     </main>
     <footer>
         <p>&copy;2024 Otávio Santiago</p>

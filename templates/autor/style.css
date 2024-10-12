@@ -66,7 +66,7 @@ form button[type="submit"] {
     margin: 0;
     border: 1px solid transparent;
     border-radius: inherit;
-    background: transparent url("imagens/search.png") no-repeat center;
+    background: transparent url("../../imagens/search.png") no-repeat center;
     background-color: #08080A;
     background-size: 22px;
     cursor: pointer;
@@ -87,6 +87,9 @@ input[type="search"]:focus {
 header h1, header nav{
     text-align: center;
     width: 137px
+}
+header h1 a {
+    color: white;
 }
 
 header nav{
@@ -117,27 +120,47 @@ header button img:hover{
     opacity: 1;
 }
 
-/**MENU**/
-.menu{
-    overflow:auto;
-    margin: auto;
+/**Conteudo**/
+
+.conteudo {
     display: flex;
-    height: 40px;
     align-items: center;
-    background-color: black;
-    justify-content: space-between;
-    max-width: 500px;
+    margin: auto;
+    width: max-content;
+    border-radius: 5px;
+    padding: 5px;
+    gap: 20px;
+}
+
+.conteudo button {
+    display: inline;
+    inset: all;
+    border-radius: 50%;
+    border: 0px;
+    background-color: white;
+    min-height: 100px;
+    min-width: 100px;
+    width: 100px;
+    height: 100px;
+}
+
+.conteudo button img {
     width: 100%;
-
+    height: 100%;
+    border-radius: 50%;
 }
 
-.menu a{
-    color: var(--cor1);
-    padding: 10px;
+.conteudo h1 {
+    /* min-width: max-content; */
+    color: white;
+    font-weight: 500;
+    font-size: 1.5em;
 }
-.menu a:hover{
-    color: #ffcc00;
+
+.conteudo p {
+    color: white;
 }
+
 
 /*Main*/
 main{
@@ -151,17 +174,24 @@ main > div img{
     display: flex;
     max-width: 800px;
     min-height: 300px;
-    padding: 10px 0px;
+    padding: 15px 0px;
     margin: auto;
+    margin-bottom: 15px;
     border-radius: 20px;
     background-color: white;
     align-items: center;
     justify-content: center;
 }
 
+.imagem-principal iframe {
+    border-radius: 5px;
+}
+
 h2{
+    display: block;
     color: white;
     text-align: center;
+    margin-top: 20px;
     padding: 15px;
 
 }
@@ -210,4 +240,3 @@ h2{
 .card p{
     background-color: var(--cor2);
 }
-
