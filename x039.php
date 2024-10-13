@@ -1,6 +1,5 @@
 <?php
-include 'scripts/conexao.php';
-session_start();
+include 'scripts/conexao.php';  
 
 if (isset($_SESSION['nome']) and isset($_SESSION['id'])) {
     $nome = $_SESSION['nome'];

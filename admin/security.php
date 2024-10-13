@@ -1,13 +1,13 @@
 <?php 
 session_start();
 include '../scripts/conexao.php';
-
-if (isset($_POST['user']) & isset($_POST['pass'])) {
-    $user = $_POST['user'];
-    $senha = $_POST['pass'];
+//Testa se está logado
+if (isset($_SESSION['id']) & isset($_SESSION['nome'])) {
+    $id = $_SESSION['id'];
+    $nome = $_SESSION['nome'];
 
     // Verificando no Banco de Dados
-    $sql = "SELECT * FROM admin where login = '$user' and senha = '$senha'";
+    $sql = "SELECT * FROM admin where id = '$id' and nome = '$nome'";
     $res = mysqli_query($conn,$sql);
 
     $usuario = mysqli_fetch_array($res);
