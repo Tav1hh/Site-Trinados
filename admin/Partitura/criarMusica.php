@@ -17,14 +17,14 @@ $resinstrumento = mysqli_query($conn,$sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criar Author</title>
+    <title>Cadastro de Música</title>
     <link rel="stylesheet" href="enviar.css">
 </head>
 <body>
     <nav id="sidebar">
         <button onclick="togglebar()"></button>
         <h2>Painel</h2>
-        <a href="index.php">Dashboard</a>
+        <a href="../Painel/index.php">Dashboard</a>
         <a href="../Partitura/criarMusica.php">Cadastrar Partitura</a>
         <a href="../Cadastro/cadastrar.html">Cadastrar Adm</a>
         <a href="../../">Home</a>
@@ -37,7 +37,7 @@ $resinstrumento = mysqli_query($conn,$sql);
         <a href="criarMusica.php">Música</a>
     </section>
     <header>
-        <h1>Envie uma Música</h1>
+        <h1>Cadastro de Música</h1>
     </header>
     <main>
             <form action="musica.php" method="post" enctype="multipart/form-data">

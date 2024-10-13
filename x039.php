@@ -11,7 +11,7 @@ if (isset($_SESSION['nome']) and isset($_SESSION['id'])) {
 
     $usuario = mysqli_fetch_array($res);
     if ($usuario !== null) {
-        header("Location: admin/painel/index.php");
+        header("Location: admin/Painel.index.php");
     };
 };
 
