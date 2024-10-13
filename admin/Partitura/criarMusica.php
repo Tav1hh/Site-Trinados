@@ -26,10 +26,11 @@ $resinstrumento = mysqli_query($conn,$sql);
         <h2>Painel</h2>
         <a href="../painel/index.php">Dashboard</a>
         <a href="#">Nova Partitura</a>
-        <a href="">Sair</a>
+        <a href="../../">Sair</a>
     </nav>
     <section class="menu">
         <button onclick="togglebar()"></button>
+        <a href="criarGenero.html">Genero</a>
         <a href="criarAuthor.html">Author</a>
         <a href="criarMusica.php">Música</a>
     </section>

@@ -34,6 +34,16 @@ header div {
     width: 100%;
 }
 
+header div.controls button {
+    cursor: pointer;
+    border: 0px;
+    width: 30px;
+    height: 30px;
+    background: transparent url('imagens/shield-person.png');
+    background-size: cover;
+    margin: auto;
+}
+
 
 header form {
     color: #555;

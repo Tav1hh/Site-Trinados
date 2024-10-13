@@ -22,8 +22,12 @@ $res = mysqli_query($conn,$sql);
             <input type="search" name="psq" placeholder="Partitura..">
             <button type="submit">Enviar</button>
         </form>
-        <div>
-            <!-- Apenas para dar o espaço necessário -->
+        <div class="controls">
+            <?php 
+            if (isset($_SESSION['adm'])) {
+                echo "<button class=\"btn-adm\" onclick=\"javascript:location.href = 'admin/painel/index.php'\"></button>";
+            }
+            ?>
         </div>
     </header>
     <main>

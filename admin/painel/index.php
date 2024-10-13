@@ -40,7 +40,7 @@ if (isset($_POST['psq1'])) {
         <h2>Painel</h2>
         <a href="index.php">Dashboard</a>
         <a href="../Partitura/criarMusica.php">Nova Partitura</a>
-        <a href="">Sair</a>
+        <a href="../../">Sair</a>
     </nav>
     <header>
         <button onclick="togglebar()"></button>

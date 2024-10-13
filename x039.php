@@ -1,3 +1,21 @@
+<?php
+include 'scripts/conexao.php';
+
+if (isset($_SESSION['nome']) and isset($_SESSION['id'])) {
+    $nome = $_SESSION['nome'];
+    $id = $_SESSION['id'];
+
+    // Verificando no Banco de Dados
+    $sql = "SELECT * FROM admin where id = '$id' and nome = '$nome'";
+    $res = mysqli_query($conn,$sql);
+
+    $usuario = mysqli_fetch_array($res);
+    if ($usuario !== null) {
+        header("Location: admin/painel/index.php");
+    };
+};
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

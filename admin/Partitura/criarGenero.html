@@ -17,27 +17,23 @@
     <section class="menu">
         <button onclick="togglebar()"></button>
         <a href="criarGenero.html">Genero</a>
+        <a href="criarGenero.html">Genero</a>
         <a href="criarAuthor.html">Author</a>
         <a href="criarMusica.php">Música</a>
     </section>
     <header>
-        <h1>Crie um Author</h1>
+        <h1>Adicione um Genero</h1>
     </header>
     <main>
-            <form action="author.php" method="post" enctype="multipart/form-data">
+            <form action="genero.php" method="post" enctype="multipart/form-data">
                     <section class="classificacoes">
                         <div>
 
-                            <label for="inome_author">Nome:</label>
-                            <input type="text" name="nome_author" id="inome_author" placeholder="Nome do Author">
+                            <label for="inome_genero">Genero:</label>
+                            <input type="text" name="nome_genero" id="inome_genero" placeholder="Nome do Genero">
                         </div>
                     </section>
-                    <section class="arquivos">
-                        <div>
-                            
-                            <label for="ipart1" id="ilabel1" onclick = 'addEventListener("change", selecionou("ipart1","ilabel1"))'>Foto 1:1 - PNG</label>
-                            <input type="file" name="part" id="ipart1">
-                        </div>
+
                     </section>
                     <div class="btns">
                         <input type="submit" value="Enviar">

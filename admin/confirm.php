@@ -14,6 +14,7 @@ if (isset($_POST['user']) & isset($_POST['pass'])) {
         session_start();
         $_SESSION['id'] = $usuario['id'];
         $_SESSION['nome'] = $usuario['nome'];
+        $_SESSION['adm'] = true;
         header("Location: painel/index.php");
     } else {
         session_unset();
