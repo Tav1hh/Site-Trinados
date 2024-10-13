@@ -1,5 +1,6 @@
 <?php 
 include '../../scripts/conexao.php';
+include "../security.php";
 
 $nome = $_POST['nome_author'];
 $file = $_FILES['part'];
@@ -23,7 +24,7 @@ if (isset($_FILES['part']) && $_FILES['part']['error'] === 0) {
         // Move o arquivo para o diretório desejado
         if (move_uploaded_file($fileTmp, "../../$destination")) {
             echo "Arquivo salvo na pasta: " . "$uploadDir <br>";
-            header("Location: criarAuthor.html");
+            header("Location: criarAuthor.php");
             
         } else {
             echo "Erro ao mover o arquivo.";

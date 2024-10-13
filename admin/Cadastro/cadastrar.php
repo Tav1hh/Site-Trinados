@@ -1,10 +1,13 @@
+<?php 
+include "../security.php";
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Author</title>
-    <link rel="stylesheet" href="enviar.css">
+    <title>Cadastrar Adm</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <nav id="sidebar">
@@ -12,37 +15,33 @@
         <h2>Painel</h2>
         <a href="../Painel/index.php">Dashboard</a>
         <a href="../Partitura/criarMusica.php">Cadastrar Partitura</a>
-        <a href="../Cadastro/cadastrar.html">Cadastrar Adm</a>
+        <a href="../Cadastro/cadastrar.php">Cadastrar Adm</a>
         <a href="../../">Home</a>
         <a href="../deslogar.php">Logout</a>
     </nav>
-    <section class="menu">
-        <button onclick="togglebar()"></button>
-        <a href="criarGenero.html">Genero</a>
-        <a href="criarAuthor.html">Author</a>
-        <a href="criarMusica.php">Música</a>
-    </section>
     <header>
-        <h1>Cadastro de Author</h1>
+        <button onclick="togglebar()"></button>
+        <h1>Registrar ADM</h1>
     </header>
     <main>
-            <form action="author.php" method="post" enctype="multipart/form-data">
+            <form action="cadastro.php" method="post">
                     <section class="classificacoes">
                         <div>
-
-                            <label for="inome_author">Nome:</label>
-                            <input type="text" name="nome_author" id="inome_author" placeholder="Nome do Author">
+                            <label for="iadm_nome">Nome:</label>
+                            <input type="text" name="adm_nome" id="iadm_nome" placeholder="Nome do ADM">
                         </div>
-                    </section>
-                    <section class="arquivos">
                         <div>
-                            
-                            <label for="ipart1" id="ilabel1" onclick = 'addEventListener("change", selecionou("ipart1","ilabel1"))'>Foto 1:1 - PNG</label>
-                            <input type="file" name="part" id="ipart1">
+                            <label for="iadm_login">Login:</label>
+                            <input type="text" name="adm_login" id="iadm_login" placeholder="Login do ADM">
                         </div>
+                        <div>
+                            <label for="iadm_senha">Senha:</label>
+                            <input type="text" name="adm_senha" id="iadm_senha" placeholder="Senha do ADM">
+                        </div>
+
                     </section>
                     <div class="btns">
-                        <input type="submit" value="Enviar">
+                        <input type="submit" value="Registrar">
                     </div>
             </form>
     </main>

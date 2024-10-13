@@ -1,6 +1,6 @@
 <?php 
 include '../../scripts/conexao.php';
-
+include "../security.php";
 
 $nome = $_POST['nome_musica'];
 $author = $_POST['author'];

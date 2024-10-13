@@ -1,5 +1,6 @@
 <?php 
 include '../../scripts/conexao.php';
+include "../security.php";
 
 // Pegando as Músicas
 if (isset($_POST['psq'])) {
@@ -51,7 +52,7 @@ if (isset($_POST['psq2'])) {
         <h2>Painel</h2>
         <a href="index.php">Dashboard</a>
         <a href="../Partitura/criarMusica.php">Cadastrar Partitura</a>
-        <a href="../Cadastro/cadastrar.html">Cadastrar Adm</a>
+        <a href="../Cadastro/cadastrar.php">Cadastrar Adm</a>
         <a href="../../">Home</a>
         <a href="../deslogar.php">Logout</a>
     </nav>

@@ -1,3 +1,6 @@
+<?php 
+include "../security.php"
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -12,14 +15,14 @@
         <h2>Painel</h2>
         <a href="../Painel/index.php">Dashboard</a>
         <a href="../Partitura/criarMusica.php">Cadastrar Partitura</a>
-        <a href="../Cadastro/cadastrar.html">Cadastrar Adm</a>
+        <a href="../Cadastro/cadastrar.php">Cadastrar Adm</a>
         <a href="../../">Home</a>
         <a href="../deslogar.php">Logout</a>
     </nav>
     <section class="menu">
         <button onclick="togglebar()"></button>
-        <a href="criarGenero.html">Genero</a>
-        <a href="criarAuthor.html">Author</a>
+        <a href="criarGenero.php">Genero</a>
+        <a href="criarAuthor.php">Author</a>
         <a href="criarMusica.php">Música</a>
     </section>
     <header>
