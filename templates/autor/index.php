@@ -31,7 +31,7 @@ $resMusica = mysqli_query($conn,$sql);
             <button class="btn-back" onclick="javascript:location.href = '../../'"></button>
             <?php 
             if (isset($_SESSION['adm'])) {
-                echo "<button class=\"btn-adm\" onclick=\"javascript:location.href = '../../admin/Painel.index.php'\"></button>";
+                echo "<button class=\"btn-adm\" onclick=\"javascript:location.href = '../../admin/Painel/index.php'\"></button>";
             }
             ?>
         </div>
