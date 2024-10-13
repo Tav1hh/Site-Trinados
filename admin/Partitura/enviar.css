@@ -12,6 +12,11 @@ body{
     background-color: black;
 }
 
+::-webkit-scrollbar {
+    width: 0px;
+    text-decoration: dotted;
+}
+
 header, footer{
     padding: 20px;
     text-align: center;
@@ -191,4 +196,28 @@ input{
     cursor: pointer;
     background-color: #333;
     color: white;
+}
+
+/* RodaPe da Página */
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    background-color: var(--fundo);
+}
+
+footer p {
+    font-size: 1em;
+    color: white;
+    text-align: center;
+}
+
+footer a {
+    color: white;
+    opacity: 0.7;
+}
+
+footer a:hover {
+    opacity: 1;
 }

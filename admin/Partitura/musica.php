@@ -15,19 +15,16 @@ $instrumento = $linha['nome'];
 
 
 // Verifica se os arquivos foram enviados
-if (isset($_FILES['playback']) && isset($_FILES['part1']) && isset($_FILES['part2']) && isset($_FILES['part3'])) {
+if (isset($_FILES['part1']) && isset($_FILES['part2']) && isset($_FILES['part3'])) {
     
-    $filePB = $_FILES['playback'];
     $filePDF = $_FILES['part1'];
     $filePNG = $_FILES['part2'];
     $fileMSC = $_FILES['part3'];
 
-    $PBName = $filePB['name'];
     $PDFName = $filePDF['name'];
     $PNGName = $filePNG['name'];
     $MSCName = $fileMSC['name'];
     
-    $PBtmp = $filePB['tmp_name'];
     $PDFtmp = $filePDF['tmp_name'];
     $PNGtmp = $filePNG['tmp_name'];
     $MSCtmp = $fileMSC['tmp_name'];
@@ -41,17 +38,17 @@ if (isset($_FILES['playback']) && isset($_FILES['part1']) && isset($_FILES['part
     }
 
     // Definindo os caminhos de cada um
-    $pathPb = "../../".$path . $PBName;
+
     $pathPDF = "../../".$path . $PDFName;
     $pathPNG = "../../".$path . $PNGName;
     $pathMSC = "../../".$path . $MSCName;
 
     // Movendo os arquivos
-    if (move_uploaded_file($PDFtmp, $pathPDF) && move_uploaded_file($PNGtmp, $pathPNG) && move_uploaded_file($MSCtmp, $pathMSC) && move_uploaded_file($PBtmp, $pathPb)) {
+    if (move_uploaded_file($PDFtmp, $pathPDF) && move_uploaded_file($PNGtmp, $pathPNG) && move_uploaded_file($MSCtmp, $pathMSC)) {
 
         echo "arquivos movidos!";
 
-        $sql = "INSERT INTO música (nome, autor_fid, genero_fid, path_playback, path_pdf, path_png, path_msc, iframe, Idinstrumento, instrumento) VALUES ('$nome','$author','$genero','$path$PBName','$path$PDFName','$path$PNGName','$path$MSCName','$iframe','$Idinstrumento', '$instrumento')";
+        $sql = "INSERT INTO música (nome, autor_fid, genero_fid, path_pdf, path_png, path_msc, iframe, Idinstrumento, instrumento) VALUES ('$nome','$author','$genero','$path$PDFName','$path$PNGName','$path$MSCName','$iframe','$Idinstrumento', '$instrumento')";
         if (mysqli_query($conn,$sql)) {
             echo "arquivo salvo!";
             header("Location: criarMusica.php");

@@ -81,7 +81,7 @@ $autor = mysqli_fetch_array($res)
         </section>
     </main>
     <footer>
-        <p>Site Criado por &copy;<strong>Santiago</strong></p>
+        <p>Site Criado por &copy;<strong><a href="https://tav1hh.github.io/Site-PortfolioV2" target="_blank">Santiago</a></strong></p>
     </footer>
 </body>
 </html>

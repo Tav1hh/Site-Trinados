@@ -20,6 +20,11 @@ body {
     background-color: var(--fundo);
 }
 
+::-webkit-scrollbar{
+    width: 0px;
+    text-decoration: dotted;
+}
+
 /* Função de fechar e abrir a barra */
 .activate {
     transform: translateX(101%);
@@ -72,6 +77,9 @@ nav#sidebar a:hover {
 /* Header */
 
 header {
+    position: sticky;
+    top: 0;
+    left: 0;
     display: flex;
     height: 50px;
     margin: 0px -10px;
@@ -158,4 +166,28 @@ section table td, main table th {
     cursor: pointer;
     opacity: 0.7;
     background-color: #444;
+}
+
+/* RodaPe da Página */
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    background-color: var(--fundo);
+}
+
+footer p {
+    font-size: 1em;
+    color: white;
+    text-align: center;
+}
+
+footer a {
+    color: white;
+    opacity: 0.7;
+}
+
+footer a:hover {
+    opacity: 1;
 }

@@ -83,10 +83,9 @@ $resinstrumento = mysqli_query($conn,$sql);
                 </section>
 
                 <section class="arquivos">
-
                     <div>
-                        <label for="iplayback" id="ilabel0" onclick="addEventListener('change',selecionou('iplayback','ilabel0'))" >PlayBack</label>
-                        <input type="file" name="playback" id="iplayback">
+                        <label for="ipart2" id="ilabel2" onclick="addEventListener('change',selecionou('ipart2','ilabel2'))">Capa - PNG</label>
+                        <input type="file" name="part2" id="ipart2">
                     </div>
 
                     <div>
@@ -94,10 +93,6 @@ $resinstrumento = mysqli_query($conn,$sql);
                         <input type="file" name="part1" id="ipart1">
                     </div>
 
-                    <div>
-                        <label for="ipart2" id="ilabel2" onclick="addEventListener('change',selecionou('ipart2','ilabel2'))">Partitura - PNG</label>
-                        <input type="file" name="part2" id="ipart2">
-                    </div>
 
                     <div>
                         <label for="ipart3" id="ilabel3" onclick="addEventListener('change',selecionou('ipart3','ilabel3'))">Partitura - MSC</label>
@@ -114,7 +109,7 @@ $resinstrumento = mysqli_query($conn,$sql);
         </form>
     </main>
     <footer>
-        <p>&copy;2024 Otávio Santiago</p>
+        <p>Site Criado por &copy;<strong><a href="https://tav1hh.github.io/Site-PortfolioV2" target="_blank">Santiago</a></strong></p>
     </footer>
 
     <script>
