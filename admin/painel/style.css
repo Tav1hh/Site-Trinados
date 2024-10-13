@@ -1,0 +1,161 @@
+@charset "UTF-8";
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-decoration: none;
+}
+
+:root {
+    --fundo: black;
+    --cor1:#EBD065;
+    --cor2:#111;
+    --cor3:#1F1700;
+}
+
+body {
+    padding: 0px 10px;
+    background-color: var(--fundo);
+}
+
+/* Função de fechar e abrir a barra */
+.activate {
+    transform: translateX(101%);
+}
+
+nav#sidebar {
+    z-index: 1;
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    background-color: #333;
+    color: white;
+    height: 100vh;
+    translate: -101%;
+    transition: transform 0.5s;
+}
+
+nav#sidebar button {
+    position: absolute;
+    cursor: pointer;
+    right: 5px;
+    top: 5px;
+    border: 0px;
+    width: 40px;
+    height: 40px;
+    background: transparent url('../../imagens/close.png') no-repeat center;
+    background-size: contain;
+}
+
+nav#sidebar h2 { 
+    padding: 30px;
+    text-align: center;
+}
+
+nav#sidebar a {
+    display: block;
+    color: white;
+    margin-bottom: 5px;
+    padding: 10px 20px;
+    font-weight: bold;
+    background-color: #555;
+    opacity: 0.7;
+}
+
+nav#sidebar a:hover {
+    opacity: 1;
+}
+
+/* Header */
+
+header {
+    display: flex;
+    height: 50px;
+    margin: 0px -10px;
+    margin-bottom: 50px;
+    align-items: center;
+    background-color: var(--fundo);
+    color: white;
+}
+
+header h1 {
+    flex: auto;
+    text-align: center;
+}
+
+header button {
+    position: absolute;
+    z-index: 0;
+    cursor: pointer;
+    border: 0px;
+    width: 40px;
+    height: 40px;
+    background: transparent url('../../imagens/menu-white.png') no-repeat center;
+    background-size: contain;
+}
+
+/* Main */
+
+section {
+    max-width: 800px;
+    width: 100%;
+    margin: auto;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+section form{
+    display: flex;
+    align-items: center; 
+    width: 100%;
+    background-color: black;
+    padding: 5px;
+    border-radius: 5px 5px 0px 0px;
+}
+
+section form input {
+    padding:5px;
+    height: 30px;
+    border-radius: 5px 0px 0px 5px;
+    flex: auto;
+    width: max-content;
+}
+
+section button {
+    cursor: pointer;
+    width: 40px;
+    height: 30px;
+    border: 0px;
+    border-radius: 0px 5px 5px 0px;
+    background: #333 url('../../imagens/search.png') no-repeat center center;
+    background-size: contain;
+
+}
+
+section table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+section table thead {
+    width: max-content;
+}
+
+section table td, main table th {
+    text-align: center;
+    padding: 5px 0px;
+    border: 1px solid black;
+}
+
+.btn-func:hover {
+    cursor: pointer;
+    opacity: 0.7;
+    background-color: #444;
+}

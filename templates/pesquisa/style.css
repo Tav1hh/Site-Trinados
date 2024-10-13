@@ -1,0 +1,206 @@
+@charset "UTF-8";
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-decoration: none;
+}
+
+:root {
+    --fundo: black;
+    --cor1:#EBD065;
+    --cor2:#111;
+    --cor3:#1F1700;
+}
+
+header {
+    z-index: 1;
+    position: sticky;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    justify-content: space-around;
+    background-color: var(--fundo);
+    padding: 5px 20px;
+    color: white;
+}
+
+header div {
+    max-width: 140px;
+    width: 100%;
+    text-align: center;
+}
+
+header div.controls .btn-back {
+    cursor: pointer;
+    border: 0px;
+    background: transparent url('../../imagens/arrow_back_white.png') no-repeat center center;
+    background-size: cover;
+    width: 30px;
+    height: 30px;
+    margin: auto;
+}
+
+header form {
+    color: #555;
+    display: flex;
+    padding: 2px;
+    border: 1px solid currentColor;
+    border-radius: 5px;
+    background-color: white;
+}
+
+header form input[type=search] {
+    width: 40vw;
+    border: none;
+    background: transparent;
+    margin: 0px;
+    padding: 7px 8px;
+    font-size: 0.9em;
+    color: inherit;
+    border: 1px solid transparent;
+    border-radius: inherit;
+}
+
+header form input[type=search]::placeholder {
+    color: #989898;
+}
+
+header form button[type=submit] {
+    width: 40px;
+    text-indent: -999px;
+    overflow: hidden;
+    border: 1px solid transparent;
+    border-radius: inherit;
+    background: transparent url("../../imagens/search.png") no-repeat center;
+    background-color: #08080A;
+    background-size: 22px;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+header form button[type=submit]:hover {
+    opacity: 1;
+}
+
+header form button[type=submit]:focus {
+    box-shadow: 0px 0px 3px #1183d6;
+    border-color: #1183d6;
+    outline: none;
+}
+
+/*Main*/
+
+main {
+    background-color: var(--fundo);
+    padding: 20px;
+    min-height: calc(100vh - 90px);
+    color: white;
+}
+
+/* Sessão dos Autores */
+
+.autores{
+    padding: 10px 0px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    overflow: auto;
+}
+
+.autores a{
+    width: max-content;
+}
+
+.autores img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.autores .card {
+    text-align: center;
+    color: white;
+    transition: transform 1s;
+}
+
+.autores .card:hover{
+    transform: translateY(-10px);
+    text-decoration: underline;
+    text-decoration-color: #1183d6;
+    transition: transform 1s, text-decoration 1s;
+}
+
+/* Seção das Partituras */
+
+h2{
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+/* Cards */
+
+::-webkit-scrollbar{
+    width: 0px;
+    text-decoration: dotted;
+}
+.musicas{
+    padding: 10px 0px;
+    display: flex;
+    justify-content:center;
+    flex-wrap: wrap;
+    gap: 15px 5px;
+}
+
+.musicas .card{
+    color: white;
+    width: 180px;
+    background-color: var(--cor2);
+    padding: 8px;
+    border-radius: 8px;
+    margin-right: 5px;
+    text-align: center;
+    flex-shrink: 0;
+    object-fit: cover;
+    scroll-behavior: smooth;
+    transition: transform 1s;
+}
+
+.musicas .card:hover{
+    transform: translateY(-10px);
+    text-decoration: underline;
+    text-decoration-color: #1183d6;
+    background-color: rgb(26, 24, 24);
+    transition: transform 1s, text-decoration 1s;
+}
+
+.musicas .card img{
+    width: 100%;
+    border-radius: 10px;
+    background-size: cover;
+}
+
+.musicas .card p{
+    background-color: var(--cor2);
+}
+
+
+/* RodaPe da Página */
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    background-color: var(--fundo);
+}
+
+footer p {
+    font-size: 1em;
+    color: white;
+    text-align: center;
+}
