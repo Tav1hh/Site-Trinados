@@ -1,5 +1,6 @@
 <?php 
 include 'scripts/conexao.php';
+session_start();
 
 $sql = 'SELECT * from música';
 $res = mysqli_query($conn,$sql);
