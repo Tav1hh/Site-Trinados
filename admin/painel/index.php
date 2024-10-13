@@ -53,7 +53,6 @@ if (isset($_POST['psq2'])) {
         <a href="../Partitura/criarMusica.php">Nova Partitura</a>
         <a href="../../">Home</a>
         <a href="../deslogar.php">Logout</a>
-        <a href="../deslogar.php">Logout</a>
     </nav>
     <header>
         <button onclick="togglebar()"></button>
