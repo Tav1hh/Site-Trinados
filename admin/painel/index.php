@@ -50,7 +50,8 @@ if (isset($_POST['psq2'])) {
         <button onclick="togglebar()"></button>
         <h2>Painel</h2>
         <a href="index.php">Dashboard</a>
-        <a href="../Partitura/criarMusica.php">Nova Partitura</a>
+        <a href="../Partitura/criarMusica.php">Cadastrar Partitura</a>
+        <a href="../Cadastro/cadastrar.html">Cadastrar Adm</a>
         <a href="../../">Home</a>
         <a href="../deslogar.php">Logout</a>
     </nav>
