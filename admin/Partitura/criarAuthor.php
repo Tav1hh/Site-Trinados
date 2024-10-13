@@ -1,4 +1,5 @@
 <?php 
+include '../../scripts/conexao.php';
 //Testa se está logado
 if (isset($_SESSION['id']) & isset($_SESSION['nome'])) {
     $id = $_SESSION['id'];
