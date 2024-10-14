@@ -26,7 +26,7 @@ if (isset($_SESSION['id']) & isset($_SESSION['nome'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Author</title>
+    <title>Cadastro de autor</title>
     <link rel="stylesheet" href="enviar.css">
 </head>
 <body>
@@ -42,19 +42,19 @@ if (isset($_SESSION['id']) & isset($_SESSION['nome'])) {
     <section class="menu">
         <button onclick="togglebar()"></button>
         <a href="criarGenero.php">Genero</a>
-        <a href="criarAuthor.php">Author</a>
+        <a href="criarAutor.php">autor</a>
         <a href="criarMusica.php">Música</a>
     </section>
     <header>
-        <h1>Cadastro de Author</h1>
+        <h1>Cadastro de autor</h1>
     </header>
     <main>
-            <form action="author.php" method="post" enctype="multipart/form-data">
+            <form action="autor.php" method="post" enctype="multipart/form-data">
                     <section class="classificacoes">
                         <div>
 
-                            <label for="inome_author">Nome:</label>
-                            <input type="text" name="nome_author" id="inome_author" placeholder="Nome do Author">
+                            <label for="inome_autor">Nome:</label>
+                            <input type="text" name="nome_autor" id="inome_autor" placeholder="Nome do autor">
                         </div>
                     </section>
                     <section class="arquivos">

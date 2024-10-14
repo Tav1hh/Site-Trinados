@@ -5,7 +5,7 @@ $psq = $_POST['psq'];
 $sql = "SELECT * FROM música WHERE nome LIKE '%$psq%' or instrumento LIKE '%$psq%'";
 $resMusica = mysqli_query($conn,$sql);
 
-$sql = "SELECT * FROM author WHERE nome LIKE '%$psq%'";
+$sql = "SELECT * FROM autor WHERE nome LIKE '%$psq%'";
 $resAutor = mysqli_query($conn,$sql);
 ?>
 <!DOCTYPE html>

@@ -21,13 +21,12 @@ if (isset($_SESSION['id']) & isset($_SESSION['nome'])) {
     header('Location: ../../x039.php');
 }
 
-
 // Pega os dados do DB
 $sql = "SELECT * from genero";
 $resGen = mysqli_query($conn,$sql);
 
-$sql = "SELECT * from author";
-$resAuthor = mysqli_query($conn,$sql);
+$sql = "SELECT * from autor";
+$resautor = mysqli_query($conn,$sql);
 
 $sql = "SELECT * from instrumento";
 $resinstrumento = mysqli_query($conn,$sql);
@@ -54,7 +53,7 @@ $resinstrumento = mysqli_query($conn,$sql);
     <section class="menu">
         <button onclick="togglebar()"></button>
         <a href="criarGenero.php">Genero</a>
-        <a href="criarAuthor.php">Author</a>
+        <a href="criarAutor.php">autor</a>
         <a href="criarMusica.php">Música</a>
     </section>
     <header>
@@ -68,10 +67,10 @@ $resinstrumento = mysqli_query($conn,$sql);
                         <input type="text" name="nome_musica" id="inomemusica" placeholder="Nome da Música">
                     </div>
                     <div>
-                        <label for="Iauthor">Author:</label>
-                        <select name="author" id="Iauthor">
+                        <label for="Iautor">autor:</label>
+                        <select name="autor" id="Iautor">
                         <?php 
-                            while ($linha = mysqli_fetch_array($resAuthor)) {
+                            while ($linha = mysqli_fetch_array($resautor)) {
                                 echo "<option value='".$linha['id']."'>".$linha['nome']."</option>";
                             }
                             ?>

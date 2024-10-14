@@ -1,0 +1,233 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    transition: width 1s;
+}
+
+body{
+    padding: 0px 10px;
+    background-color: black;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    text-decoration: dotted;
+}
+
+header, footer{
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+/* Função de fechar e abrir a barra */
+.activate {
+    transform: translateX(100%);
+}
+
+nav#sidebar {
+    z-index: 1;
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    background-color: #333;
+    color: white;
+    height: 100vh;
+    translate: -250px 0px;
+    transition: transform 0.5s;
+}
+
+nav#sidebar button {
+    position: absolute;
+    cursor: pointer;
+    right: 5px;
+    top: 5px;
+    border: 0px;
+    width: 40px;
+    height: 40px;
+    background: transparent url('../../imagens/close.png') no-repeat center;
+    background-size: contain;
+}
+
+nav#sidebar h2 { 
+    padding: 30px;
+    text-align: center;
+}
+
+nav#sidebar a {
+    display: block;
+    color: white;
+    margin-bottom: 5px;
+    padding: 10px 20px;
+    font-weight: bold;
+    background-color: #555;
+    opacity: 0.7;
+}
+
+nav#sidebar a:hover {
+    opacity: 1;
+}
+
+/* Header */
+
+header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    display: flex;
+    height: 50px;
+    margin: 0px -10px;
+    margin-bottom: 50px;
+    align-items: center;
+    background-color: var(--fundo);
+    color: white;
+}
+
+header h1 {
+    flex: auto;
+    text-align: center;
+}
+
+header button {
+    position: absolute;
+    z-index: 0;
+    cursor: pointer;
+    border: 0px;
+    width: 40px;
+    height: 40px;
+    background: transparent url('../../imagens/menu-white.png') no-repeat center;
+    background-size: contain;
+}
+
+
+main {
+    max-width: 700px;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    margin: auto;
+}
+
+main p {
+    background-color: #333;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 10px;
+    color: white;
+}
+
+.classificacoes label{
+    font-size: 1em;
+    font-weight: bold;
+}
+
+input{
+    border: 1px solid black;
+    width: 100%;
+    border-radius: 5px;
+    padding: 8px;
+}
+
+
+.classificacoes {
+    align-items: center;
+}
+.classificacoes div {
+    display: flex;
+    margin-top: 5px;
+    flex: 1;
+    gap: 5px;
+    align-items: center;
+}
+.classificacoes select {
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 30px;
+    min-width: 100px;
+    flex: 1;
+}
+
+/* Estilo do Botão de partitura */
+
+.arquivos input[type=file] {
+    display: none;
+}
+.arquivos label {
+    display: inline-block;
+    margin-top: 5px;
+    border: 1px solid black;
+    padding:10px;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+}
+
+.arquivos label:hover{
+    cursor: pointer;
+    background-color: #999;
+}
+
+/* Botões de Submeter e resetar */
+
+.btns {
+    display: flex;
+    margin-top: 10px;
+    gap: 5px;
+}
+
+.btns input{
+    height: 40px;
+    color: black;
+    font-weight: bold;
+    background-color: white;
+    border: 5px solid #333;
+    border-radius: 5px;
+}
+
+.btns input:hover{
+    cursor: pointer;
+    background-color: #333;
+    color: white;
+}
+
+input.btn-excluir {
+    color: red;
+    border: 5px solid red;
+}
+
+input.btn-excluir:hover{
+    cursor: pointer;
+    background-color: red;
+    color: white;
+}
+
+
+/* RodaPe da Página */
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    background-color: var(--fundo);
+}
+
+footer p {
+    font-size: 1em;
+    color: white;
+    text-align: center;
+}
+
+footer a {
+    color: white;
+    opacity: 0.7;
+}
+
+footer a:hover {
+    opacity: 1;
+}

@@ -111,7 +111,7 @@ main {
 
 main .apresentacao {
     display: flex;
-    max-width: 800px;
+    max-width: 600px;
     min-height: 300px;
     padding: 10px 0px;
     margin: auto;
@@ -133,10 +133,9 @@ main .apresentacao img {
     flex-wrap: wrap;
     align-items: center;
     background-color: black;
-    max-width: 800px;
-    margin: auto;
-    margin-top: 10px;
-    justify-content: left;
+    max-width: 600px;
+    margin: 15px auto ;
+    justify-content: space-between;
     gap: 20px;
 
 }
@@ -145,7 +144,6 @@ main .apresentacao img {
     display: flex;
     gap: 20px;
 }
-
 .menu button {
     display: inline;
     inset: all;
@@ -154,8 +152,8 @@ main .apresentacao img {
     background-color: white;
     min-height: 50px;
     min-width: 50px;
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
 }
 
 .menu button img {
@@ -168,7 +166,7 @@ main .apresentacao img {
 .menu h1 {
     color: white;
     font-weight: 500;
-    font-size: 1.5em;
+    font-size: 1.2em;
 }
 
 .menu p {
@@ -177,6 +175,7 @@ main .apresentacao img {
 
 .menu .controls {
     min-width: max-content;
+    text-align: center;
 }
 
 .menu a{
@@ -195,6 +194,7 @@ main .apresentacao img {
 /* Seção das Partituras */
 
 h2{
+    /* margin-top: 40px; */
     color: white;
     text-align: center;
     padding: 15px;

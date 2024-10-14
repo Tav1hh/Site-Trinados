@@ -2,7 +2,7 @@
 include '../../scripts/conexao.php';
 $idautor = $_GET['id'];
 
-$sql = "SELECT * from author Where id = $idautor";
+$sql = "SELECT * from autor Where id = $idautor";
 $res = mysqli_query($conn,$sql);
 $autor = mysqli_fetch_array($res);
 

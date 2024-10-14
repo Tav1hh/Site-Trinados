@@ -37,10 +37,10 @@ if (isset($_POST['psq'])) {
 if (isset($_POST['psq1'])) {
     $psq = $_POST['psq1'];
     
-    $sql = "SELECT * FROM author where nome Like '%$psq%' or id Like '%$psq%' limit 10";
+    $sql = "SELECT * FROM autor where nome Like '%$psq%' or id Like '%$psq%' limit 10";
     $resAutor = mysqli_query($conn, $sql);
 } else {    
-    $sql = "SELECT * FROM author limit 10";
+    $sql = "SELECT * FROM autor limit 10";
     $resAutor = mysqli_query($conn, $sql);
 }
 
@@ -114,8 +114,7 @@ if (isset($_POST['psq3'])) {
                     echo "<td>".$linha['id']."</td>";
                     echo "<td>".$linha['nome']."</td>";
                     echo "<td>".$linha['instrumento']."</td>";
-                    echo "<td class='btn-func'>Edit</td>";
-                    echo "<td class='btn-func'>Del</td>";
+                    echo "<td class='btn-func' onclick=\"javascript:location.href='../Editar/musica.php?id=".$linha['id']."  '\">Edit</td>";
                     echo "</td>";
                 }
                 ?>
@@ -144,8 +143,7 @@ if (isset($_POST['psq3'])) {
                     echo "<tr>";
                     echo "<td>".$linha['id']."</td>";
                     echo "<td>".$linha['nome']."</td>";
-                    echo "<td class='btn-func'>Edit</td>";
-                    echo "<td class='btn-func'>Del</td>";
+                    echo "<td class='btn-func' onclick=\"javascript:location.href='../Editar/autor.php?id=".$linha['id']."  '\">Edit</td>";
                     echo "</td>";
                 }
                 ?>
@@ -174,8 +172,7 @@ if (isset($_POST['psq3'])) {
                     echo "<tr>";
                     echo "<td>".$linha['id']."</td>";
                     echo "<td>".$linha['nome']."</td>";
-                    echo "<td class='btn-func'>Edit</td>";
-                    echo "<td class='btn-func'>Del</td>";
+                    echo "<td class='btn-func' onclick=\"javascript:location.href='../Editar/genero.php?nome=".$linha['nome']."&id=".$linha['id']."  '\">Edit</td>";
                     echo "</td>";
                 }
                 ?>
@@ -205,7 +202,6 @@ if (isset($_POST['psq3'])) {
                     echo "<td>".$linha['id']."</td>";
                     echo "<td>".$linha['nome']."</td>";
                     echo "<td class='btn-func'>Edit</td>";
-                    echo "<td class='btn-func'>Del</td>";
                     echo "</td>";
                 }
                 ?>

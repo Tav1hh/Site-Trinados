@@ -23,7 +23,7 @@ if (isset($_SESSION['id']) & isset($_SESSION['nome'])) {
 }
 
 $nome = $_POST['nome_musica'];
-$author = $_POST['author'];
+$autor = $_POST['autor'];
 $genero = $_POST['gen'];
 $Idinstrumento = $_POST['instrumento'];
 $iframe = $_POST['iframe'];
@@ -50,7 +50,7 @@ if (isset($_FILES['part1']) && isset($_FILES['part2']) && isset($_FILES['part3']
     $MSCtmp = $fileMSC['tmp_name'];
 
     // Definindo o caminho de destino
-    $path = "partituras/$nome/";
+    $path = "partituras/$nome/$instrumento";
 
     // Criando a Pasta
     if (!is_dir("../../".$path)) {
@@ -59,16 +59,16 @@ if (isset($_FILES['part1']) && isset($_FILES['part2']) && isset($_FILES['part3']
 
     // Definindo os caminhos de cada um
 
-    $pathPDF = "../../".$path . $PDFName;
-    $pathPNG = "../../".$path . $PNGName;
-    $pathMSC = "../../".$path . $MSCName;
+    $pathPDF = "../../$path/" . $PDFName;
+    $pathPNG = "../../$path/" . $PNGName;
+    $pathMSC = "../../$path/" . $MSCName;
 
     // Movendo os arquivos
     if (move_uploaded_file($PDFtmp, $pathPDF) && move_uploaded_file($PNGtmp, $pathPNG) && move_uploaded_file($MSCtmp, $pathMSC)) {
 
         echo "arquivos movidos!";
 
-        $sql = "INSERT INTO música (nome, autor_fid, genero_fid, path_pdf, path_png, path_msc, iframe, Idinstrumento, instrumento) VALUES ('$nome','$author','$genero','$path$PDFName','$path$PNGName','$path$MSCName','$iframe','$Idinstrumento', '$instrumento')";
+        $sql = "INSERT INTO música (nome, autor_fid, genero_fid, path, path_pdf, path_png, path_msc, pdf_name, png_name, msc_name, iframe, Idinstrumento, instrumento) VALUES ('$nome','$autor','$genero','$path','$path/$PDFName','$path/$PNGName','$path/$MSCName','$PDFName','$PNGName','$MSCName','$iframe','$Idinstrumento', '$instrumento')";
         if (mysqli_query($conn,$sql)) {
             echo "arquivo salvo!";
             header("Location: criarMusica.php");

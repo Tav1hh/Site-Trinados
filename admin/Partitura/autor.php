@@ -22,7 +22,7 @@ if (isset($_SESSION['id']) & isset($_SESSION['nome'])) {
     header('Location: ../../x039.php');
 }
 
-$nome = $_POST['nome_author'];
+$nome = $_POST['nome_autor'];
 $file = $_FILES['part'];
 
 if (isset($_FILES['part']) && $_FILES['part']['error'] === 0) {
@@ -33,23 +33,26 @@ if (isset($_FILES['part']) && $_FILES['part']['error'] === 0) {
     $fileTmp = $file['tmp_name']; // Local temporário do arquivo no servidor
 
     // Define o diretório para mover o arquivo
-    $uploadDir = 'author/';
-    $destination = $uploadDir . basename($fileName);
+    $uploadDir = "autor/$nome";
+    $destination = "$uploadDir/" . basename($fileName);
+
+    // Criando a Pasta
+    if (!is_dir("../../".$uploadDir)) {
+        mkdir("../../".$uploadDir, 0777, true);
+    }
 
     // Salva os dados no Banco de Dados
-    $sql = "INSERT INTO author (nome, path_foto) VALUES('$nome','$destination')";
+    $sql = "INSERT INTO autor (nome, path_foto, path, foto_name) VALUES('$nome','$destination','$uploadDir','$fileName')";
 
-    if (mysqli_query($conn,$sql)) {
+    // Move o arquivo para o diretório desejado
+    if (move_uploaded_file($fileTmp, "../../$destination")) {
+        mysqli_query($conn,$sql);
+        echo "Arquivo salvo na pasta: " . "$uploadDir <br>";
+        header("Location: criarAutor.php");
         
-        // Move o arquivo para o diretório desejado
-        if (move_uploaded_file($fileTmp, "../../$destination")) {
-            echo "Arquivo salvo na pasta: " . "$uploadDir <br>";
-            header("Location: criarAuthor.php");
-            
-        } else {
-            echo "Erro ao mover o arquivo.";
-            
-        }
+    } else {
+        echo "Erro ao mover o arquivo.";
+        
     };
 } else {
     echo "Nenhum arquivo enviado ou erro no envio.";
