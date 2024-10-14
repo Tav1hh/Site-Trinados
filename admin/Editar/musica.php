@@ -3,6 +3,8 @@ include "../../scripts/conexao.php";
 
 $id = $_GET['id'];
 $sql = "SELECT * from música where id=".$id;
+$res = mysqli_query($conn,$sql);
+$musica = mysqli_fetch_array($res);
 
 // Pega os dados do DB
 $sql = "SELECT * from genero";
@@ -38,18 +40,22 @@ $resinstrumento = mysqli_query($conn,$sql);
         <h1>Editar Música</h1>
     </header>
     <main>
-        <form action="musica.php" method="post" enctype="multipart/form-data">
+        <form action="Edit/editar-musica.php?id=<?=$musica['id']?>" method="post" enctype="multipart/form-data">
             <section class="classificacoes">
                 <div>
                     <label for="inome_musica">Nome:</label>
-                    <input type="text" name="nome_musica" id="inomemusica" placeholder="Nome da Música">
+                    <input type="text" name="nome_musica" id="inomemusica" placeholder="Nome da Música" value="<?=$musica['nome']?>">
                 </div>
                 <div>
                     <label for="Iautor">autor:</label>
                     <select name="autor" id="Iautor">
                     <?php 
                         while ($linha = mysqli_fetch_array($resautor)) {
-                            echo "<option value='".$linha['id']."'>".$linha['nome']."</option>";
+                            if ($linha['id'] == $musica['autor_fid']) {
+                                echo "<option value='".$linha['id']."' selected>".$linha['nome']."</option>";
+                            } else {
+                                echo "<option value='".$linha['id']."'>".$linha['nome']."</option>";
+                            }
                         }
                         ?>
                     </select>
@@ -60,7 +66,11 @@ $resinstrumento = mysqli_query($conn,$sql);
                     <select name="gen" id="Igen">
                         <?php 
                         while ($linha = mysqli_fetch_array($resGen)) {
-                            echo "<option value='".$linha['id']."'>".$linha['nome']."</option>";
+                            if ($linha['id'] == $musica['genero_fid']) {
+                                echo "<option value='".$linha['id']."' selected>".$linha['nome']."</option>";
+                            } else {
+                                echo "<option value='".$linha['id']."'>".$linha['nome']."</option>";
+                            }
                         }
                         ?>
                     </select>
@@ -70,15 +80,21 @@ $resinstrumento = mysqli_query($conn,$sql);
                     <select name="instrumento" id="Instrumento">
                         <?php 
                             while ($linha = mysqli_fetch_array($resinstrumento)) {
-                            echo "<option value='".$linha['id']."'>".$linha['nome']."</option>";
+                                if ($linha['id'] == $musica['Idinstrumento']) {
+                                    echo "<option value='".$linha['id']."' selected>".$linha['nome']."</option>";
+                                } else {
+                                    echo "<option value='".$linha['id']."'>".$linha['nome']."</option>";
+                                }
                         }
                         ?>
                     </select>
+
                 </div>
                 
                 <div>
                     <label for="iframe">Iframe:</label>
-                    <input type="text" name="iframe" id="iframe" placeholder="Video para incorporar">
+                    <input type="text" name="iframe" id="iframe" placeholder="Video para incorporar" value="<?= htmlspecialchars($musica['iframe']) ?>">
+
                 </div>
             </section>
 
@@ -92,7 +108,6 @@ $resinstrumento = mysqli_query($conn,$sql);
                     <label for="ipart1" id="ilabel1" onclick="addEventListener('change',selecionou('ipart1','ilabel1'))">Partitura - PDF</label>
                     <input type="file" name="part1" id="ipart1">
                 </div>
-
 
                 <div>
                     <label for="ipart3" id="ilabel3" onclick="addEventListener('change',selecionou('ipart3','ilabel3'))">Partitura - MSC</label>
