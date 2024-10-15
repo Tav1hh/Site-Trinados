@@ -15,11 +15,18 @@
     --cor3:#1F1700;
 }
 
+.mobile {
+    display: none;
+}
+
 header {
     z-index: 1;
     position: sticky;
     top: 0px;
     left: 0px;
+}
+
+header section {
     display: flex;
     align-items: center;
     height: 60px;
@@ -29,13 +36,18 @@ header {
     color: white;
 }
 
-header div {
+header section div {
     max-width: 140px;
     width: 100%;
     text-align: center;
 }
 
-header div.controls button {
+div.controls {
+    display: flex;
+    justify-content: space-around;
+}
+
+div.controls button {
     cursor: pointer;
     border: 0px;
     background-size: cover;
@@ -52,7 +64,7 @@ header div.controls button {
     background: transparent url('../../imagens/shield-person.png') no-repeat center center;
 }
 
-header form {
+header section form {
     color: #555;
     display: flex;
     padding: 2px;
@@ -61,7 +73,7 @@ header form {
     background-color: white;
 }
 
-header form input[type=search] {
+header section form input[type=search] {
     width: 40vw;
     border: none;
     background: transparent;
@@ -73,11 +85,11 @@ header form input[type=search] {
     border-radius: inherit;
 }
 
-header form input[type=search]::placeholder {
+header section form input[type=search]::placeholder {
     color: #989898;
 }
 
-header form button[type=submit] {
+header section form button[type=submit] {
     width: 40px;
     text-indent: -999px;
     overflow: hidden;
@@ -90,11 +102,11 @@ header form button[type=submit] {
     opacity: 0.7;
 }
 
-header form button[type=submit]:hover {
+header section form button[type=submit]:hover {
     opacity: 1;
 }
 
-header form button[type=submit]:focus {
+header section form button[type=submit]:focus {
     box-shadow: 0px 0px 3px #1183d6;
     border-color: #1183d6;
     outline: none;
@@ -198,4 +210,38 @@ footer a {
 
 footer a:hover {
     opacity: 1;
+}
+
+@media screen and (max-width:800px) {
+    .desktop {
+        display: none;
+    }
+    header section {
+        display: block;
+    }
+    header section form {
+        max-width: 500px;
+        margin: auto;
+    }
+
+    header section form input[type=search] {
+        width: 100%;
+        flex: auto;
+    }
+
+    .mobile {
+        display: block;
+    }
+
+    .cabecalho {
+        display: flex;
+        padding: 10px 0px;
+        align-items: center;
+        justify-content: space-between;
+        background-color: var(--fundo);
+        color: white;
+    }
+    .cabecalho div {
+        width: 100px;
+    }
 }

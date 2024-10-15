@@ -20,21 +20,36 @@ $resMusica = mysqli_query($conn,$sql);
 </head>
 <body>
     <header>
-        <div>
-            <h1>Logo</h1>
+        <div class="cabecalho mobile">
+            <div class="controls">
+                <button class="btn-back mobile" onclick="javascript:location.href = '../../'"></button>
+            </div>
+            <h1>Trinados</h1>
+            <div class="controls">
+                <?php
+                    if (isset($_SESSION['adm'])) {
+                        echo "<button class=\"btn-adm mobile\" onclick=\"javascript:location.href = 'admin/Painel/index.php'\"></button>";
+                    }
+                ?>
+            </div>
         </div>
-        <form action="../pesquisa/index.php" method="post">
-            <input type="search" name="psq" placeholder="Partitura..">
-            <button type="submit">Enviar</button>
-        </form>
-        <div class="controls">
-            <button class="btn-back" onclick="javascript:location.href = '../../'"></button>
-            <?php 
-            if (isset($_SESSION['adm'])) {
-                echo "<button class=\"btn-adm\" onclick=\"javascript:location.href = '../../admin/Painel/index.php'\"></button>";
-            }
-            ?>
-        </div>
+        <section>
+            <div>
+                <h1 class="desktop">Trinados</h1>
+            </div>
+            <form action="../pesquisa/index.php" method="post">
+                <input type="search" name="psq" placeholder="Partitura..">
+                <button type="submit">Enviar</button>
+            </form>
+            <div class="controls">
+                <button class="btn-back desktop" onclick="javascript:location.href = '../../'"></button>
+                <?php
+                if (isset($_SESSION['adm'])) {
+                    echo "<button class=\"btn-adm desktop\" onclick=\"javascript:location.href = '../../admin/Painel/index.php'\"></button>";
+                }
+                ?>
+            </div>
+        </section>
     </header>
     <main>
         <div class="conteudo">

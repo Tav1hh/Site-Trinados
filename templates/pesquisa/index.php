@@ -18,21 +18,36 @@ $resAutor = mysqli_query($conn,$sql);
 </head>
 <body>
     <header>
-        <div>
-            <h1>Logo</h1>
+        <div class="cabecalho mobile">
+            <div class="controls">
+                <button class="btn-back mobile" onclick="javascript:location.href = '../../'"></button>
+            </div>
+            <h1>Trinados</h1>
+            <div class="controls">
+                <?php
+                    if (isset($_SESSION['adm'])) {
+                        echo "<button class=\"btn-adm mobile\" onclick=\"javascript:location.href = 'admin/Painel/index.php'\"></button>";
+                    }
+                ?>
+            </div>
         </div>
-        <form action="#" method="post">
-            <input type="search" name="psq" placeholder="Partitura..">
-            <button type="submit">Enviar</button>
-        </form>
-        <div class="controls">
-            <button class="btn-back" onclick="javascript:location.href = '../../'"></button>
-            <?php 
-            if (isset($_SESSION['adm'])) {
-                echo "<button class=\"btn-adm\" onclick=\"javascript:location.href = '../../admin/Painel/index.php'\"></button>";
-            }
-            ?>
-        </div>
+        <section>
+            <div>
+                <h1 class="desktop">Trinados</h1>
+            </div>
+            <form action="#" method="post">
+                <input type="search" name="psq" placeholder="Partitura..">
+                <button type="submit">Enviar</button>
+            </form>
+            <div class="controls">
+                <button class="btn-back desktop" onclick="javascript:location.href = '../../'"></button>
+                <?php
+                if (isset($_SESSION['adm'])) {
+                    echo "<button class=\"btn-adm desktop\" onclick=\"javascript:location.href = '../../admin/Painel/index.php'\"></button>";
+                }
+                ?>
+            </div>
+        </section>
     </header>
     <main>
 
@@ -66,27 +81,6 @@ $resAutor = mysqli_query($conn,$sql);
             ";
         }
         ?>
-        <a href="#">
-            <div class="card">
-                <img src="../../imagens/partitura.jpeg" alt="Partitura">
-                <p>Nome da Música</p>
-                <p>Formação</p>
-            </div>
-        </a>
-        <a href="#">
-            <div class="card">
-                <img src="../../imagens/partitura.jpeg" alt="Partitura">
-                <p>Nome da Música</p>
-                <p>Formação</p>
-            </div>
-        </a>
-        <a href="#">
-            <div class="card">
-                <img src="../../imagens/partitura.jpeg" alt="Partitura">
-                <p>Nome da Música</p>
-                <p>Formação</p>
-            </div>
-        </a>
         </section>
     </main>
     <footer>
