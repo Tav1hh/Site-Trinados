@@ -38,7 +38,7 @@ $autor = mysqli_fetch_array($res)
             <div class="controls">
                 <?php
                     if (isset($_SESSION['adm'])) {
-                        echo "<button class=\"btn-adm mobile\" onclick=\"javascript:location.href = 'admin/Painel/index.php'\"></button>";
+                        echo "<button class=\"btn-adm mobile\" onclick=\"javascript:location.href = '../../admin/Painel/index.php'\"></button>";
                     }
                 ?>
             </div>
