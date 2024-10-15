@@ -115,7 +115,7 @@ main {
     padding: 10px 0px;
     display: flex;
     gap: 20px;
-    justify-content: center;
+    justify-content: left;
     overflow: auto;
 }
 
@@ -159,9 +159,10 @@ h2{
 .musicas{
     padding: 10px 0px;
     display: flex;
-    justify-content:center;
-    flex-wrap: wrap;
+    justify-content:left;
+    /* flex-wrap: wrap; */
     gap: 15px 5px;
+    overflow: auto;
 }
 
 .musicas .card{

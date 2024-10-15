@@ -66,6 +66,27 @@ $resAutor = mysqli_query($conn,$sql);
             ";
         }
         ?>
+        <a href="#">
+            <div class="card">
+                <img src="../../imagens/partitura.jpeg" alt="Partitura">
+                <p>Nome da Música</p>
+                <p>Formação</p>
+            </div>
+        </a>
+        <a href="#">
+            <div class="card">
+                <img src="../../imagens/partitura.jpeg" alt="Partitura">
+                <p>Nome da Música</p>
+                <p>Formação</p>
+            </div>
+        </a>
+        <a href="#">
+            <div class="card">
+                <img src="../../imagens/partitura.jpeg" alt="Partitura">
+                <p>Nome da Música</p>
+                <p>Formação</p>
+            </div>
+        </a>
         </section>
     </main>
     <footer>

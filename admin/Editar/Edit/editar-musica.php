@@ -8,129 +8,130 @@ $genero = $_POST['gen'];
 $Idinstrumento = $_POST['instrumento'];
 $iframe = $_POST['iframe'];
 
+// Pegando os Dados do Instrumento
 $sql = "SELECT * from instrumento where id = $Idinstrumento";
 $res = mysqli_query($conn,$sql);
 $linha = mysqli_fetch_array($res);
 $instrumento = $linha['nome'];
 
+// Pegando os Dados da Música
 $sql = "SELECT * From música where id=".$id;
 $res = mysqli_query($conn,$sql);
 $musica = mysqli_fetch_array($res);
+// Dados Música
+$MusicaNome = $musica['nome'];
+$MusicaPath = $musica['path'];
+$MusicaInstrumento = $musica['instrumento'];
+
+$namePDF = $musica['pdf_name'];
+$namePNG = $musica['png_name'];
+$nameMSC = $musica['msc_name'];
+
+$pathPDF = $musica['path_pdf'];
+$pathPNG = $musica['path_png'];
+$pathMSC = $musica['path_msc'];
+
+// Tipos de Cada arquivo
+$typePDF = "pdf";
+$typePNG = "png";
+$typeMSC = "mscz";
+
+// Variaveis para Renomear os arquivos
+$novoPathPDF = "partituras/$MusicaNome/$MusicaInstrumento/$nome - $instrumento.$typePDF";
+$novoPathPNG = "partituras/$MusicaNome/$MusicaInstrumento/$nome - $instrumento.$typePNG";
+$novoPathMSC = "partituras/$MusicaNome/$MusicaInstrumento/$nome - $instrumento.$typeMSC";
+
+rename("../../../$pathPDF","../../../$novoPathPDF");
+rename("../../../$pathPNG","../../../$novoPathPNG");
+rename("../../../$pathMSC","../../../$novoPathMSC");
+
+// Variaveis para Renomear a Pasta Instrumento
+$pathInstrumento = "partituras/$MusicaNome/$MusicaInstrumento";
+$novoPathInstrumento = "partituras/$MusicaNome/$instrumento";
+
+rename("../../../$pathInstrumento","../../../$novoPathInstrumento");
 
 
-// // Verifica se os arquivos foram enviados
-// if (isset($_FILES['part1']) && isset($_FILES['part2']) && isset($_FILES['part3'])) {
-    
-//     $filePDF = $_FILES['part1'];
-//     $filePNG = $_FILES['part2'];
-//     $fileMSC = $_FILES['part3'];
+// Movendo a Pasta Instrumento
+$pastaRename = "partituras/#rename";
+rename("../../../$novoPathInstrumento","../../../$pastaRename/$instrumento");
 
-//     $PDFName = $filePDF['name'];
-//     $PNGName = $filePNG['name'];
-//     $MSCName = $fileMSC['name'];
-    
-//     $PDFtmp = $filePDF['tmp_name'];
-//     $PNGtmp = $filePNG['tmp_name'];
-//     $MSCtmp = $fileMSC['tmp_name'];
+// Variaveis para Renomear a Pasta música
+$pathPasta = "partituras/$MusicaNome";
+$novoPathPasta = "partituras/$nome";
 
-//     // Definindo o caminho de destino
-//     $path = "partituras/$nome/$instrumento";
+rename("../../../$pathPasta","../../../$novoPathPasta");
+// Movendo a Pasta instrumento devolta para seu local
+rename("../../../$pastaRename/$instrumento","../../../$novoPathPasta/$instrumento");
 
-//     // Criando a Pasta
-//     if (!is_dir("../../".$path)) {
-//         mkdir("../../".$path, 0777, true);
-//     }
+// Todos os caminhos
+$path = "partitura/$nome/$instrumento";
+$pathPDF = "$novoPathPDF";
+$pathPNG = "$novoPathPNG";
+$pathMSC = "$novoPathMSC";
+$PDFname = "$nome - $instrumento.$typePDF";
+$PNGname = "$nome - $instrumento.$typePNG";
+$MSCname = "$nome - $instrumento.$typeMSC";
 
-//     // Definindo os caminhos de cada um
+if(isset($_FILES['part1'])) {
+    $PDF = $_FILES['part1'];
+    $namePDF = $PDF['name'];
+    $tmpPDF = $PDF['tmp_name'];
 
-//     $pathPDF = "../../$path/" . $PDFName;
-//     $pathPNG = "../../$path/" . $PNGName;
-//     $pathMSC = "../../$path/" . $MSCName;
+    // Variaveis para Renomear os arquivos
+    $novoPathPDF = "partituras/$nome/$instrumento/$nome - $instrumento.$typePDF";
+    $novoPathPNG = "partituras/$nome/$instrumento/$nome - $instrumento.$typePNG";
+    $novoPathMSC = "partituras/$nome/$instrumento/$nome - $instrumento.$typeMSC";
 
-//     // Movendo os arquivos
-//     if (move_uploaded_file($PDFtmp, $pathPDF) && move_uploaded_file($PNGtmp, $pathPNG) && move_uploaded_file($MSCtmp, $pathMSC)) {
+    unlink("../../../$novoPathPDF");
+    move_uploaded_file($tmpPDF,"../../../$novoPathPDF");
+    $pathPDF = "$novoPathPDF";
+}
+if(isset($_FILES['part2'])) {
+    $PNG = $_FILES['part2'];
+    $namePNG = $PNG['name'];
+    $tmpPNG = $PNG['tmp_name'];
 
-//         echo "arquivos movidos!";
+    // Variaveis para Renomear os arquivos
+    $novoPathPNG = "partituras/$nome/$instrumento/$nome - $instrumento.$typePNG";
 
-//         $sql = "INSERT INTO música (nome, autor_fid, genero_fid, path, path_pdf, path_png, path_msc, pdf_name, png_name, msc_name, iframe, Idinstrumento, instrumento) VALUES ('$nome','$autor','$genero','$path','$path/$PDFName','$path/$PNGName','$path/$MSCName','$PDFName','$PNGName','$MSCName','$iframe','$Idinstrumento', '$instrumento')";
-//         if (mysqli_query($conn,$sql)) {
-//             echo "arquivo salvo!";
-//             header("Location: criarMusica.php");
-//         } else {
-//             echo "Erro em salvar no BD!";
-//         };
+    unlink("../../../$novoPathPNG");
+    move_uploaded_file($tmpPNG,"../../../$novoPathPNG");
+    $pathPNG = "$novoPathPNG";
+}
+if(isset($_FILES['part3'])) {
+    $MSC = $_FILES['part3'];
+    $nameMSC = $MSC['name'];
+    $tmpMSC = $MSC['tmp_name'];
 
-//     }
-// }
-// "path, path_pdf, path_png, path_msc, pdf_name, png_name, msc_name,";
+    // Variaveis para Renomear os arquivos
+    $novoPathMSC = "partituras/$nome/$instrumento/$nome - $instrumento.$typeMSC";
 
-$path = "partituras/$nome/$instrumento";
-
-$PDFName = $musica['pdf_name'];
-$PNGName = $musica['png_name'];
-$MSCName = $musica['msc_name'];
-
-// $path;
-// $path/$PDFName;
-// $path/$PNGName;
-// $path/$MSCName;
-// $PDFName;
-// $PNGName;
-// $MSCName;
-
-$sql = "UPDATE música set nome='$nome', autor_fid='$autor', genero_fid='$genero', iframe='$iframe', Idinstrumento='$Idinstrumento', instrumento='$instrumento',path='$path', path_pdf='$path/$PDFName', path_png='$path/$PNGName', path_msc='$path/$MSCName' where id=".$id;
-
-
-// echo "../../../partituras/".$musica['nome'] ."<br>";
-// echo "../../../partituras/".$nome. "<br>";
-// echo "../../../partituras/".$nome."/".$musica['instrumento']. "<br>";
-// echo "../../../partituras/".$nome."/".$instrumento. "<br>";
-
-
-// if (rename("../../../PARTS","../../../PARA")) {
-//     echo "Renomeada!";
-// } else {
-//     echo "Não renomeada!";
-// };
-
-// if (rename("../../../partituras/".$musica['nome'],"../../../partituras/".$nome) & rename("../../../partituras/".$nome."/".$musica['instrumento'],"../../../partituras/".$nome."/".$instrumento)) {
-//     echo "Renomeado com Sucesso! <br>";
-//     if (mysqli_query($conn,$sql)) {
-//         echo "Atualizado! <br>";
-//     } else {
-//         echo "Erro! <br>";
-//     }
-// } else {
-//     echo "Não foi possivel Renomear <br>";
-// };
-
-$caminho = "../../partituras/Pixinguinha/Trio/Aquarela do Brasil-1.png";
-function verificarPermissoes($caminho) {
-    if (!file_exists($caminho)) {
-        echo 'O caminho especificado não existe.';
-        return;
-    }
-
-    $permissoes = fileperms($caminho);
-
-    // Formatar as permissões em formato legível (por exemplo, rwxr-xr-x)
-    $info = ($permissoes & 0x4000) ? 'd' : '-'; // Diretório ou arquivo
-    $info .= ($permissoes & 0x0100) ? 'r' : '-'; // Dono: leitura
-    $info .= ($permissoes & 0x0080) ? 'w' : '-'; // Dono: escrita
-    $info .= ($permissoes & 0x0040) ? (($permissoes & 0x0800) ? 's' : 'x') : '-'; // Dono: execução
-
-    $info .= ($permissoes & 0x0020) ? 'r' : '-'; // Grupo: leitura
-    $info .= ($permissoes & 0x0010) ? 'w' : '-'; // Grupo: escrita
-    $info .= ($permissoes & 0x0008) ? (($permissoes & 0x0400) ? 's' : 'x') : '-'; // Grupo: execução
-
-    $info .= ($permissoes & 0x0004) ? 'r' : '-'; // Outros: leitura
-    $info .= ($permissoes & 0x0002) ? 'w' : '-'; // Outros: escrita
-    $info .= ($permissoes & 0x0001) ? (($permissoes & 0x0200) ? 't' : 'x') : '-'; // Outros: execução
-
-    echo "Permissões de '$caminho': $info";
+    unlink("../../../$novoPathMSC");
+    move_uploaded_file($tmpMSC,"../../../$novoPathMSC");
+    $pathMSC = "$novoPathMSC";
 }
 
-$caminho = '../../../partituras/Aquarela do Brasil';
-verificarPermissoes($caminho);
+$sql = "UPDATE música SET 
+    nome = '$nome', 
+    autor_fid = '$autor', 
+    genero_fid = '$genero', 
+    path = '$path', 
+    path_pdf = '$pathPDF', 
+    path_png = '$pathPNG', 
+    path_msc = '$pathMSC', 
+    pdf_name = '$PDFname', 
+    png_name = '$PNGname', 
+    msc_name = '$MSCname', 
+    iframe = '$iframe', 
+    Idinstrumento = '$Idinstrumento', 
+    instrumento = '$instrumento' 
+WHERE id = '$id'";
 
+if (mysqli_query($conn,$sql)) {
+    echo "Dados atualizados no BD";
+    header("Location: ../../Painel/index.php");
+} else {
+    echo "Dados não foram atualizados!";
+};
 ?>

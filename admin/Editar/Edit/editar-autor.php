@@ -29,13 +29,35 @@ if ($_FILES['part']['name'] != null) {
             if (!is_dir("../../../".$uploadDir)) {
                 mkdir("../../../".$uploadDir, 0777, true);
             }
-
-            // Salva os dados no Banco de Dados
-            $sql = "UPDATE autor set nome='$nome', path_foto='$destination', path='$uploadDir', foto_name='$fileName' where id=$id";
-
+            
             // Move o arquivo para o diretório desejado
             if (move_uploaded_file($fileTmp, "../../../$destination")) {
+                
+                // Saber qual é a extensão
+                $typePNG = mime_content_type("../../../$destination");
+                $mime_map = [
+                'text/plain' => 'txt',
+                'text/html' => 'html',
+                'image/jpeg' => 'jpg',
+                'image/png' => 'png',
+                'application/pdf' => 'pdf',
+                'application/zip' => 'mscz',
+                'audio/mpeg' => 'mp3',
+                'video/mp4' => 'mp4',
+                // Adicione mais mapeamentos conforme necessário
+                ];
+
+                $typePNG = $mime_map[$typePNG];
+                $PNGName = "$nome.$typePNG";
+                $pathPNG = "$uploadDir/$PNGName";
+
+                rename("../../../$destination","../../../$uploadDir/$PNGName");
+
+
+                // Salva os dados no Banco de Dados
+                $sql = "UPDATE autor set nome='$nome', path_foto='$pathPNG', path='$uploadDir', foto_name='$PNGName' where id=$id";
                 mysqli_query($conn,$sql);
+
                 echo "Arquivo salvo na pasta: " . "$uploadDir <br>";
                 header("Location: criarAutor.php");
                 
@@ -53,14 +75,31 @@ if ($_FILES['part']['name'] != null) {
 
 
 } else {
+    // Saber qual é a extensão
+    $typePNG = mime_content_type("../../../".$linha['path_foto']);
+    $mime_map = [
+    'text/plain' => 'txt',
+    'text/html' => 'html',
+    'image/jpeg' => 'jpg',
+    'image/png' => 'png',
+    'application/pdf' => 'pdf',
+    'application/zip' => 'mscz',
+    'audio/mpeg' => 'mp3',
+    'video/mp4' => 'mp4',
+    // Adicione mais mapeamentos conforme necessário
+    ];
+    
+    $path = "autor/$nome";
+    $typePNG = $mime_map[$typePNG];
+    $PNGName = "$nome.$typePNG";
+    $pathPNG = "$path/$PNGName";
 
+
+    rename("../../../".$linha['path_foto'], "../../../".$linha['path']."/$PNGName");
     rename("../../../".$linha['path'],"../../../autor/$nome");
 
-    $path = "autor/$nome";
-    $path_foto = "autor/$nome/".$linha['foto_name'];
-
     // Atualizando o Nome do Autor
-    $sql = "UPDATE autor set nome='$nome', path_foto='$path_foto', path='$path' where id='$id'";
+    $sql = "UPDATE autor set nome='$nome', path_foto='$pathPNG', path='$path', foto_name='$PNGName' where id=$id";
     mysqli_query($conn,$sql);
 
 }

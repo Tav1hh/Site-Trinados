@@ -66,8 +66,21 @@ if (isset($_FILES['part1']) && isset($_FILES['part2']) && isset($_FILES['part3']
     // Movendo os arquivos
     if (move_uploaded_file($PDFtmp, $pathPDF) && move_uploaded_file($PNGtmp, $pathPNG) && move_uploaded_file($MSCtmp, $pathMSC)) {
 
-        echo "arquivos movidos!";
+        // Tipos de Cada arquivo
+        $typePDF = "pdf";
+        $typePNG = "png";
+        $typeMSC = "mscz";
 
+        $PDFName = "$nome - $instrumento.$typePDF";
+        $PNGName = "$nome - $instrumento.$typePNG";
+        $MSCName = "$nome - $instrumento.$typeMSC";
+
+        rename($pathPDF,"../../$path/" . "$PDFName");
+        rename($pathPNG,"../../$path/" . "$PNGName");
+        rename($pathMSC,"../../$path/" . "$MSCName");
+
+
+        echo "arquivos movidos!";
         $sql = "INSERT INTO música (nome, autor_fid, genero_fid, path, path_pdf, path_png, path_msc, pdf_name, png_name, msc_name, iframe, Idinstrumento, instrumento) VALUES ('$nome','$autor','$genero','$path','$path/$PDFName','$path/$PNGName','$path/$MSCName','$PDFName','$PNGName','$MSCName','$iframe','$Idinstrumento', '$instrumento')";
         if (mysqli_query($conn,$sql)) {
             echo "arquivo salvo!";
