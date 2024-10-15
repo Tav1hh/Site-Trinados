@@ -43,7 +43,7 @@ $resAutor = mysqli_query($conn,$sql);
             echo "
             <a href=\"../autor/index.php?id=".$linha['id']." \">
                 <div class=\"card\">
-                    <img src=\"../../".$linha['path_foto']."\" alt=\"Partitura\">
+                    <img src=\"../../".$linha['path_foto']."\" alt=\"Autor\">
                     <p>".$linha['nome']."</p>
                 </div>
             </a>
