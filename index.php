@@ -14,10 +14,10 @@ $res = mysqli_query($conn,$sql);
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
+<header>
         <div class="cabecalho mobile">
             <div class="controls">
-    
+
             </div>
             <h1>Trinados</h1>
             <div class="controls">
@@ -32,14 +32,14 @@ $res = mysqli_query($conn,$sql);
             <div class="desktop">
                 <h1>Trinados</h1>
             </div>
-            <form action="templates/pesquisa/index.php" method="post">
+            <form action="../pesquisa/index.php" method="post">
                 <input type="search" name="psq" placeholder="Partitura..">
                 <button type="submit">Enviar</button>
             </form>
-            <div class="controls desktop">
+            <div class="controls">
                 <?php
                 if (isset($_SESSION['adm'])) {
-                    echo "<button class=\"btn-adm desktop\" onclick=\"javascript:location.href = 'admin/Painel/index.php'\"></button>";
+                    echo "<button class=\"btn-adm desktop\" onclick=\"javascript:location.href = '../../admin/Painel/index.php'\"></button>";
                 }
                 ?>
             </div>

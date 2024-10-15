@@ -42,16 +42,27 @@ header section div {
     text-align: center;
 }
 
-.btn-adm {
+div.controls {
+    display: flex;
+    justify-content: space-around;
+}
+
+div.controls button {
     cursor: pointer;
     border: 0px;
+    background-size: cover;
     width: 30px;
     height: 30px;
-    background: transparent url('imagens/shield-person.png');
-    background-size: cover;
     margin: auto;
 }
 
+.btn-back{
+    background: transparent url('imagens/arrow_back_white.png') no-repeat center center;
+}
+
+.btn-adm {
+    background: transparent url('imagens/shield-person.png') no-repeat center center;
+}
 
 header section form {
     color: #555;
