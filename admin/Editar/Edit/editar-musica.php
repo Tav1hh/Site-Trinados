@@ -43,75 +43,86 @@ $typePNG = "png";
 $typeMSC = "mscz";
 
 // Variaveis para Renomear os arquivos
-$novoPathPDF = "partituras/$MusicaNome/$MusicaInstrumento/$nome - $instrumento.$typePDF";
-$novoPathPNG = "partituras/$MusicaNome/$MusicaInstrumento/$nome - $instrumento.$typePNG";
-$novoPathMSC = "partituras/$MusicaNome/$MusicaInstrumento/$nome - $instrumento.$typeMSC";
+$novoPathPDF = "$MusicaPath/$nome - $instrumento.$typePDF";
+$novoPathPNG = "$MusicaPath/$nome - $instrumento.$typePNG";
+$novoPathMSC = "$MusicaPath/$nome - $instrumento.$typeMSC";
+
+echo "$pathPDF <br>";
+echo "$novoPathPDF <br>";
 
 rename("../../../$pathPDF","../../../$novoPathPDF");
 rename("../../../$pathPNG","../../../$novoPathPNG");
 rename("../../../$pathMSC","../../../$novoPathMSC");
 
-// Variaveis para Renomear a Pasta Instrumento
-$pathInstrumento = "partituras/$MusicaNome/$MusicaInstrumento";
-$novoPathInstrumento = "partituras/$MusicaNome/$instrumento";
+// Variaveis para Renomear a Pasta Música
+$pathMusica = "partituras/$MusicaInstrumento/$MusicaNome";
+$novoPathMusica = "partituras/$MusicaInstrumento/$nome";
 
-rename("../../../$pathInstrumento","../../../$novoPathInstrumento");
+rename("../../../$pathMusica","../../../$novoPathMusica");
 
 
 // Movendo a Pasta Instrumento
-$pastaRename = "partituras/#rename";
-rename("../../../$novoPathInstrumento","../../../$pastaRename/$instrumento");
+// $pastaRename = "partituras/#rename";
+// rename("../../../$novoPathInstrumento","../../../$pastaRename/$instrumento");
 
-// Variaveis para Renomear a Pasta música
-$pathPasta = "partituras/$MusicaNome";
-$novoPathPasta = "partituras/$nome";
+// Variaveis para Renomear a Pasta instrumento
+$pathPasta = "partituras/$MusicaInstrumento/$nome";
+$novoPathPasta =  "partituras/$instrumento/$nome";
+$PathInstrumento = "partituras/$instrumento/";
 
-rename("../../../$pathPasta","../../../$novoPathPasta");
+// Criando a Pasta
+if (!is_dir("../../../".$PathInstrumento)) {
+    mkdir("../../../".$PathInstrumento, 0777, true);
+}
+
+
+if ($pathPasta != $novoPathPasta) {
+    rename("../../../$pathPasta","../../../$novoPathPasta");
+}
+
 // Movendo a Pasta instrumento devolta para seu local
-rename("../../../$pastaRename/$instrumento","../../../$novoPathPasta/$instrumento");
+// rename("../../../$pastaRename/$instrumento","../../../$novoPathPasta/$instrumento");
 
 // Todos os caminhos
-$path = "partitura/$nome/$instrumento";
-$pathPDF = "$novoPathPDF";
-$pathPNG = "$novoPathPNG";
-$pathMSC = "$novoPathMSC";
+$path = $novoPathPasta;
 $PDFname = "$nome - $instrumento.$typePDF";
 $PNGname = "$nome - $instrumento.$typePNG";
 $MSCname = "$nome - $instrumento.$typeMSC";
+$pathPDF = "$path/$PDFname";
+$pathPNG = "$path/$PNGname";
+$pathMSC = "$path/$MSCname";
 
-if(isset($_FILES['part1'])) {
+if(isset($_FILES['part1']) && $_FILES['part1']['error'] === UPLOAD_ERR_OK) {
     $PDF = $_FILES['part1'];
     $namePDF = $PDF['name'];
     $tmpPDF = $PDF['tmp_name'];
 
     // Variaveis para Renomear os arquivos
-    $novoPathPDF = "partituras/$nome/$instrumento/$nome - $instrumento.$typePDF";
-    $novoPathPNG = "partituras/$nome/$instrumento/$nome - $instrumento.$typePNG";
-    $novoPathMSC = "partituras/$nome/$instrumento/$nome - $instrumento.$typeMSC";
+    $novoPathPDF = "partituras/$instrumento/$nome/$nome - $instrumento.$typePDF";
 
     unlink("../../../$novoPathPDF");
     move_uploaded_file($tmpPDF,"../../../$novoPathPDF");
     $pathPDF = "$novoPathPDF";
 }
-if(isset($_FILES['part2'])) {
+if(isset($_FILES['part2']) && $_FILES['part2']['error'] === UPLOAD_ERR_OK) {
     $PNG = $_FILES['part2'];
     $namePNG = $PNG['name'];
     $tmpPNG = $PNG['tmp_name'];
 
     // Variaveis para Renomear os arquivos
-    $novoPathPNG = "partituras/$nome/$instrumento/$nome - $instrumento.$typePNG";
+    $novoPathPNG = "partituras/$instrumento/$nome/$nome - $instrumento.$typePNG";
 
     unlink("../../../$novoPathPNG");
     move_uploaded_file($tmpPNG,"../../../$novoPathPNG");
     $pathPNG = "$novoPathPNG";
 }
-if(isset($_FILES['part3'])) {
+if(isset($_FILES['part3']) && $_FILES['part3']['error'] === UPLOAD_ERR_OK) {
     $MSC = $_FILES['part3'];
     $nameMSC = $MSC['name'];
     $tmpMSC = $MSC['tmp_name'];
 
     // Variaveis para Renomear os arquivos
-    $novoPathMSC = "partituras/$nome/$instrumento/$nome - $instrumento.$typeMSC";
+    $novoPathMSC = "partituras/$instrumento/$nome/$nome - $instrumento.$typeMSC";
 
     unlink("../../../$novoPathMSC");
     move_uploaded_file($tmpMSC,"../../../$novoPathMSC");

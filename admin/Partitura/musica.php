@@ -50,7 +50,7 @@ if (isset($_FILES['part1']) && isset($_FILES['part2']) && isset($_FILES['part3']
     $MSCtmp = $fileMSC['tmp_name'];
 
     // Definindo o caminho de destino
-    $path = "partituras/$nome/$instrumento";
+    $path = "partituras/$instrumento/$nome";
 
     // Criando a Pasta
     if (!is_dir("../../".$path)) {
