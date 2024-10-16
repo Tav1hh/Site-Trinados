@@ -117,8 +117,9 @@ $resinstrumento = mysqli_query($conn,$sql);
 
             <p>Muito Cuidado ao editar as informações</p>
             <div class="btns">
-                <input type="button" value="Excluir" class="btn-excluir" onclick="javascript:location.href='../Painel/index.php'">
-                <input type="submit" value="Confirmar">
+                <input type="button" value="Voltar" onclick="javascript:location.href='../Painel'">
+                <input type="button" value="Excluir" class="btn-excluir" onclick='javascript:location.href="Edit/excluir.php?id=<?=$id?>&func=3"'>
+                <input type="submit" value="Confirmar" >
             </div>
         </form>
         </main>

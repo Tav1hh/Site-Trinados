@@ -36,7 +36,8 @@ $id = $_GET['id'];
 
             </section>
             <div class="btns">
-                <input type="button" value="Excluir" class="btn-excluir" onclick="javascript:location.href='../Painel/index.php'">
+                <input type="button" value="Voltar" onclick="javascript:location.href='../Painel'">
+                <input type="button" value="Excluir" class="btn-excluir" onclick='javascript:location.href="Edit/excluir.php?id=<?=$id?>&func=1"'>
                 <input type="submit" value="Confirmar">
             </div>
         </form>

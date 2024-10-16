@@ -29,9 +29,12 @@ $linha = mysqli_fetch_array($res);
         <button onclick="togglebar()"></button>
         <h1>Editar Autor</h1>
     </header>
-    <main>
+    <main style="max-width: 400px;">
         <form action="Edit/editar-autor.php?id=<?=$id?>" method="post" enctype="multipart/form-data">
             <section class="classificacoes">
+                <div>
+                    <img src="../../<?=$linha['path_foto']?>" alt="" width="150px" height="150px" style="border-radius: 50%; margin: auto;">
+                </div>
                 <div>
                     <label for="inome_autor">Nome:</label>
                     <input type="text" name="nome_autor" id="inome_autor" placeholder="Nome do autor" value="<?=$linha['nome']?>">
@@ -45,7 +48,8 @@ $linha = mysqli_fetch_array($res);
             </section>
             <p>Muito Cuidado ao editar as informações</p>
             <div class="btns">
-                <input type="button" value="Excluir" class="btn-excluir" onclick="javascript:location.href='../Painel/index.php'">
+                <input type="button" value="Voltar" onclick="javascript:location.href='../Painel'">
+                <input type="button" value="Excluir" class="btn-excluir" onclick='javascript:location.href="Edit/excluir.php?id=<?=$id?>&func=2"'>
                 <input type="submit" value="Confirmar">
             </div>
         </form>
