@@ -185,18 +185,29 @@ main .apresentacao img {
     color: white;
 }
 
-.menu .controls {
-    min-width: max-content;
-    text-align: center;
+.menu .dados a {
+    color: white;
 }
 
-.menu a{
+.menu .dados a:hover {
+    text-decoration: underline;
+    text-decoration-color: #1183d6;
+    transition: text-decoration 1s;
+}
+
+.menu .controls {
+    display: flex;
+    gap: 10px;
+    min-width: max-content;
+}
+
+.menu .controls a{
     color: var(--cor1);
     padding: 10px;
     border: 1px solid #333;
     border-radius: 5px;
 }
-.menu a:hover{
+.menu .controls a:hover{
     transition: 0.3s;
     background-color: #333;
     border-radius: 5px;

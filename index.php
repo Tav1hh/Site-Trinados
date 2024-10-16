@@ -1,7 +1,7 @@
 <?php 
 include 'scripts/conexao.php';
 
-$sql = 'SELECT * from música';
+$sql = 'SELECT música.nome as nome_música, música.id, música.path_png , instrumento.nome as instrumento from música join instrumento on música.IdInstrumento = instrumento.id';
 $res = mysqli_query($conn,$sql);
 ?>
 
@@ -58,7 +58,7 @@ $res = mysqli_query($conn,$sql);
             <a href=\"templates/partitura/index.php?id=".$linha['id']." \">
                 <div class=\"card\">
                     <img src=\"".$linha['path_png']."\" alt=\"Partitura\">
-                    <p>".$linha['nome']."</p>
+                    <p>".$linha['nome_música']."</p>
                     <p>".$linha['instrumento']."</p>
                 </div>
             </a>

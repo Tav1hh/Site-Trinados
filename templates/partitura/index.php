@@ -2,22 +2,30 @@
 include '../../scripts/conexao.php';
 $idmusica = $_GET['id'];
 
-$sql = "SELECT * FROM música where id = $idmusica";
-$res = mysqli_query($conn, $sql);
-$Partitura = mysqli_fetch_array($res);
+$sql = "Select música.nome as nome_musica,
+ iframe, 
+ música.path_pdf, 
+ música.path_msc,
+ música.autor_fid,
+ instrumento.nome as instrumento, 
+ música.genero_fid,
+ genero.nome as genero, 
+ autor.nome as autor, 
+ autor.path_foto as autor_foto 
+ from música join instrumento on música.IdInstrumento = instrumento.id join autor on autor.id = música.autor_fid join genero on genero.id = música.genero_fid where música.id=$idmusica";
+$res = mysqli_query($conn,$sql);
+$resMusica = mysqli_fetch_array($res);
 
-
-$sql = "SELECT * from música Where genero_fid = ".$Partitura['genero_fid'];
+$sql = "SELECT 
+ música.id,
+ música.nome as nome_musica,
+ música.path_png,
+ instrumento.nome as instrumento
+ from música
+ join instrumento on instrumento.id = música.IdInstrumento
+Where música.genero_fid = ".$resMusica['genero_fid'];
 $resGen = mysqli_query($conn,$sql);
 
-$sql = "SELECT * from genero Where id = ".$Partitura['genero_fid'];
-$res = mysqli_query($conn, $sql);
-$Genero = mysqli_fetch_array($res);
-
-
-$sql = "SELECT * from autor where id = ".$Partitura['autor_fid'];
-$res = mysqli_query($conn,$sql);
-$autor = mysqli_fetch_array($res)
 
 ?>
 <!DOCTYPE html>
@@ -32,7 +40,7 @@ $autor = mysqli_fetch_array($res)
     <header>
         <div class="cabecalho mobile">
             <div class="controls">
-                <button class="btn-back mobile" onclick="javascript:location.href = '../../'"></button>
+                <button class="btn-back mobile" onclick="javascript:history.go(-1)"></button>
             </div>
             <h1>Trinados</h1>
             <div class="controls">
@@ -52,7 +60,7 @@ $autor = mysqli_fetch_array($res)
                 <button type="submit">Enviar</button>
             </form>
             <div class="controls">
-                <button class="btn-back desktop" onclick="javascript:location.href = '../../'"></button>
+                <button class="btn-back desktop" onclick="javascript:history.go(-1)"></button>
                 <?php
                 if (isset($_SESSION['adm'])) {
                     echo "<button class=\"btn-adm desktop\" onclick=\"javascript:location.href = '../../admin/Painel/index.php'\"></button>";
@@ -63,22 +71,22 @@ $autor = mysqli_fetch_array($res)
     </header>
     <main>
         <div class="apresentacao">
-            <?=$Partitura['iframe']?>
+            <?=$resMusica['iframe']?>
         </div>
         <div class="menu">
             <div class="conteudo">
                 <div class="foto-perfil">
-                    <button class="perfil" onclick="javascript:location.href = '../autor/index.php?id=<?=$Partitura['autor_fid']?>   '"><img src="../../<?=$autor['path_foto']?>" alt="Foto do autor"></button>
+                    <button class="perfil" onclick="javascript:location.href = '../autor/index.php?id=<?=$resMusica['autor_fid']?>   '"><img src="../../<?=$resMusica['autor_foto']?>" alt="Foto do autor"></button>
                 </div>
                 <div class="dados">
-                    <h1><?=$autor['nome']?></h1>
-                    <h1><strong><?=$Partitura['nome']?></strong></h1>
-                    <p><?=$Partitura['instrumento']." - ".$Genero['nome']?></p>
+                    <h1><a href="../autor/index.php?id=<?=$resMusica['autor_fid']?>"><?=$resMusica['autor']?></a></h1>
+                    <h1><strong><?=$resMusica['nome_musica']?></strong></h1>
+                    <p><?=$resMusica['instrumento']." - ".$resMusica['genero']?></p>
                 </div>
             </div>
             <div class="controls">
-                <a href="../../<?=$Partitura['path_pdf']?>" target="_blank">Partitura - PDF</a>
-                <a href="../../<?=$Partitura['path_msc']?>" target="_blank">Partitura - MSC</a>
+                <a href="../../<?=$resMusica['path_pdf']?>" target="_blank">Partitura - PDF</a>
+                <a href="../../<?=$resMusica['path_msc']?>" target="_blank">Partitura - MSC</a>
             </div>
         </div>
         
@@ -92,7 +100,7 @@ $autor = mysqli_fetch_array($res)
                 <a href=\"index.php?id=".$linha['id']." \">
                     <div class=\"card\">
                         <img src=\"../../".$linha['path_png']."\" alt=\"Partitura\">
-                        <p>".$linha['nome']."</p> 
+                        <p>".$linha['nome_musica']."</p> 
                         <p>".$linha['instrumento']."</p>
                     </div>
                 </a>

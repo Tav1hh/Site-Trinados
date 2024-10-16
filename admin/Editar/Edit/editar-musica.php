@@ -18,10 +18,16 @@ $instrumento = $linha['nome'];
 $sql = "SELECT * From música where id=".$id;
 $res = mysqli_query($conn,$sql);
 $musica = mysqli_fetch_array($res);
+
+$sql = "Select música.IdInstrumento, instrumento.nome As instrumento from música join instrumento on instrumento.id = música.IdInstrumento where música.id = $id";
+$res = mysqli_query($conn,$sql);
+$intr = mysqli_fetch_array($res);
+
+
 // Dados Música
 $MusicaNome = $musica['nome'];
 $MusicaPath = $musica['path'];
-$MusicaInstrumento = $musica['instrumento'];
+$MusicaInstrumento = $intr['instrumento'];
 
 $namePDF = $musica['pdf_name'];
 $namePNG = $musica['png_name'];
@@ -124,8 +130,7 @@ $sql = "UPDATE música SET
     png_name = '$PNGname', 
     msc_name = '$MSCname', 
     iframe = '$iframe', 
-    Idinstrumento = '$Idinstrumento', 
-    instrumento = '$instrumento' 
+    Idinstrumento = '$Idinstrumento' 
 WHERE id = '$id'";
 
 if (mysqli_query($conn,$sql)) {

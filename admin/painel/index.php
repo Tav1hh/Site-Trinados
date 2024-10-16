@@ -26,10 +26,10 @@ if (isset($_SESSION['id']) & isset($_SESSION['nome'])) {
 if (isset($_POST['psq'])) {
     $psq = $_POST['psq'];
 
-    $sql = "SELECT * FROM música where nome Like '%$psq%' or id Like '%$psq%' or instrumento Like '%$psq%' limit 10";
+    $sql = "SELECT música.id, música.nome, instrumento.nome As instrumento, genero.nome As genero FROM música join instrumento on instrumento.id = música.IdInstrumento join genero on genero.id = música.genero_fid where música.nome Like '%$psq%' or música.id Like '%$psq%' or instrumento.nome Like '%$psq%' or genero.nome Like '%$psq%' limit 10";
     $resMusica = mysqli_query($conn, $sql);
 } else {
-    $sql = "SELECT * FROM música limit 10";
+    $sql = "SELECT música.id, música.nome, instrumento.nome As instrumento FROM música join instrumento on instrumento.id = música.IdInstrumento limit 10";
     $resMusica = mysqli_query($conn, $sql);
 }
 

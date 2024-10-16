@@ -1,8 +1,19 @@
-<?php 
+<?php
 include '../../scripts/conexao.php';
 $psq = $_POST['psq'];
 
-$sql = "SELECT * FROM música WHERE nome LIKE '%$psq%' or instrumento LIKE '%$psq%'";
+$sql = "SELECT 
+música.nome AS nome_musica, 
+música.id,
+música.path_png, 
+instrumento.nome AS instrumento, 
+genero.nome AS genero
+FROM música
+JOIN genero ON genero.id = música.genero_fid
+JOIN instrumento ON instrumento.id = música.IdInstrumento
+WHERE música.nome LIKE '%$psq%'
+   OR instrumento.nome LIKE '%$psq%'
+   OR genero.nome LIKE '%$psq%'";
 $resMusica = mysqli_query($conn,$sql);
 
 $sql = "SELECT * FROM autor WHERE nome LIKE '%$psq%'";
@@ -20,7 +31,7 @@ $resAutor = mysqli_query($conn,$sql);
     <header>
         <div class="cabecalho mobile">
             <div class="controls">
-                <button class="btn-back mobile" onclick="javascript:location.href = '../../'"></button>
+                <button class="btn-back mobile" onclick="javascript:history.go(-1)"></button>
             </div>
             <h1>Trinados</h1>
             <div class="controls">
@@ -40,7 +51,7 @@ $resAutor = mysqli_query($conn,$sql);
                 <button type="submit">Enviar</button>
             </form>
             <div class="controls">
-                <button class="btn-back desktop" onclick="javascript:location.href = '../../'"></button>
+                <button class="btn-back desktop" onclick="javascript:history.go(-1)"></button>
                 <?php
                 if (isset($_SESSION['adm'])) {
                     echo "<button class=\"btn-adm desktop\" onclick=\"javascript:location.href = '../../admin/Painel/index.php'\"></button>";
@@ -74,7 +85,7 @@ $resAutor = mysqli_query($conn,$sql);
             <a href=\"../partitura/index.php?id=".$linha['id']." \">
                 <div class=\"card\">
                     <img src=\"../../".$linha['path_png']."\" alt=\"Partitura\">
-                    <p>".$linha['nome']."</p>
+                    <p>".$linha['nome_musica']."</p>
                     <p>".$linha['instrumento']."</p>
                 </div>
             </a>
