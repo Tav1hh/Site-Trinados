@@ -86,15 +86,18 @@ $autor = mysqli_fetch_array($res)
         <section class="musicas">
         <?php
         while ($linha = mysqli_fetch_array($resGen) ) {
-            echo "
-            <a href=\"index.php?id=".$linha['id']." \">
-                <div class=\"card\">
-                    <img src=\"../../".$linha['path_png']."\" alt=\"Partitura\">
-                    <p>".$linha['nome']."</p> 
-                    <p>".$linha['instrumento']."</p>
-                </div>
-            </a>
-            ";
+            if ($linha['id'] != $idmusica) {
+
+                echo "
+                <a href=\"index.php?id=".$linha['id']." \">
+                    <div class=\"card\">
+                        <img src=\"../../".$linha['path_png']."\" alt=\"Partitura\">
+                        <p>".$linha['nome']."</p> 
+                        <p>".$linha['instrumento']."</p>
+                    </div>
+                </a>
+                ";
+            }
         }
         ?>
         </section>
