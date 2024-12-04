@@ -1,4 +1,4 @@
-<?php 
+<?php
 include '../../scripts/conexao.php';
 //Testa se está logado
 if (isset($_SESSION['id']) & isset($_SESSION['nome'])) {
@@ -26,7 +26,7 @@ if (isset($_SESSION['id']) & isset($_SESSION['nome'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Autor</title>
+    <title>Cadastro de Instrumento</title>
     <link rel="stylesheet" href="enviar.css">
 </head>
 <body>
@@ -47,23 +47,18 @@ if (isset($_SESSION['id']) & isset($_SESSION['nome'])) {
         <a href="criarMusica.php">Música</a>
     </section>
     <header>
-        <h1>Cadastro de autor</h1>
+        <h1>Cadastro de Instrumento</h1>
     </header>
     <main>
-            <form action="autor.php" method="post" enctype="multipart/form-data">
+            <form action="instrumento.php" method="post">
                     <section class="classificacoes">
                         <div>
 
-                            <label for="inome_autor">Nome:</label>
-                            <input type="text" name="nome_autor" id="inome_autor" placeholder="Nome do autor" required>
+                            <label for="inome_instrumento">Instrumento:</label>
+                            <input type="text" name="nome_instrumento" id="inome_instrumento" placeholder="Nome do Instrumento" required>
                         </div>
                     </section>
-                    <section class="arquivos">
-                        <div>
-                            
-                            <label for="ipart1" id="ilabel1" onclick = 'addEventListener("change", selecionou("ipart1","ilabel1"))'>Foto 1:1 - PNG</label>
-                            <input type="file" name="part" id="ipart1" required>
-                        </div>
+
                     </section>
                     <div class="btns">
                         <input type="submit" value="Enviar">
@@ -73,6 +68,7 @@ if (isset($_SESSION['id']) & isset($_SESSION['nome'])) {
     <footer>
         <p>Site Criado por &copy;<strong><a href="https://tav1hh.github.io/Site-PortfolioV2" target="_blank">Santiago</a></strong></p>
     </footer>
+
     <script>
 
         function selecionou(ipart,ilabel) {

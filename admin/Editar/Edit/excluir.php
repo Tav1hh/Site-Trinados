@@ -50,20 +50,41 @@
 
         $nome = $linha['nome'];
         $instrumento = $linha['instrumento'];
-
-        $pathRaiz = "partituras/$nome";
-        $pathInstrumento = "partituras/$nome/$instrumento";
+        $pathRaiz = "partituras/$instrumento/$nome";
 
         unlink("../../../".$linha['path_pdf']);
         unlink("../../../".$linha['path_png']);
         unlink("../../../".$linha['path_msc']);
-
-        rmdir("../../../$pathInstrumento");
+        
         rmdir("../../../$pathRaiz");
 
         $sql = "DELETE from música where id=$ID";
         mysqli_query($conn,$sql);
-}
+    }
+    if ($func == 4 & isset($_POST['ex'])) {
+        
+        $sql = "Select * from música where idinstrumento=$id";
+        $res = mysqli_query($conn,$sql);
+
+        while ($linha = mysqli_fetch_array($res)) {
+            excluirMusica($linha['id'],$conn);
+        }
+        
+        $sql = "DELETE from instrumento where id=$id";
+        mysqli_query($conn,$sql);
+        header("Location: ../../Painel");
+
+    }
+
+    if ($func == 5 & isset($_POST['ex'])) {
+
+        $sql = "DELETE from admin where id=$id";
+        mysqli_query($conn,$sql);
+        header("Location: ../../Painel");
+
+    }
+
+
 
 ?>
 <!DOCTYPE html>

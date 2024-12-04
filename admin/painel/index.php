@@ -55,7 +55,7 @@ if (isset($_POST['psq2'])) {
     $resGenero = mysqli_query($conn, $sql);
 }
 
-// Pegando os Generos
+// Pegando os Admins
 if (isset($_POST['psq3'])) {
     $psq = $_POST['psq3'];
     
@@ -64,6 +64,17 @@ if (isset($_POST['psq3'])) {
 } else {    
     $sql = "SELECT * FROM admin limit 10";
     $resAdm = mysqli_query($conn, $sql);
+}
+
+// Pegando os Generos
+if (isset($_POST['psq4'])) {
+    $psq = $_POST['psq4'];
+    
+    $sql = "SELECT * FROM instrumento where nome Like '%$psq%' or id Like '%$psq%' limit 10";
+    $resInstrumento = mysqli_query($conn, $sql);
+} else {    
+    $sql = "SELECT * FROM instrumento";
+    $resInstrumento = mysqli_query($conn, $sql);
 }
 
 
@@ -180,6 +191,35 @@ if (isset($_POST['psq3'])) {
 
         </table>
         </section>
+        <section>
+        <h2>Instrumentos</h2>
+        <form action="#" method="post">
+            <input type="search" name="psq2" placeholder="Pesquise um Instrumento">
+            <button type="submit"></button>
+        </form>
+        <table>
+
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th colspan="2">Função</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php 
+                while ($linha = mysqli_fetch_array($resInstrumento)) {
+                    echo "<tr>";
+                    echo "<td>".$linha['id']."</td>";
+                    echo "<td>".$linha['nome']."</td>";
+                    echo "<td class='btn-func' onclick=\"javascript:location.href='../Editar/instrumento.php?nome=".$linha['nome']."&id=".$linha['id']."  '\">Edit</td>";
+                    echo "</td>";
+                }
+                ?>
+            </tbody>
+
+        </table>
+        </section>
     <section>
         <h2>Administradores</h2>
         <form action="#" method="post">
@@ -201,7 +241,7 @@ if (isset($_POST['psq3'])) {
                     echo "<tr>";
                     echo "<td>".$linha['id']."</td>";
                     echo "<td>".$linha['nome']."</td>";
-                    echo "<td class='btn-func'>Edit</td>";
+                    echo "<td class='btn-func' onclick=\"javascript:location.href='../Editar/adm.php?nome=".$linha['nome']."&id=".$linha['id']."  '\">Edit</td>";
                     echo "</td>";
                 }
                 ?>

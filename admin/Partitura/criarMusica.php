@@ -52,8 +52,9 @@ $resinstrumento = mysqli_query($conn,$sql);
     </nav>
     <section class="menu">
         <button onclick="togglebar()"></button>
-        <a href="criarGenero.php">Genero</a>
-        <a href="criarAutor.php">autor</a>
+         <a href="criarGenero.php">Genero</a>
+        <a href="criarAutor.php">Autor</a>
+        <a href="criarInstrumento.php">Instrumento</a>
         <a href="criarMusica.php">Música</a>
     </section>
     <header>
@@ -64,11 +65,11 @@ $resinstrumento = mysqli_query($conn,$sql);
                 <section class="classificacoes">
                     <div>
                         <label for="inome_musica">Nome:</label>
-                        <input type="text" name="nome_musica" id="inomemusica" placeholder="Nome da Música">
+                        <input type="text" name="nome_musica" id="inomemusica" placeholder="Nome da Música" required>
                     </div>
                     <div>
                         <label for="Iautor">autor:</label>
-                        <select name="autor" id="Iautor">
+                        <select name="autor" id="Iautor" required>
                         <?php 
                             while ($linha = mysqli_fetch_array($resautor)) {
                                 echo "<option value='".$linha['id']."'>".$linha['nome']."</option>";
@@ -79,7 +80,7 @@ $resinstrumento = mysqli_query($conn,$sql);
                     
                     <div>
                         <label for="Igen">Genero:</label>
-                        <select name="gen" id="Igen">
+                        <select name="gen" id="Igen" required>
                             <?php 
                             while ($linha = mysqli_fetch_array($resGen)) {
                                 echo "<option value='".$linha['id']."'>".$linha['nome']."</option>";
@@ -89,7 +90,7 @@ $resinstrumento = mysqli_query($conn,$sql);
                     </div>
                     <div>
                         <label for="instrumento">Instrumento:</label>
-                        <select name="instrumento" id="Instrumento">
+                        <select name="instrumento" id="Instrumento" required>
                             <?php 
                                while ($linha = mysqli_fetch_array($resinstrumento)) {
                                 echo "<option value='".$linha['id']."'>".$linha['nome']."</option>";
@@ -100,25 +101,25 @@ $resinstrumento = mysqli_query($conn,$sql);
                     
                     <div>
                         <label for="iframe">Iframe:</label>
-                        <input type="text" name="iframe" id="iframe" placeholder="Video para incorporar">
+                        <input type="text" name="iframe" id="iframe" placeholder="Video para incorporar" required>
                     </div>
                 </section>
 
                 <section class="arquivos">
                     <div>
                         <label for="ipart2" id="ilabel2" onclick="addEventListener('change',selecionou('ipart2','ilabel2'))">Capa - PNG</label>
-                        <input type="file" name="part2" id="ipart2">
+                        <input type="file" name="part2" id="ipart2" required>
                     </div>
 
                     <div>
                         <label for="ipart1" id="ilabel1" onclick="addEventListener('change',selecionou('ipart1','ilabel1'))">Partitura - PDF</label>
-                        <input type="file" name="part1" id="ipart1">
+                        <input type="file" name="part1" id="ipart1" required>
                     </div>
 
 
                     <div>
                         <label for="ipart3" id="ilabel3" onclick="addEventListener('change',selecionou('ipart3','ilabel3'))">Partitura - MSC</label>
-                        <input type="file" name="part3" id="ipart3">
+                        <input type="file" name="part3" id="ipart3" required>
                     </div>
                 </section>
 

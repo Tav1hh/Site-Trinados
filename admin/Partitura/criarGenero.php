@@ -41,8 +41,9 @@ if (isset($_SESSION['id']) & isset($_SESSION['nome'])) {
     </nav>
     <section class="menu">
         <button onclick="togglebar()"></button>
-        <a href="criarGenero.php">Genero</a>
-        <a href="criarAutor.php">autor</a>
+         <a href="criarGenero.php">Genero</a>
+        <a href="criarAutor.php">Autor</a>
+        <a href="criarInstrumento.php">Instrumento</a>
         <a href="criarMusica.php">Música</a>
     </section>
     <header>
@@ -54,7 +55,7 @@ if (isset($_SESSION['id']) & isset($_SESSION['nome'])) {
                         <div>
 
                             <label for="inome_genero">Genero:</label>
-                            <input type="text" name="nome_genero" id="inome_genero" placeholder="Nome do Genero">
+                            <input type="text" name="nome_genero" id="inome_genero" placeholder="Nome do Genero" required>
                         </div>
                     </section>
 
