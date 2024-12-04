@@ -40,7 +40,7 @@ $pathMSC = $musica['path_msc'];
 // Tipos de Cada arquivo
 $typePDF = "pdf";
 $typePNG = "png";
-$typeMSC = "mscz";
+$typeMSC = "mxl";;
 
 // Variaveis para Renomear os arquivos
 $novoPathPDF = "$MusicaPath/$nome - $instrumento.$typePDF";

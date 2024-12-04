@@ -40,7 +40,7 @@ $resGen = mysqli_query($conn,$sql);
     <header>
         <div class="cabecalho mobile">
             <div class="controls">
-                <button class="btn-back mobile" onclick="javascript:history.go(-1)"></button>
+                <button class="btn-back mobile" onclick="javascript:location.href = '/Trinados'"></button>
             </div>
             <h1>Trinados</h1>
             <div class="controls">
@@ -60,7 +60,7 @@ $resGen = mysqli_query($conn,$sql);
                 <button type="submit">Enviar</button>
             </form>
             <div class="controls">
-                <button class="btn-back desktop" onclick="javascript:history.go(-1)"></button>
+                <button class="btn-back desktop" onclick="javascript:location.href = '/Trinados'"></button>
                 <?php
                 if (isset($_SESSION['adm'])) {
                     echo "<button class=\"btn-adm desktop\" onclick=\"javascript:location.href = '../../admin/Painel/index.php'\"></button>";
@@ -86,7 +86,7 @@ $resGen = mysqli_query($conn,$sql);
             </div>
             <div class="controls">
                 <a href="../../<?=$resMusica['path_pdf']?>" target="_blank">Partitura - PDF</a>
-                <a href="../../<?=$resMusica['path_msc']?>" target="_blank">Partitura - MSC</a>
+                <a href="../../<?=$resMusica['path_msc']?>" target="_blank">Partitura - MXL</a>
             </div>
         </div>
         

@@ -69,7 +69,7 @@ if (isset($_FILES['part1']) && isset($_FILES['part2']) && isset($_FILES['part3']
         // Tipos de Cada arquivo
         $typePDF = "pdf";
         $typePNG = "png";
-        $typeMSC = "mscz";
+        $typeMSC = "mxl";
 
         $PDFName = "$nome - $instrumento.$typePDF";
         $PNGName = "$nome - $instrumento.$typePNG";
