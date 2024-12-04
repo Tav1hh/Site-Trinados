@@ -22,7 +22,7 @@ $resMusica = mysqli_query($conn,$sql);
     <header>
         <div class="cabecalho mobile">
             <div class="controls">
-                <button class="btn-back mobile" onclick="javascript:history.go(-1)"></button>
+                <button class="btn-back mobile" onclick="javascript:history.go(-1)"onclick="javascript:location.href = '/Site-SaxClub'"></button>
             </div>
             <h1>Trinados</h1>
             <div class="controls">
@@ -42,7 +42,7 @@ $resMusica = mysqli_query($conn,$sql);
                 <button type="submit">Enviar</button>
             </form>
             <div class="controls">
-                <button class="btn-back desktop" onclick="javascript:history.go(-1)"></button>
+                <button class="btn-back desktop" onclick="javascript:location.href = '/Site-SaxClub'"   ></button>
                 <?php
                 if (isset($_SESSION['adm'])) {
                     echo "<button class=\"btn-adm desktop\" onclick=\"javascript:location.href = '../../admin/Painel/index.php'\"></button>";
