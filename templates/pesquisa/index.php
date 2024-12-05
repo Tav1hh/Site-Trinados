@@ -125,7 +125,7 @@ $resSaxAlto= mysqli_query($conn, $sql);
     <header>
         <div class="cabecalho mobile">
             <div class="controls">
-                <button class="btn-back mobile" onclick="javascript:location.href = '/Trinados'"></button>
+                <button class="btn-back mobile" onclick="javascript:location.href ='/Trinados'"></button>
             </div>
             <h1>Trinados</h1>
             <div class="controls">
@@ -145,7 +145,7 @@ $resSaxAlto= mysqli_query($conn, $sql);
                 <button type="submit">Enviar</button>
             </form>
             <div class="controls">
-                <button class="btn-back desktop" onclick="javascript:location.href = '/Trinados'"></button>
+                <button class="btn-back desktop" onclick="javascript:location.href ='/Trinados'"></button>
                 <?php
                 if (isset($_SESSION['adm'])) {
                     echo "<button class=\"btn-adm desktop\" onclick=\"javascript:location.href = '../../admin/Painel/index.php'\"></button>";
