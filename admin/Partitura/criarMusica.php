@@ -22,13 +22,13 @@ if (isset($_SESSION['id']) & isset($_SESSION['nome'])) {
 }
 
 // Pega os dados do DB
-$sql = "SELECT * from genero";
+$sql = "SELECT * from genero order by nome";
 $resGen = mysqli_query($conn,$sql);
 
-$sql = "SELECT * from autor";
+$sql = "SELECT * from autor order by nome";
 $resautor = mysqli_query($conn,$sql);
 
-$sql = "SELECT * from instrumento";
+$sql = "SELECT * from instrumento order by nome";
 $resinstrumento = mysqli_query($conn,$sql);
 
 ?>
@@ -101,7 +101,7 @@ $resinstrumento = mysqli_query($conn,$sql);
                     
                     <div>
                         <label for="iframe">Iframe:</label>
-                        <input type="text" name="iframe" id="iframe" placeholder="Video para incorporar" required>
+                        <input type="text" name="iframe" id="iframe" placeholder="Video para incorporar">
                     </div>
                 </section>
 

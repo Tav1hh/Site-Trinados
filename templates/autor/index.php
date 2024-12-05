@@ -6,8 +6,65 @@ $sql = "SELECT * from autor Where id = $idautor";
 $res = mysqli_query($conn,$sql);
 $autor = mysqli_fetch_array($res);
 
-$sql = "SELECT * from música Where autor_fid = $idautor";
-$resMusica = mysqli_query($conn,$sql);
+$sql = "SELECT 
+    música.nome AS nome, 
+    música.id,
+    música.path_png AS path_png, 
+    instrumento.nome AS instrumento
+FROM música
+JOIN instrumento ON instrumento.id = música.idinstrumento
+WHERE música.autor_fid = $idautor And música.idinstrumento = 1";
+$resSaxTenor = mysqli_query($conn,$sql);
+
+$sql = "SELECT 
+    música.nome AS nome, 
+    música.id,
+    música.path_png AS path_png, 
+    instrumento.nome AS instrumento
+FROM música
+JOIN instrumento ON instrumento.id = música.idinstrumento
+WHERE música.autor_fid = $idautor And música.idinstrumento = 3";
+$resClarinete = mysqli_query($conn,$sql);
+
+$sql = "SELECT 
+    música.nome AS nome, 
+    música.id,
+    música.path_png AS path_png, 
+    instrumento.nome AS instrumento
+FROM música
+JOIN instrumento ON instrumento.id = música.idinstrumento
+WHERE música.autor_fid = $idautor And música.idinstrumento = 7";
+$resTrompete = mysqli_query($conn,$sql);
+
+$sql = "SELECT 
+    música.nome AS nome, 
+    música.id,
+    música.path_png AS path_png, 
+    instrumento.nome AS instrumento
+FROM música
+JOIN instrumento ON instrumento.id = música.idinstrumento
+WHERE música.autor_fid = $idautor And música.idinstrumento = 8";
+$resTrombone = mysqli_query($conn,$sql);
+
+$sql = "SELECT 
+    música.nome AS nome, 
+    música.id,
+    música.path_png AS path_png, 
+    instrumento.nome AS instrumento
+FROM música
+JOIN instrumento ON instrumento.id = música.idinstrumento
+WHERE música.autor_fid = $idautor And música.idinstrumento = 9";
+$resFlauta = mysqli_query($conn,$sql);
+
+$sql = "SELECT 
+    música.nome AS nome, 
+    música.id,
+    música.path_png AS path_png, 
+    instrumento.nome AS instrumento
+FROM música
+JOIN instrumento ON instrumento.id = música.idinstrumento
+WHERE música.autor_fid = $idautor And música.idinstrumento = 11";
+$resSaxAlto = mysqli_query($conn,$sql);
 
 ?>
 <!DOCTYPE html>
@@ -60,7 +117,82 @@ $resMusica = mysqli_query($conn,$sql);
         <h2>Músicas</h2>
         <section class="musicas">
         <?php
-        while ($linha = mysqli_fetch_array($resMusica) ) {
+        while ($linha = mysqli_fetch_array($resFlauta) ) {
+            echo "
+            <a href=\"../partitura/index.php?id=".$linha['id']." \">
+                <div class=\"card\">
+                    <img src=\"../../".$linha['path_png']."\" alt=\"Partitura\">
+                    <p>".$linha['nome']."</p>
+                    <p>".$linha['instrumento']."</p>
+                </div>
+            </a>
+            ";
+        }
+        ?>
+        </section>
+        <section class="musicas">
+        <?php
+        while ($linha = mysqli_fetch_array($resClarinete) ) {
+            echo "
+            <a href=\"../partitura/index.php?id=".$linha['id']." \">
+                <div class=\"card\">
+                    <img src=\"../../".$linha['path_png']."\" alt=\"Partitura\">
+                    <p>".$linha['nome']."</p>
+                    <p>".$linha['instrumento']."</p>
+                </div>
+            </a>
+            ";
+        }
+        ?>
+        </section>
+        <section class="musicas">
+        <?php
+        while ($linha = mysqli_fetch_array($resTrompete) ) {
+            echo "
+            <a href=\"../partitura/index.php?id=".$linha['id']." \">
+                <div class=\"card\">
+                    <img src=\"../../".$linha['path_png']."\" alt=\"Partitura\">
+                    <p>".$linha['nome']."</p>
+                    <p>".$linha['instrumento']."</p>
+                </div>
+            </a>
+            ";
+        }
+        ?>
+        </section>
+        <section class="musicas">
+        <?php
+        while ($linha = mysqli_fetch_array($resSaxAlto) ) {
+            echo "
+            <a href=\"../partitura/index.php?id=".$linha['id']." \">
+                <div class=\"card\">
+                    <img src=\"../../".$linha['path_png']."\" alt=\"Partitura\">
+                    <p>".$linha['nome']."</p>
+                    <p>".$linha['instrumento']."</p>
+                </div>
+            </a>
+            ";
+        }
+        ?>
+        </section>
+        <section class="musicas">
+        <?php
+        while ($linha = mysqli_fetch_array($resSaxTenor) ) {
+            echo "
+            <a href=\"../partitura/index.php?id=".$linha['id']." \">
+                <div class=\"card\">
+                    <img src=\"../../".$linha['path_png']."\" alt=\"Partitura\">
+                    <p>".$linha['nome']."</p>
+                    <p>".$linha['instrumento']."</p>
+                </div>
+            </a>
+            ";
+        }
+        ?>
+        </section>
+        <section class="musicas">
+        <?php
+        while ($linha = mysqli_fetch_array($resTrombone) ) {
             echo "
             <a href=\"../partitura/index.php?id=".$linha['id']." \">
                 <div class=\"card\">

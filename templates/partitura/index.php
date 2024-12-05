@@ -8,6 +8,7 @@ $sql = "Select música.nome as nome_musica,
  música.path_msc,
  música.autor_fid,
  instrumento.nome as instrumento, 
+ idinstrumento,
  música.genero_fid,
  genero.nome as genero, 
  autor.nome as autor, 
@@ -23,7 +24,7 @@ $sql = "SELECT
  instrumento.nome as instrumento
  from música
  join instrumento on instrumento.id = música.IdInstrumento
-Where música.genero_fid = ".$resMusica['genero_fid'];
+Where música.genero_fid = ".$resMusica['genero_fid']." and música.idinstrumento = ".$resMusica['idinstrumento'];
 $resGen = mysqli_query($conn,$sql);
 
 
@@ -71,7 +72,10 @@ $resGen = mysqli_query($conn,$sql);
     </header>
     <main>
         <div class="apresentacao">
-            <?=$resMusica['iframe']?>
+            <?php if ($resMusica['iframe'] == null) {
+                echo "<p>Se Grave tocando, poste no instagram e marque @trinados03, A melhor interpretação aparece aqui!</p>";
+            } else {
+                    echo $resMusica['iframe'];} ?>
         </div>
         <div class="menu">
             <div class="conteudo">
