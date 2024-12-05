@@ -171,7 +171,8 @@ $resSaxAlto= mysqli_query($conn, $sql);
         }
         ?>
         </section>
-
+        <h2>Músicas</h2>
+        <h3>Flauta Transversal em C</h3>
         <section class="musicas">
         <?php
         while ($linha = mysqli_fetch_array($resFlauta) ) {
@@ -187,6 +188,7 @@ $resSaxAlto= mysqli_query($conn, $sql);
         }
         ?>
         </section>
+        <h3>Clarinete em B♭</h3>
         <section class="musicas">
         <?php
         while ($linha = mysqli_fetch_array($resClarinete) ) {
@@ -202,6 +204,7 @@ $resSaxAlto= mysqli_query($conn, $sql);
         }
         ?>
         </section>
+        <h3>Trompete em B♭</h3>
         <section class="musicas">
         <?php
         while ($linha = mysqli_fetch_array($resTrompete) ) {
@@ -217,6 +220,7 @@ $resSaxAlto= mysqli_query($conn, $sql);
         }
         ?>
         </section>
+        <h3>Saxofone Alto em E♭</h3>
         <section class="musicas">
         <?php
         while ($linha = mysqli_fetch_array($resSaxAlto) ) {
@@ -232,6 +236,7 @@ $resSaxAlto= mysqli_query($conn, $sql);
         }
         ?>
         </section>
+        <h3>Saxofone Tenor em B♭</h3>
         <section class="musicas">
         <?php
         while ($linha = mysqli_fetch_array($resSaxTenor) ) {
@@ -247,6 +252,7 @@ $resSaxAlto= mysqli_query($conn, $sql);
         }
         ?>
         </section>
+        <h3>Trombone em C</h3>
         <section class="musicas">
         <?php
         while ($linha = mysqli_fetch_array($resTrombone) ) {
