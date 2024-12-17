@@ -140,9 +140,11 @@ $sql = "UPDATE musica SET
     pdf_name = \"$PDFname\", 
     png_name = \"$PNGname\", 
     msc_name = \"$MSCname\", 
-    iframe = \"$iframe\", 
+    iframe = '$iframe', 
     Idinstrumento = \"$Idinstrumento\" 
 WHERE id = '$id'";
+
+print $iframe;
 
 if (mysqli_query($conn,$sql)) {
     echo "Dados atualizados no BD";
