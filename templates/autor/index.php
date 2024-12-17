@@ -6,66 +6,70 @@ $sql = "SELECT * from autor Where id = $idautor";
 $res = mysqli_query($conn,$sql);
 $autor = mysqli_fetch_array($res);
 
-$sql = "SELECT 
-    música.nome AS nome, 
-    música.id,
-    música.path_png AS path_png, 
-    instrumento.nome AS instrumento
-FROM música
-JOIN instrumento ON instrumento.id = música.idinstrumento
-WHERE música.autor_fid = $idautor And música.idinstrumento = 1";
-$resSaxTenor = mysqli_query($conn,$sql);
-
-$sql = "SELECT 
-    música.nome AS nome, 
-    música.id,
-    música.path_png AS path_png, 
-    instrumento.nome AS instrumento
-FROM música
-JOIN instrumento ON instrumento.id = música.idinstrumento
-WHERE música.autor_fid = $idautor And música.idinstrumento = 3";
-$resClarinete = mysqli_query($conn,$sql);
-
-$sql = "SELECT 
-    música.nome AS nome, 
-    música.id,
-    música.path_png AS path_png, 
-    instrumento.nome AS instrumento
-FROM música
-JOIN instrumento ON instrumento.id = música.idinstrumento
-WHERE música.autor_fid = $idautor And música.idinstrumento = 7";
-$resTrompete = mysqli_query($conn,$sql);
-
-$sql = "SELECT 
-    música.nome AS nome, 
-    música.id,
-    música.path_png AS path_png, 
-    instrumento.nome AS instrumento
-FROM música
-JOIN instrumento ON instrumento.id = música.idinstrumento
-WHERE música.autor_fid = $idautor And música.idinstrumento = 8";
-$resTrombone = mysqli_query($conn,$sql);
-
-$sql = "SELECT 
-    música.nome AS nome, 
-    música.id,
-    música.path_png AS path_png, 
-    instrumento.nome AS instrumento
-FROM música
-JOIN instrumento ON instrumento.id = música.idinstrumento
-WHERE música.autor_fid = $idautor And música.idinstrumento = 9";
+$sql = "SELECT musica.nome AS nome, musica.id, musica.path_png AS path_png, instrumento.nome AS instrumento from musica JOIN instrumento ON instrumento.id = musica.idinstrumento WHERE musica.autor_fid = $idautor And musica.idinstrumento = 1";
 $resFlauta = mysqli_query($conn,$sql);
 
-$sql = "SELECT 
-    música.nome AS nome, 
-    música.id,
-    música.path_png AS path_png, 
-    instrumento.nome AS instrumento
-FROM música
-JOIN instrumento ON instrumento.id = música.idinstrumento
-WHERE música.autor_fid = $idautor And música.idinstrumento = 11";
+$sql = "SELECT musica.nome AS nome, musica.id, musica.path_png AS path_png, instrumento.nome AS instrumento from musica JOIN instrumento ON instrumento.id = musica.idinstrumento WHERE musica.autor_fid = $idautor And musica.idinstrumento = 2";
+$resClarinete = mysqli_query($conn,$sql);
+
+$sql = "SELECT musica.nome AS nome, musica.id, musica.path_png AS path_png, instrumento.nome AS instrumento from musica JOIN instrumento ON instrumento.id = musica.idinstrumento WHERE musica.autor_fid = $idautor And musica.idinstrumento = 3";
+$resTrompete = mysqli_query($conn,$sql);
+
+$sql = "SELECT musica.nome AS nome, musica.id, musica.path_png AS path_png, instrumento.nome AS instrumento from musica JOIN instrumento ON instrumento.id = musica.idinstrumento WHERE musica.autor_fid = $idautor And musica.idinstrumento = 4";
 $resSaxAlto = mysqli_query($conn,$sql);
 
+$sql = "SELECT musica.nome AS nome, musica.id, musica.path_png AS path_png, instrumento.nome AS instrumento from musica JOIN instrumento ON instrumento.id = musica.idinstrumento WHERE musica.autor_fid = $idautor And musica.idinstrumento = 5";
+$resSaxTenor = mysqli_query($conn,$sql);
+
+$sql = "SELECT musica.nome AS nome, musica.id, musica.path_png AS path_png, instrumento.nome AS instrumento from musica JOIN instrumento ON instrumento.id = musica.idinstrumento WHERE musica.autor_fid = $idautor And musica.idinstrumento = 6";
+$resTrombone = mysqli_query($conn,$sql);
+
+
+// // Verifica se os dados já estão armazenados em sessão
+// if (isset($_SESSION['autor_'])) {
+//     // Recupera os dados do cache
+//     $autor = $_SESSION['autor_'];
+//     $resFlauta = $_SESSION['flauta_'];
+//     $resClarinete = $_SESSION['clarinete_'];
+//     $resTrompete = $_SESSION['trompete_'];
+//     $resSaxAlto = $_SESSION['saxalto_'];
+//     $resSaxTenor = $_SESSION['saxtenor_'];
+//     $resTrombone = $_SESSION['trombone_'];
+// } else {
+//     // Realiza as consultas ao banco de dados
+//     $idautor = $_GET['id'];
+    
+//     $sql = "SELECT * from autor Where id = $idautor";
+//     $res = mysqli_query($conn, $sql);
+//     $autor = mysqli_fetch_array($res);
+//     // Salva os dados na sessão para cache
+//     $_SESSION['autor_'] = $autor;
+    
+//     $sql = "SELECT musica.nome AS nome, musica.id, musica.path_png AS path_png, instrumento.nome AS instrumento from musica JOIN instrumento ON instrumento.id = musica.idinstrumento WHERE musica.autor_fid = $idautor And musica.idinstrumento = 1";
+//     $resFlauta = mysqli_query($conn, $sql);
+//     $_SESSION['flauta_'] = $resFlauta;
+
+//     $sql = "SELECT musica.nome AS nome, musica.id, musica.path_png AS path_png, instrumento.nome AS instrumento from musica JOIN instrumento ON instrumento.id = musica.idinstrumento WHERE musica.autor_fid = $idautor And musica.idinstrumento = 2";
+//     $resClarinete = mysqli_query($conn, $sql);
+//     $_SESSION['clarinete_'] = $resClarinete;
+
+//     $sql = "SELECT musica.nome AS nome, musica.id, musica.path_png AS path_png, instrumento.nome AS instrumento from musica JOIN instrumento ON instrumento.id = musica.idinstrumento WHERE musica.autor_fid = $idautor And musica.idinstrumento = 3";
+//     $resTrompete = mysqli_query($conn, $sql);
+//     $_SESSION['trompete_'] = $resTrompete;
+
+//     $sql = "SELECT musica.nome AS nome, musica.id, musica.path_png AS path_png, instrumento.nome AS instrumento from musica JOIN instrumento ON instrumento.id = musica.idinstrumento WHERE musica.autor_fid = $idautor And musica.idinstrumento = 4";
+//     $resSaxAlto = mysqli_query($conn, $sql);
+//     $_SESSION['saxalto_'] = $resSaxAlto;
+
+//     $sql = "SELECT musica.nome AS nome, musica.id, musica.path_png AS path_png, instrumento.nome AS instrumento from musica JOIN instrumento ON instrumento.id = musica.idinstrumento WHERE musica.autor_fid = $idautor And musica.idinstrumento = 5";
+//     $resSaxTenor = mysqli_query($conn, $sql);
+//     $_SESSION['saxtenor_'] = $resSaxTenor;
+
+//     $sql = "SELECT musica.nome AS nome, musica.id, musica.path_png AS path_png, instrumento.nome AS instrumento from musica JOIN instrumento ON instrumento.id = musica.idinstrumento WHERE musica.autor_fid = $idautor And musica.idinstrumento = 6";
+//     $resTrombone = mysqli_query($conn, $sql);
+//     $_SESSION['trombone_'] = $resTrombone;
+
+// }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -110,7 +114,7 @@ $resSaxAlto = mysqli_query($conn,$sql);
     </header>
     <main>
         <div class="conteudo">
-            <img src="../../<?=$autor['path_foto']?>" alt="">
+            <img src="../../<?=$autor['path_foto']?>" alt="autor" loading="lazy">
             <p><?=$autor['nome']?></p>
         </div>
 
@@ -122,7 +126,7 @@ $resSaxAlto = mysqli_query($conn,$sql);
             echo "
             <a href=\"../partitura/index.php?id=".$linha['id']." \">
                 <div class=\"card\">
-                    <img src=\"../../".$linha['path_png']."\" alt=\"Partitura\">
+                    <img src=\"../../".$linha['path_png']."\" alt=\"Partitura\" loading=\"lazy\">
                     <p>".$linha['nome']."</p>
                     <p>".$linha['instrumento']."</p>
                 </div>
@@ -138,7 +142,7 @@ $resSaxAlto = mysqli_query($conn,$sql);
             echo "
             <a href=\"../partitura/index.php?id=".$linha['id']." \">
                 <div class=\"card\">
-                    <img src=\"../../".$linha['path_png']."\" alt=\"Partitura\">
+                    <img src=\"../../".$linha['path_png']."\" alt=\"Partitura\" loading=\"lazy\">
                     <p>".$linha['nome']."</p>
                     <p>".$linha['instrumento']."</p>
                 </div>
@@ -154,7 +158,7 @@ $resSaxAlto = mysqli_query($conn,$sql);
             echo "
             <a href=\"../partitura/index.php?id=".$linha['id']." \">
                 <div class=\"card\">
-                    <img src=\"../../".$linha['path_png']."\" alt=\"Partitura\">
+                    <img src=\"../../".$linha['path_png']."\" alt=\"Partitura\" loading=\"lazy\">
                     <p>".$linha['nome']."</p>
                     <p>".$linha['instrumento']."</p>
                 </div>
@@ -170,7 +174,7 @@ $resSaxAlto = mysqli_query($conn,$sql);
             echo "
             <a href=\"../partitura/index.php?id=".$linha['id']." \">
                 <div class=\"card\">
-                    <img src=\"../../".$linha['path_png']."\" alt=\"Partitura\">
+                    <img src=\"../../".$linha['path_png']."\" alt=\"Partitura\" loading=\"lazy\">
                     <p>".$linha['nome']."</p>
                     <p>".$linha['instrumento']."</p>
                 </div>
@@ -186,7 +190,7 @@ $resSaxAlto = mysqli_query($conn,$sql);
             echo "
             <a href=\"../partitura/index.php?id=".$linha['id']." \">
                 <div class=\"card\">
-                    <img src=\"../../".$linha['path_png']."\" alt=\"Partitura\">
+                    <img src=\"../../".$linha['path_png']."\" alt=\"Partitura\" loading=\"lazy\">
                     <p>".$linha['nome']."</p>
                     <p>".$linha['instrumento']."</p>
                 </div>
@@ -202,7 +206,7 @@ $resSaxAlto = mysqli_query($conn,$sql);
             echo "
             <a href=\"../partitura/index.php?id=".$linha['id']." \">
                 <div class=\"card\">
-                    <img src=\"../../".$linha['path_png']."\" alt=\"Partitura\">
+                    <img src=\"../../".$linha['path_png']."\" alt=\"Partitura\" loading=\"lazy\">
                     <p>".$linha['nome']."</p>
                     <p>".$linha['instrumento']."</p>
                 </div>

@@ -6,7 +6,7 @@
 
     if ($func == 1 & isset($_POST['ex'])) {
         
-        $sql = "Select * from música where genero_fid=$id";
+        $sql = "Select * from musica where genero_fid=$id";
         $res = mysqli_query($conn,$sql);
 
         while ($linha = mysqli_fetch_array($res)) {
@@ -19,7 +19,7 @@
 
     }
     if ($func == 2 & isset($_POST['ex'])) {
-        $sql = "Select * from música where autor_fid=$id";
+        $sql = "Select * from musica where autor_fid=$id";
         $res = mysqli_query($conn,$sql);
 
         while ($linha = mysqli_fetch_array($res)) {
@@ -44,7 +44,7 @@
     }
 
     function excluirMusica($ID, $conn) {
-        $sql = "SELECT música.nome, instrumento.nome as instrumento, música.path_pdf, música.path_png, música.path_msc from música join instrumento on instrumento.id = música.IdInstrumento where música.id=$ID";
+        $sql = "SELECT musica.nome, instrumento.nome as instrumento, musica.path_pdf, musica.path_png, musica.path_msc from musica join instrumento on instrumento.id = musica.IdInstrumento where musica.id=$ID";
         $res = mysqli_query($conn,$sql);
         $linha = mysqli_fetch_array($res);
 
@@ -58,12 +58,12 @@
         
         rmdir("../../../$pathRaiz");
 
-        $sql = "DELETE from música where id=$ID";
+        $sql = "DELETE from musica where id=$ID";
         mysqli_query($conn,$sql);
     }
     if ($func == 4 & isset($_POST['ex'])) {
         
-        $sql = "Select * from música where idinstrumento=$id";
+        $sql = "Select * from musica where idinstrumento=$id";
         $res = mysqli_query($conn,$sql);
 
         while ($linha = mysqli_fetch_array($res)) {

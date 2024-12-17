@@ -15,11 +15,11 @@ $linha = mysqli_fetch_array($res);
 $instrumento = $linha['nome'];
 
 // Pegando os Dados da Música
-$sql = "SELECT * From música where id=".$id;
+$sql = "SELECT * from musica where id=".$id;
 $res = mysqli_query($conn,$sql);
 $musica = mysqli_fetch_array($res);
 
-$sql = "Select música.IdInstrumento, instrumento.nome As instrumento from música join instrumento on instrumento.id = música.IdInstrumento where música.id = $id";
+$sql = "Select musica.IdInstrumento, instrumento.nome As instrumento from musica join instrumento on instrumento.id = musica.IdInstrumento where musica.id = $id";
 $res = mysqli_query($conn,$sql);
 $intr = mysqli_fetch_array($res);
 
@@ -129,19 +129,19 @@ if(isset($_FILES['part3']) && $_FILES['part3']['error'] === UPLOAD_ERR_OK) {
     $pathMSC = "$novoPathMSC";
 }
 
-$sql = "UPDATE música SET 
-    nome = '$nome', 
-    autor_fid = '$autor', 
-    genero_fid = '$genero', 
-    path = '$path', 
-    path_pdf = '$pathPDF', 
-    path_png = '$pathPNG', 
-    path_msc = '$pathMSC', 
-    pdf_name = '$PDFname', 
-    png_name = '$PNGname', 
-    msc_name = '$MSCname', 
-    iframe = '$iframe', 
-    Idinstrumento = '$Idinstrumento' 
+$sql = "UPDATE musica SET 
+    nome = \"$nome\", 
+    autor_fid = \"$autor\", 
+    genero_fid = \"$genero\", 
+    path = \"$path\", 
+    path_pdf = \"$pathPDF\", 
+    path_png = \"$pathPNG\", 
+    path_msc = \"$pathMSC\", 
+    pdf_name = \"$PDFname\", 
+    png_name = \"$PNGname\", 
+    msc_name = \"$MSCname\", 
+    iframe = \"$iframe\", 
+    Idinstrumento = \"$Idinstrumento\" 
 WHERE id = '$id'";
 
 if (mysqli_query($conn,$sql)) {

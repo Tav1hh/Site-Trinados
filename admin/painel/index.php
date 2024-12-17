@@ -21,15 +21,18 @@ if (isset($_SESSION['id']) & isset($_SESSION['nome'])) {
     session_destroy();
     header('Location: ../../x039.php');
 }
-
+// Pegando o Total de Partituras:
+$sql = "Select nome from musica";
+$res = mysqli_query($conn,$sql);
+$totalPartituras = mysqli_num_rows($res);
 // Pegando as Músicas
 if (isset($_POST['psq'])) {
     $psq = $_POST['psq'];
 
-    $sql = "SELECT música.id, música.nome, instrumento.nome As instrumento, genero.nome As genero FROM música join instrumento on instrumento.id = música.IdInstrumento join genero on genero.id = música.genero_fid where música.nome Like '%$psq%' or música.id Like '%$psq%' or instrumento.nome Like '%$psq%' or genero.nome Like '%$psq%' limit 10";
+    $sql = "SELECT musica.id, musica.nome, instrumento.nome As instrumento, genero.nome As genero from musica join instrumento on instrumento.id = musica.IdInstrumento join genero on genero.id = musica.genero_fid where musica.nome Like '%$psq%' or musica.id Like '%$psq%' or instrumento.nome Like '%$psq%' or genero.nome Like '%$psq%' limit 10";
     $resMusica = mysqli_query($conn, $sql);
 } else {
-    $sql = "SELECT música.id, música.nome, instrumento.nome As instrumento FROM música join instrumento on instrumento.id = música.IdInstrumento order by -upload_time limit 10 ";
+    $sql = "SELECT musica.id, musica.nome, instrumento.nome As instrumento from musica join instrumento on instrumento.id = musica.IdInstrumento order by -upload_time limit 10 ";
     $resMusica = mysqli_query($conn, $sql);
 }
 
@@ -103,7 +106,10 @@ if (isset($_POST['psq4'])) {
         <h1>Dashboard</h1>
     </header>
     <section>
-        <h2>Músicas</h2>
+        <div class="musicas">
+            <h2><?=$totalPartituras/6?> Músicas</h2>
+            <h2><?=$totalPartituras?> Partituras </h2>
+        </div>
         <form action="#" method="post">
             <input type="search" name="psq" placeholder="Pesquise uma Música">
             <button type="submit"></button>

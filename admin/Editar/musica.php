@@ -2,7 +2,7 @@
 include "../../scripts/conexao.php";
 
 $id = $_GET['id'];
-$sql = "SELECT * from música where id=".$id;
+$sql = "SELECT * from musica where id=".$id;
 $res = mysqli_query($conn,$sql);
 $musica = mysqli_fetch_array($res);
 

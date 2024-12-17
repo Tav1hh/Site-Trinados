@@ -2,29 +2,29 @@
 include '../../scripts/conexao.php';
 $idmusica = $_GET['id'];
 
-$sql = "Select música.nome as nome_musica,
+$sql = "Select musica.nome as nome_musica,
  iframe, 
- música.path_pdf, 
- música.path_msc,
- música.autor_fid,
+ musica.path_pdf, 
+ musica.path_msc,
+ musica.autor_fid,
  instrumento.nome as instrumento, 
  idinstrumento,
- música.genero_fid,
+ musica.genero_fid,
  genero.nome as genero, 
  autor.nome as autor, 
  autor.path_foto as autor_foto 
- from música join instrumento on música.IdInstrumento = instrumento.id join autor on autor.id = música.autor_fid join genero on genero.id = música.genero_fid where música.id=$idmusica";
+ from musica join instrumento on musica.IdInstrumento = instrumento.id join autor on autor.id = musica.autor_fid join genero on genero.id = musica.genero_fid where musica.id=$idmusica";
 $res = mysqli_query($conn,$sql);
 $resMusica = mysqli_fetch_array($res);
 
 $sql = "SELECT 
- música.id,
- música.nome as nome_musica,
- música.path_png,
+ musica.id,
+ musica.nome as nome_musica,
+ musica.path_png,
  instrumento.nome as instrumento
- from música
- join instrumento on instrumento.id = música.IdInstrumento
-Where música.genero_fid = ".$resMusica['genero_fid']." and música.idinstrumento = ".$resMusica['idinstrumento'];
+ from musica
+ join instrumento on instrumento.id = musica.IdInstrumento
+Where musica.genero_fid = ".$resMusica['genero_fid']." and musica.idinstrumento = ".$resMusica['idinstrumento'];
 $resGen = mysqli_query($conn,$sql);
 
 
@@ -35,7 +35,7 @@ $resGen = mysqli_query($conn,$sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trinados</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
     <header>
@@ -73,7 +73,7 @@ $resGen = mysqli_query($conn,$sql);
     <main>
         <div class="apresentacao">
             <?php if ($resMusica['iframe'] == null) {
-                echo "<p>Se Grave tocando, poste no instagram e marque @trinados03, A melhor interpretação aparece aqui!</p>";
+                echo "<p style=\"padding: 10px;\">Se Grave tocando, poste no instagram e marque @trinados03, A melhor interpretação aparece aqui!</p>";
             } else {
                     echo $resMusica['iframe'];} ?>
         </div>
@@ -103,7 +103,7 @@ $resGen = mysqli_query($conn,$sql);
                 echo "
                 <a href=\"index.php?id=".$linha['id']." \">
                     <div class=\"card\">
-                        <img src=\"../../".$linha['path_png']."\" alt=\"Partitura\">
+                        <img src=\"../../".$linha['path_png']."\" alt=\"Partitura\" loading=\"lazy\">
                         <p>".$linha['nome_musica']."</p> 
                         <p>".$linha['instrumento']."</p>
                     </div>

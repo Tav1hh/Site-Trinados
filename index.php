@@ -1,23 +1,72 @@
 <?php 
 include 'scripts/conexao.php';
 
-$sql = 'SELECT música.nome as nome, música.id as id, música.path_png as path_png , instrumento.nome as instrumento from música join instrumento on música.IdInstrumento = instrumento.id where música.idInstrumento = 1';
-$resSaxTenor = mysqli_query($conn,$sql);
+// $sql = 'SELECT musica.nome as nome, musica.id as id, musica.path_png as path_png , instrumento.nome as instrumento from musica join instrumento on musica.IdInstrumento = instrumento.id where musica.idInstrumento = 1';
+// $resFlauta = mysqli_query($conn, $sql);
 
-$sql = 'SELECT música.nome as nome, música.id as id, música.path_png as path_png , instrumento.nome as instrumento from música join instrumento on música.IdInstrumento = instrumento.id where música.idInstrumento = 3';
-$resClarinete = mysqli_query($conn,$sql);
+// $sql = 'SELECT musica.nome as nome, musica.id as id, musica.path_png as path_png , instrumento.nome as instrumento from musica join instrumento on musica.IdInstrumento = instrumento.id where musica.idInstrumento = 2';
+// $resClarinete = mysqli_query($conn,$sql);
 
-$sql = 'SELECT música.nome as nome, música.id as id, música.path_png as path_png , instrumento.nome as instrumento from música join instrumento on música.IdInstrumento = instrumento.id where música.idInstrumento = 7';
-$resTrompete = mysqli_query($conn,$sql);
+// $sql = 'SELECT musica.nome as nome, musica.id as id, musica.path_png as path_png , instrumento.nome as instrumento from musica join instrumento on musica.IdInstrumento = instrumento.id where musica.idInstrumento = 3';
+// $resTrompete = mysqli_query($conn,$sql);
 
-$sql = 'SELECT música.nome as nome, música.id as id, música.path_png as path_png , instrumento.nome as instrumento from música join instrumento on música.IdInstrumento = instrumento.id where música.idInstrumento = 8';
-$resTrombone = mysqli_query($conn,$sql);
+// $sql = 'SELECT musica.nome as nome, musica.id as id, musica.path_png as path_png , instrumento.nome as instrumento from musica join instrumento on musica.IdInstrumento = instrumento.id where musica.idInstrumento = 4';
+// $resSaxAlto = mysqli_query($conn,$sql);
 
-$sql = 'SELECT música.nome as nome, música.id as id, música.path_png as path_png , instrumento.nome as instrumento from música join instrumento on música.IdInstrumento = instrumento.id where música.idInstrumento = 9';
-$resFlauta = mysqli_query($conn,$sql);
+// $sql = 'SELECT musica.nome as nome, musica.id as id, musica.path_png as path_png , instrumento.nome as instrumento from musica join instrumento on musica.IdInstrumento = instrumento.id where musica.idInstrumento = 5';
+// $resSaxTenor = mysqli_query($conn,$sql);
 
-$sql = 'SELECT música.nome as nome, música.id as id, música.path_png as path_png , instrumento.nome as instrumento from música join instrumento on música.IdInstrumento = instrumento.id where música.idInstrumento = 11';
-$resSaxAlto = mysqli_query($conn,$sql);
+// $sql = 'SELECT musica.nome as nome, musica.id as id, musica.path_png as path_png , instrumento.nome as instrumento from musica join instrumento on musica.IdInstrumento = instrumento.id where musica.idInstrumento = 6';
+// $resTrombone = mysqli_query($conn,$sql);
+
+if(!isset($_SESSION['home'])) {
+    $sql = 'SELECT musica.nome as nome, musica.id as id, musica.path_png as path_png, instrumento.nome as instrumento, instrumento.id as instrumento_id FROM musica JOIN instrumento ON musica.IdInstrumento = instrumento.id';
+    $result = mysqli_query($conn, $sql);
+    
+    $musicas = [];
+    
+    while ($row = mysqli_fetch_array($result)) {
+        $instrumentoId = $row['instrumento_id'];
+        $instrumentoNome = $row['instrumento'];
+    
+        // Inicializa o array do instrumento, se necessário
+        if (!isset($musicas[$instrumentoId])) {
+            $musicas[$instrumentoId] = [
+                'instrumento' => $instrumentoNome,
+                'musicas' => []
+            ];
+        }
+    
+        // Adiciona a música ao array do instrumento correspondente
+        $musicas[$instrumentoId]['musicas'][] = [
+            'id' => $row['id'],
+            'nome' => $row['nome'],
+            'path_png' => $row['path_png'],
+        ];
+    }
+    $resFlauta = $musicas["1"];
+    $resClarinete = $musicas["2"];
+    $resTrompete = $musicas["3"];
+    $resSaxAlto = $musicas["4"];
+    $resSaxTenor = $musicas["5"];
+    $resTrombone = $musicas["6"];
+      
+    $_SESSION['home'] = [
+        $resFlauta,
+        $resTrompete,
+        $resClarinete,
+        $resSaxAlto,
+        $resSaxTenor,
+        $resTrombone
+    ];
+} else {
+    $resFlauta = $_SESSION['home'][0];
+    $resClarinete = $_SESSION['home'][1];
+    $resTrompete = $_SESSION['home'][2];
+    $resSaxAlto = $_SESSION['home'][3];
+    $resSaxTenor = $_SESSION['home'][4];
+    $resTrombone = $_SESSION['home'][5];
+}
 ?>
 
 <!DOCTYPE html>
@@ -69,102 +118,108 @@ $resSaxAlto = mysqli_query($conn,$sql);
         <h3>Flauta Transversal em C</h3>
         <section class="musicas">
         <?php
-        
-        while ($linha = mysqli_fetch_array($resFlauta) ) {
-            echo "
-            <a href=\"templates/partitura/index.php?id=".$linha['id']." \">
-                <div class=\"card\">
-                    <img src=\"".$linha['path_png']."\" alt=\"Partitura\">
-                    <p>".$linha['nome']."</p>
-                    <p>".$linha['instrumento']."</p>
-                </div>
-            </a>
-            ";
+        if ($resFlauta) {
+            foreach ($resFlauta['musicas'] as $linha) {
+                echo "
+                <a href=\"templates/partitura/index.php?id=".$linha['id']." \">
+                    <div class=\"card\">
+                        <img src=\"".$linha['path_png']."\" alt=\"Partitura\" loading=\"lazy\">
+                        <p>".$linha['nome']."</p>
+                        <p>".$resFlauta['instrumento']."</p>
+                    </div>
+                </a>
+                ";
+            }
         }
         ?>
         </section>
         <h3>Clarinete em B♭</h3>
         <section class="musicas">
         <?php
-        
-        while ($linha = mysqli_fetch_array($resClarinete) ) {
-            echo "
-            <a href=\"templates/partitura/index.php?id=".$linha['id']." \">
-                <div class=\"card\">
-                    <img src=\"".$linha['path_png']."\" alt=\"Partitura\">
-                    <p>".$linha['nome']."</p>
-                    <p>".$linha['instrumento']."</p>
-                </div>
-            </a>
-            ";
+        if ($resClarinete) {
+            foreach ($resClarinete['musicas'] as $linha) {
+                echo "
+                <a href=\"templates/partitura/index.php?id=".$linha['id']." \">
+                    <div class=\"card\">
+                        <img src=\"".$linha['path_png']."\" alt=\"Partitura\" loading=\"lazy\">
+                        <p>".$linha['nome']."</p>
+                        <p>".$resClarinete['instrumento']."</p>
+                    </div>
+                </a>
+                ";
+            }
         }
         ?>
         </section>
         <h3>Trompete em B♭</h3>
         <section class="musicas">
         <?php
-        
-        while ($linha = mysqli_fetch_array($resTrompete) ) {
-            echo "
-            <a href=\"templates/partitura/index.php?id=".$linha['id']." \">
-                <div class=\"card\">
-                    <img src=\"".$linha['path_png']."\" alt=\"Partitura\">
-                    <p>".$linha['nome']."</p>
-                    <p>".$linha['instrumento']."</p>
-                </div>
-            </a>
-            ";
+        if ($resTrompete) {
+            foreach ($resTrompete['musicas'] as $linha) {
+                echo "
+                <a href=\"templates/partitura/index.php?id=".$linha['id']." \">
+                    <div class=\"card\">
+                        <img src=\"".$linha['path_png']."\" alt=\"Partitura\" loading=\"lazy\">
+                        <p>".$linha['nome']."</p>
+                        <p>".$resTrompete['instrumento']."</p>
+                    </div>
+                </a>
+                ";
+            }
         }
         ?>
         </section>
         <h3>Saxofone Alto em E♭</h3>
         <section class="musicas">
         <?php
-        
-        while ($linha = mysqli_fetch_array($resSaxAlto) ) {
-            echo "
-            <a href=\"templates/partitura/index.php?id=".$linha['id']." \">
-                <div class=\"card\">
-                    <img src=\"".$linha['path_png']."\" alt=\"Partitura\">
-                    <p>".$linha['nome']."</p>
-                    <p>".$linha['instrumento']."</p>
-                </div>
-            </a>
-            ";
+        if ($resSaxAlto) {
+            foreach ($resSaxAlto['musicas'] as $linha) {
+                echo "
+                <a href=\"templates/partitura/index.php?id=".$linha['id']." \">
+                    <div class=\"card\">
+                        <img src=\"".$linha['path_png']."\" alt=\"Partitura\" loading=\"lazy\">
+                        <p>".$linha['nome']."</p>
+                        <p>".$resSaxAlto['instrumento']."</p>
+                    </div>
+                </a>
+                ";
+            }
         }
         ?>
         </section>
         <h3>Saxofone Tenor em B♭</h3>
         <section class="musicas">
         <?php
-        
-        while ($linha = mysqli_fetch_array($resSaxTenor) ) {
-            echo "
-            <a href=\"templates/partitura/index.php?id=".$linha['id']." \">
-                <div class=\"card\">
-                    <img src=\"".$linha['path_png']."\" alt=\"Partitura\">
-                    <p>".$linha['nome']."</p>
-                    <p>".$linha['instrumento']."</p>
-                </div>
-            </a>
-            ";
+        if ($resSaxTenor) {
+            foreach ($resSaxTenor['musicas'] as $linha) {
+                echo "
+                <a href=\"templates/partitura/index.php?id=".$linha['id']." \">
+                    <div class=\"card\">
+                        <img src=\"".$linha['path_png']."\" alt=\"Partitura\" loading=\"lazy\">
+                        <p>".$linha['nome']."</p>
+                        <p>".$resSaxTenor['instrumento']."</p>
+                    </div>
+                </a>
+                ";
+            }
         }
         ?>
         </section>
         <h3>Trombone em C</h3>
         <section class="musicas">
         <?php
-        
-        while ($linha = mysqli_fetch_array($resTrombone) ) {
-            echo "
-            <a href=\"templates/partitura/index.php?id=".$linha['id']." \">
-                <div class=\"card\">
-                    <img src=\"".$linha['path_png']."\" alt=\"Partitura\">
-                    <p>".$linha['nome']."</p>
-                    <p>".$linha['instrumento']."</p>
-                </div>
-            </a>
-            ";
+        if ($resTrombone) {
+            foreach ($resTrombone['musicas'] as $linha) {
+                echo "
+                <a href=\"templates/partitura/index.php?id=".$linha['id']." \">
+                    <div class=\"card\">
+                        <img src=\"".$linha['path_png']."\" alt=\"Partitura\" loading=\"lazy\">
+                        <p>".$linha['nome']."</p>
+                        <p>".$resTrombone['instrumento']."</p>
+                    </div>
+                </a>
+                ";
+            }
         }
         ?>
         </section>

@@ -81,11 +81,17 @@ if (isset($_FILES['part1']) && isset($_FILES['part2']) && isset($_FILES['part3']
 
 
         echo "arquivos movidos!";
-        $sql = "INSERT INTO música (nome, autor_fid, genero_fid, path, path_pdf, path_png, path_msc, pdf_name, png_name, msc_name, iframe, Idinstrumento) VALUES ('$nome','$autor','$genero','$path','$path/$PDFName','$path/$PNGName','$path/$MSCName','$PDFName','$PNGName','$MSCName','$iframe','$Idinstrumento')";
+        $sql = "INSERT INTO musica (nome, autor_fid, genero_fid, path, path_pdf, path_png, path_msc, pdf_name, png_name, msc_name, iframe, Idinstrumento) VALUES (\"$nome\",\"$autor\",\"$genero\",\"$path\",\"$path/$PDFName\",\"$path/$PNGName\",\"$path/$MSCName\",\"$PDFName\",\"$PNGName\",\"$MSCName\",\"$iframe\",\"$Idinstrumento\")";
         if (mysqli_query($conn,$sql)) {
             echo "arquivo salvo!";
             header("Location: criarMusica.php");
         } else {
+            unlink("../../../".$path/$PDFName);
+            unlink("../../../".$path/$PNGName);
+            unlink("../../../".$path/$MSCName);
+            
+            rmdir("../../../$path");
+
             echo "Erro em salvar no BD!";
         };
 
