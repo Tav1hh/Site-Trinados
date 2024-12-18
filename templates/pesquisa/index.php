@@ -72,6 +72,10 @@ $resTrombone = mysqli_query($conn, $sql);
         <?php
             if (mysqli_num_rows($resAutor) > 0) {
                 print "<h2>Autores</h2>";
+                print "<div class=\"botoes botoes-autores\">";
+                print "    <div class=\"left\"><button class=\"btn-left\" onclick=\"javascript:document.querySelector('.autores').scrollBy({left:-320, behavior:'smooth'})\"></button></div>";
+                print "    <div class=\"right\"><button class=\"btn-right\" onclick=\"javascript:document.querySelector('.autores').scrollBy({left:320, behavior:'smooth'})\"></button></div>";
+                print "</div>";
                 print "<section class=\"autores\">";
 
                 while ($linha = mysqli_fetch_array($resAutor)) {
@@ -85,6 +89,8 @@ $resTrombone = mysqli_query($conn, $sql);
                     ";
                 }
                 print "</section>";
+            } else {
+                print "<h3>Nenhum author encontrado..<h3>";
             }
 
 // Músicas
@@ -92,6 +98,10 @@ if (mysqli_num_rows($resFlauta) > 0 or mysqli_num_rows($resClarinete) > 0 or mys
     print "<h2>Músicas</h2>";
     if (mysqli_num_rows($resFlauta) > 0) {
         print "<h3>Flauta Transversal em C</h3>";
+        print "<div class=\"botoes\">";
+                print "    <div class=\"left\"><button class=\"btn-left\" onclick=\"javascript:document.querySelectorAll('.musicas')[0].scrollBy({left:-370, behavior:'smooth'})\"></button></div>";
+                print "    <div class=\"right\"><button class=\"btn-right\" onclick=\"javascript:document.querySelectorAll('.musicas')[0].scrollBy({left:370, behavior:'smooth'})\"></button></div>";
+                print "</div>";
         print "<section class=\"musicas\">";
         
         while ($linha = mysqli_fetch_array($resFlauta)) {
@@ -110,6 +120,10 @@ if (mysqli_num_rows($resFlauta) > 0 or mysqli_num_rows($resClarinete) > 0 or mys
 
     if (mysqli_num_rows($resClarinete) > 0) {
         print "<h3>Clarinete em B♭</h3>";
+        print "<div class=\"botoes\">";
+        print "    <div class=\"left\"><button class=\"btn-left\" onclick=\"javascript:document.querySelectorAll('.musicas')[1].scrollBy({left:-370, behavior:'smooth'})\"></button></div>";
+        print "    <div class=\"right\"><button class=\"btn-right\" onclick=\"javascript:document.querySelectorAll('.musicas')[1].scrollBy({left:370, behavior:'smooth'})\"></button></div>";
+        print "</div>";
         print "<section class=\"musicas\">";
         
         while ($linha = mysqli_fetch_array($resClarinete)) {
@@ -128,6 +142,10 @@ if (mysqli_num_rows($resFlauta) > 0 or mysqli_num_rows($resClarinete) > 0 or mys
             
     if (mysqli_num_rows($resTrompete) > 0) {
         print "<h3>Trompete em B♭</h3>";
+        print "<div class=\"botoes\">";
+        print "    <div class=\"left\"><button class=\"btn-left\" onclick=\"javascript:document.querySelectorAll('.musicas')[2].scrollBy({left:-370, behavior:'smooth'})\"></button></div>";
+        print "    <div class=\"right\"><button class=\"btn-right\" onclick=\"javascript:document.querySelectorAll('.musicas')[2].scrollBy({left:370, behavior:'smooth'})\"></button></div>";
+        print "</div>";
         print "<section class=\"musicas\">";
         
         while ($linha = mysqli_fetch_array($resTrompete)) {
@@ -146,6 +164,10 @@ if (mysqli_num_rows($resFlauta) > 0 or mysqli_num_rows($resClarinete) > 0 or mys
 
     if (mysqli_num_rows($resSaxAlto) > 0) {
         print "<h3>Saxofone Alto em E♭</h3>";
+        print "<div class=\"botoes\">";
+        print "    <div class=\"left\"><button class=\"btn-left\" onclick=\"javascript:document.querySelectorAll('.musicas')[3].scrollBy({left:-370, behavior:'smooth'})\"></button></div>";
+        print "    <div class=\"right\"><button class=\"btn-right\" onclick=\"javascript:document.querySelectorAll('.musicas')[3].scrollBy({left:370, behavior:'smooth'})\"></button></div>";
+        print "</div>";
         print "<section class=\"musicas\">";
         
         while ($linha = mysqli_fetch_array($resSaxAlto)) {
@@ -164,6 +186,10 @@ if (mysqli_num_rows($resFlauta) > 0 or mysqli_num_rows($resClarinete) > 0 or mys
 
     if (mysqli_num_rows($resSaxTenor) > 0) {
         print "<h3>Saxofone Tenor em B♭</h3>";
+        print "<div class=\"botoes\">";
+        print "    <div class=\"left\"><button class=\"btn-left\" onclick=\"javascript:document.querySelectorAll('.musicas')[4].scrollBy({left:-370, behavior:'smooth'})\"></button></div>";
+        print "    <div class=\"right\"><button class=\"btn-right\" onclick=\"javascript:document.querySelectorAll('.musicas')[4].scrollBy({left:370, behavior:'smooth'})\"></button></div>";
+        print "</div>";
         print "<section class=\"musicas\">";
         
         while ($linha = mysqli_fetch_array($resSaxTenor)) {
@@ -182,6 +208,10 @@ if (mysqli_num_rows($resFlauta) > 0 or mysqli_num_rows($resClarinete) > 0 or mys
 
     if (mysqli_num_rows($resTrombone) > 0) {
         print "<h3>Trombone em C</h3>";
+        print "<div class=\"botoes\">";
+        print "    <div class=\"left\"><button class=\"btn-left\" onclick=\"javascript:document.querySelectorAll('.musicas')[5].scrollBy({left:-370, behavior:'smooth'})\"></button></div>";
+        print "    <div class=\"right\"><button class=\"btn-right\" onclick=\"javascript:document.querySelectorAll('.musicas')[5].scrollBy({left:370, behavior:'smooth'})\"></button></div>";
+        print "</div>";
         print "<section class=\"musicas\">";
         
         while ($linha = mysqli_fetch_array($resTrombone)) {
@@ -198,7 +228,7 @@ if (mysqli_num_rows($resFlauta) > 0 or mysqli_num_rows($resClarinete) > 0 or mys
         print "</section>";
     }
 } else {
-    print "<h3>Nenhuma Música ou Autor Encontrado..<h3>";
+    print "<h3>Nenhuma música encontrada..<h3>";
 }
 ?>
 

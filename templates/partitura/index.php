@@ -95,6 +95,10 @@ $resGen = mysqli_query($conn,$sql);
         </div>
         
         <h2>Semelhantes</h2>
+        <div class="botoes">
+            <div class="left"><button class="btn-left" onclick="javascript:document.querySelector('.musicas').scrollBy({left:-370, behavior:'smooth'})"></button></div>
+            <div class="right"><button class="btn-right" onclick="javascript:document.querySelector('.musicas').scrollBy({left:370, behavior:'smooth'})"></button></div>
+        </div>
         <section class="musicas">
         <?php
         while ($linha = mysqli_fetch_array($resGen) ) {

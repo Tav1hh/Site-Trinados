@@ -229,10 +229,61 @@ h2{
     width: 0px;
     text-decoration: dotted;
 }
+.botoes{
+    /* all:unset; */
+    display: flex;
+    height: 280px;
+    align-items: center;
+    margin: 0px -20px;
+    width: calc(100vw);
+    position: absolute;
+    pointer-events: none;
+    /* z-index: inherit; */
+    justify-content: space-between;
+
+}
+.botoes-autores {
+    height: 170px;
+}
+
+.btn-left{
+    all:unset;
+    pointer-events: all;
+    width: 50px;
+    height: 90px;
+    background: url(../../imagens/arrow-left.png) center center no-repeat;
+    background-size: contain;
+    scale: 1.0;
+    outline: none;
+    transition: translate 0.5s;
+}
+
+
+.btn-right{
+    all:unset;
+    pointer-events: all;
+    width: 50px;
+    height: 90px;
+    background: url(../../imagens/arrow-right.png) center center no-repeat ;
+    background-size: contain;
+    scale: 1.0;
+    outline: none;
+    transition: translate 0.5s;
+}
+
+.right, .left {
+    cursor: pointer;
+}
+
+.btn-right:hover,.btn-left:hover{
+    translate: 0px -10px;
+}
 .musicas{
     padding: 10px 0px;
+    margin: 0px 20px;
     display: flex;
     overflow: auto;
+    z-index: -1;
 }
 
 .card{
@@ -295,6 +346,15 @@ footer a:hover {
 @media screen and (max-width:800px) {
     .desktop {
         display: none;
+    }
+    h3{
+        text-align: 0px;
+    }
+    .botoes {
+        display: none;
+    }
+    .musicas {
+        margin: 0px;
     }
     header section {
         display: block;

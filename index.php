@@ -116,6 +116,10 @@ if(!isset($_SESSION['home'])) {
         
         <h2>Músicas</h2>
         <h3>Flauta Transversal em C</h3>
+        <div class="botoes">
+            <div class="left"><button class="btn-left" onclick="javascript:document.querySelectorAll('.musicas')[0].scrollBy({left:-370, behavior:'smooth'})"></button></div>
+            <div class="right"><button class="btn-right" onclick="javascript:document.querySelectorAll('.musicas')[0].scrollBy({left:370, behavior:'smooth'})"></button></div>
+        </div>
         <section class="musicas">
         <?php
         if ($resFlauta) {
@@ -134,6 +138,10 @@ if(!isset($_SESSION['home'])) {
         ?>
         </section>
         <h3>Clarinete em B♭</h3>
+        <div class="botoes">
+            <div class="left"><button class="btn-left" onclick="javascript:document.querySelectorAll('.musicas')[1].scrollBy({left:-370, behavior:'smooth'})"></button></div>
+            <div class="right"><button class="btn-right" onclick="javascript:document.querySelectorAll('.musicas')[1].scrollBy({left:370, behavior:'smooth'})"></button></div>
+        </div>
         <section class="musicas">
         <?php
         if ($resClarinete) {
@@ -152,6 +160,10 @@ if(!isset($_SESSION['home'])) {
         ?>
         </section>
         <h3>Trompete em B♭</h3>
+        <div class="botoes">
+            <div class="left"><button class="btn-left" onclick="javascript:document.querySelectorAll('.musicas')[2].scrollBy({left:-370, behavior:'smooth'})"></button></div>
+            <div class="right"><button class="btn-right" onclick="javascript:document.querySelectorAll('.musicas')[2].scrollBy({left:370, behavior:'smooth'})"></button></div>
+        </div>
         <section class="musicas">
         <?php
         if ($resTrompete) {
@@ -170,6 +182,10 @@ if(!isset($_SESSION['home'])) {
         ?>
         </section>
         <h3>Saxofone Alto em E♭</h3>
+        <div class="botoes">
+            <div class="left"><button class="btn-left" onclick="javascript:document.querySelectorAll('.musicas')[3].scrollBy({left:-370, behavior:'smooth'})"></button></div>
+            <div class="right"><button class="btn-right" onclick="javascript:document.querySelectorAll('.musicas')[3].scrollBy({left:370, behavior:'smooth'})"></button></div>
+        </div>
         <section class="musicas">
         <?php
         if ($resSaxAlto) {
@@ -188,6 +204,10 @@ if(!isset($_SESSION['home'])) {
         ?>
         </section>
         <h3>Saxofone Tenor em B♭</h3>
+        <div class="botoes">
+            <div class="left"><button class="btn-left" onclick="javascript:document.querySelectorAll('.musicas')[4].scrollBy({left:-370, behavior:'smooth'})"></button></div>
+            <div class="right"><button class="btn-right" onclick="javascript:document.querySelectorAll('.musicas')[4].scrollBy({left:370, behavior:'smooth'})"></button></div>
+        </div>
         <section class="musicas">
         <?php
         if ($resSaxTenor) {
@@ -206,6 +226,10 @@ if(!isset($_SESSION['home'])) {
         ?>
         </section>
         <h3>Trombone em C</h3>
+        <div class="botoes">
+            <div class="left"><button class="btn-left" onclick="javascript:document.querySelectorAll('.musicas')[5].scrollBy({left:-370, behavior:'smooth'})"></button></div>
+            <div class="right"><button class="btn-right" onclick="javascript:document.querySelectorAll('.musicas')[5].scrollBy({left:370, behavior:'smooth'})"></button></div>
+        </div>
         <section class="musicas">
         <?php
         if ($resTrombone) {

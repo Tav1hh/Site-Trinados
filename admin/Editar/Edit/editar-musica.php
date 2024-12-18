@@ -144,8 +144,6 @@ $sql = "UPDATE musica SET
     Idinstrumento = \"$Idinstrumento\" 
 WHERE id = '$id'";
 
-print $iframe;
-
 if (mysqli_query($conn,$sql)) {
     echo "Dados atualizados no BD";
     header("Location: ../../Painel/index.php");
