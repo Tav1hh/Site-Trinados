@@ -154,6 +154,7 @@ h3 {
 
 ::-webkit-scrollbar{
     width: 0px;
+    height: 0px;
     text-decoration: dotted;
 }
 .musicas{
@@ -162,7 +163,7 @@ h3 {
     display: flex;
     overflow: auto;
     z-index: -1;
-    /* animation: carrosel 2s ease-in-out forwards; */
+    animation: carrosel 2s ease-in-out forwards;
 }
 .botoes{
     /* all:unset; */
