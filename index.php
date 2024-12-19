@@ -120,7 +120,7 @@ if(!isset($_SESSION['home'])) {
             <div class="left"><button class="btn-left" onclick="javascript:document.querySelectorAll('.musicas')[0].scrollBy({left:-370, behavior:'smooth'})"></button></div>
             <div class="right"><button class="btn-right" onclick="javascript:document.querySelectorAll('.musicas')[0].scrollBy({left:370, behavior:'smooth'})"></button></div>
         </div>
-        <section class="musicas">
+        <section class="musicas carroselRight">
         <?php
         if ($resFlauta) {
             foreach ($resFlauta['musicas'] as $linha) {
@@ -142,7 +142,7 @@ if(!isset($_SESSION['home'])) {
             <div class="left"><button class="btn-left" onclick="javascript:document.querySelectorAll('.musicas')[1].scrollBy({left:-370, behavior:'smooth'})"></button></div>
             <div class="right"><button class="btn-right" onclick="javascript:document.querySelectorAll('.musicas')[1].scrollBy({left:370, behavior:'smooth'})"></button></div>
         </div>
-        <section class="musicas">
+        <section class="musicas carroselLeft">
         <?php
         if ($resClarinete) {
             foreach ($resClarinete['musicas'] as $linha) {
@@ -164,7 +164,7 @@ if(!isset($_SESSION['home'])) {
             <div class="left"><button class="btn-left" onclick="javascript:document.querySelectorAll('.musicas')[2].scrollBy({left:-370, behavior:'smooth'})"></button></div>
             <div class="right"><button class="btn-right" onclick="javascript:document.querySelectorAll('.musicas')[2].scrollBy({left:370, behavior:'smooth'})"></button></div>
         </div>
-        <section class="musicas">
+        <section class="musicas carroselRight">
         <?php
         if ($resTrompete) {
             foreach ($resTrompete['musicas'] as $linha) {
@@ -186,7 +186,7 @@ if(!isset($_SESSION['home'])) {
             <div class="left"><button class="btn-left" onclick="javascript:document.querySelectorAll('.musicas')[3].scrollBy({left:-370, behavior:'smooth'})"></button></div>
             <div class="right"><button class="btn-right" onclick="javascript:document.querySelectorAll('.musicas')[3].scrollBy({left:370, behavior:'smooth'})"></button></div>
         </div>
-        <section class="musicas">
+        <section class="musicas carroselLeft">
         <?php
         if ($resSaxAlto) {
             foreach ($resSaxAlto['musicas'] as $linha) {
@@ -208,7 +208,7 @@ if(!isset($_SESSION['home'])) {
             <div class="left"><button class="btn-left" onclick="javascript:document.querySelectorAll('.musicas')[4].scrollBy({left:-370, behavior:'smooth'})"></button></div>
             <div class="right"><button class="btn-right" onclick="javascript:document.querySelectorAll('.musicas')[4].scrollBy({left:370, behavior:'smooth'})"></button></div>
         </div>
-        <section class="musicas">
+        <section class="musicas carroselRight">
         <?php
         if ($resSaxTenor) {
             foreach ($resSaxTenor['musicas'] as $linha) {
@@ -230,7 +230,7 @@ if(!isset($_SESSION['home'])) {
             <div class="left"><button class="btn-left" onclick="javascript:document.querySelectorAll('.musicas')[5].scrollBy({left:-370, behavior:'smooth'})"></button></div>
             <div class="right"><button class="btn-right" onclick="javascript:document.querySelectorAll('.musicas')[5].scrollBy({left:370, behavior:'smooth'})"></button></div>
         </div>
-        <section class="musicas">
+        <section class="musicas carroselLeft">
         <?php
         if ($resTrombone) {
             foreach ($resTrombone['musicas'] as $linha) {

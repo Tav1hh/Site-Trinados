@@ -14,6 +14,10 @@
     --cor2:#111;
     --cor3:#1F1700;
 }
+body{
+    max-width: 100vw;
+    overflow-x: hidden;
+}
 
 .mobile {
     display: none;
@@ -163,7 +167,13 @@ h3 {
     display: flex;
     overflow: auto;
     z-index: -1;
-    animation: carrosel 2s ease-in-out forwards;
+}
+
+.carroselLeft{
+    animation: carroselLeft 2s ease-in-out forwards;
+}
+.carroselRight{
+    animation: carroselRight 2s ease-in-out forwards;
 }
 .botoes{
     /* all:unset; */
@@ -313,12 +323,20 @@ footer a:hover {
     }
 }
 
-@keyframes carrosel {
+@keyframes carroselRight {
     from {
         transform: translateX(100vw);
     }
     to{
-        /* transform: translateX(calc(-100vw + (100vw - 100%))); */
+        transform: translateX(0px);
+    }
+}
+
+@keyframes carroselLeft {
+    from {
+        transform: translateX(-100vw);
+    }
+    to{
         transform: translateX(0px);
     }
 }
