@@ -32,20 +32,24 @@ $MusicaInstrumento = $intr['instrumento'];
 $namePDF = $musica['pdf_name'];
 $namePNG = $musica['png_name'];
 $nameMSC = $musica['msc_name'];
+$nameMP3 = $musica['mp3_name'];
 
 $pathPDF = $musica['path_pdf'];
 $pathPNG = $musica['path_png'];
 $pathMSC = $musica['path_msc'];
+$pathMP3 = $musica['path_mp3'];
 
 // Tipos de Cada arquivo
 $typePDF = "pdf";
 $typePNG = "png";
-$typeMSC = "mxl";;
+$typeMSC = "mxl";
+$typeMP3 = "mp3";
 
 // Variaveis para Renomear os arquivos
 $novoPathPDF = "$MusicaPath/$nome - $instrumento.$typePDF";
 $novoPathPNG = "$MusicaPath/$nome - $instrumento.$typePNG";
 $novoPathMSC = "$MusicaPath/$nome - $instrumento.$typeMSC";
+$novoPathMP3 = "$MusicaPath/$nome - $instrumento.$typeMP3";
 
 echo "$pathPDF <br>";
 echo "$novoPathPDF <br>";
@@ -53,6 +57,7 @@ echo "$novoPathPDF <br>";
 rename("../../../$pathPDF","../../../$novoPathPDF");
 rename("../../../$pathPNG","../../../$novoPathPNG");
 rename("../../../$pathMSC","../../../$novoPathMSC");
+rename("../../../$pathMP3","../../../$novoPathMP3");
 
 // Variaveis para Renomear a Pasta Música
 $pathMusica = "partituras/$MusicaInstrumento/$MusicaNome";
@@ -88,9 +93,11 @@ $path = $novoPathPasta;
 $PDFname = "$nome - $instrumento.$typePDF";
 $PNGname = "$nome - $instrumento.$typePNG";
 $MSCname = "$nome - $instrumento.$typeMSC";
+$MP3name = "$nome - $instrumento.$typeMP3";
 $pathPDF = "$path/$PDFname";
 $pathPNG = "$path/$PNGname";
 $pathMSC = "$path/$MSCname";
+$pathMP3 = "$path/$MP3name";
 
 if(isset($_FILES['part1']) && $_FILES['part1']['error'] === UPLOAD_ERR_OK) {
     $PDF = $_FILES['part1'];
@@ -128,6 +135,20 @@ if(isset($_FILES['part3']) && $_FILES['part3']['error'] === UPLOAD_ERR_OK) {
     move_uploaded_file($tmpMSC,"../../../$novoPathMSC");
     $pathMSC = "$novoPathMSC";
 }
+if(isset($_FILES['part4']) && $_FILES['part4']['error'] === UPLOAD_ERR_OK) {
+    $MP3 = $_FILES['part4'];
+    $nameMP3 = $MP3['name'];
+    $tmpMP3 = $MP3['tmp_name'];
+
+    // Variaveis para Renomear os arquivos
+    $novoPathMP3 = "partituras/$instrumento/$nome/$nome - $instrumento.$typeMP3";
+
+    unlink("../../../$novoPathMP3");
+    move_uploaded_file($tmpMP3,"../../../$novoPathMP3");
+    $pathMP3 = "$novoPathMP3";
+
+    
+}
 
 $sql = "UPDATE musica SET 
     nome = \"$nome\", 
@@ -137,9 +158,11 @@ $sql = "UPDATE musica SET
     path_pdf = \"$pathPDF\", 
     path_png = \"$pathPNG\", 
     path_msc = \"$pathMSC\", 
+    path_mp3 = \"$pathMP3\", 
     pdf_name = \"$PDFname\", 
     png_name = \"$PNGname\", 
     msc_name = \"$MSCname\", 
+    mp3_name = \"$MP3name\", 
     iframe = '$iframe', 
     Idinstrumento = \"$Idinstrumento\" 
 WHERE id = '$id'";

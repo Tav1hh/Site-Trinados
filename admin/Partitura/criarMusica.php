@@ -121,6 +121,12 @@ $resinstrumento = mysqli_query($conn,$sql);
                         <label for="ipart3" id="ilabel3" onclick="addEventListener('change',selecionou('ipart3','ilabel3'))">Partitura - MSC</label>
                         <input type="file" name="part3" id="ipart3" required>
                     </div>
+
+
+                    <div>
+                        <label for="ipart4" id="ilabel4" onclick="addEventListener('change',selecionou('ipart4','ilabel4'))">PlayBack</label>
+                        <input type="file" name="part4" id="ipart4">
+                    </div>
                 </section>
 
                 <div class="btns">

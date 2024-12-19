@@ -6,6 +6,9 @@ $sql = "Select musica.nome as nome_musica,
  iframe, 
  musica.path_pdf, 
  musica.path_msc,
+ musica.path_mp3,
+ musica.mp3_name,
+ musica.path_mp3,
  musica.autor_fid,
  instrumento.nome as instrumento, 
  idinstrumento,
@@ -89,8 +92,12 @@ $resGen = mysqli_query($conn,$sql);
                 </div>
             </div>
             <div class="controls">
-                <a href="../../<?=$resMusica['path_pdf']?>" target="_blank">Partitura - PDF</a>
-                <a href="../../<?=$resMusica['path_msc']?>" target="_blank">Partitura - MXL</a>
+                <a href="../../<?=$resMusica['path_pdf']?>" target="_blank">Part - PDF</a>
+                <a href="../../<?=$resMusica['path_msc']?>" target="_blank">Part - MXL</a>
+                <?php 
+                if ($resMusica['path_mp3'] != '') {
+                    print '<a href="../../'.$resMusica['path_mp3'].'" download>Playback</a>';
+                } ?>
             </div>
         </div>
         

@@ -44,7 +44,7 @@
     }
 
     function excluirMusica($ID, $conn) {
-        $sql = "SELECT musica.nome, instrumento.nome as instrumento, musica.path_pdf, musica.path_png, musica.path_msc from musica join instrumento on instrumento.id = musica.IdInstrumento where musica.id=$ID";
+        $sql = "SELECT musica.nome, instrumento.nome as instrumento, musica.path_pdf, musica.path_png, musica.path_msc, musica.path_mp3 from musica join instrumento on instrumento.id = musica.IdInstrumento where musica.id=$ID";
         $res = mysqli_query($conn,$sql);
         $linha = mysqli_fetch_array($res);
 
@@ -55,6 +55,7 @@
         unlink("../../../".$linha['path_pdf']);
         unlink("../../../".$linha['path_png']);
         unlink("../../../".$linha['path_msc']);
+        unlink("../../../".$linha['path_mp3']);
         
         rmdir("../../../$pathRaiz");
 

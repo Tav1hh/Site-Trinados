@@ -63,6 +63,7 @@ if (isset($_FILES['part1']) && isset($_FILES['part2']) && isset($_FILES['part3']
     $pathPNG = "../../$path/" . $PNGName;
     $pathMSC = "../../$path/" . $MSCName;
 
+
     // Movendo os arquivos
     if (move_uploaded_file($PDFtmp, $pathPDF) && move_uploaded_file($PNGtmp, $pathPNG) && move_uploaded_file($MSCtmp, $pathMSC)) {
 
@@ -70,6 +71,7 @@ if (isset($_FILES['part1']) && isset($_FILES['part2']) && isset($_FILES['part3']
         $typePDF = "pdf";
         $typePNG = "png";
         $typeMSC = "mxl";
+        
 
         $PDFName = "$nome - $instrumento.$typePDF";
         $PNGName = "$nome - $instrumento.$typePNG";
@@ -79,9 +81,29 @@ if (isset($_FILES['part1']) && isset($_FILES['part2']) && isset($_FILES['part3']
         rename($pathPNG,"../../$path/" . "$PNGName");
         rename($pathMSC,"../../$path/" . "$MSCName");
 
+        // Verifica se foi enviado um MP3
+        if (isset($_FILES['part4'])) {
 
+            $fileMP3 = $_FILES['part4'];
+            $MP3Name = $fileMP3['name'];
+            $MP3tmp = $fileMP3['tmp_name'];
+
+            // Definindo o Caminho
+            $pathMP3 = "../../$path/" . $MP3Name;
+
+            if (move_uploaded_file($MP3tmp, $pathMP3)) {
+
+                $typeMP3 = "mp3";
+                $MP3Name = "$nome - $instrumento.$typeMP3";
+                $pathMP3Name = "$path/$MP3Name";
+                rename($pathMP3,"../../$path/" . "$MP3Name");
+            } else {
+                $pathMP3Name = "";
+            }
+
+        }
         echo "arquivos movidos!";
-        $sql = "INSERT INTO musica (nome, autor_fid, genero_fid, path, path_pdf, path_png, path_msc, pdf_name, png_name, msc_name, iframe, Idinstrumento) VALUES (\"$nome\",\"$autor\",\"$genero\",\"$path\",\"$path/$PDFName\",\"$path/$PNGName\",\"$path/$MSCName\",\"$PDFName\",\"$PNGName\",\"$MSCName\",\"$iframe\",\"$Idinstrumento\")";
+        $sql = "INSERT INTO musica (nome, autor_fid, genero_fid, path, path_pdf, path_png, path_msc, path_mp3, pdf_name, png_name, msc_name, mp3_name, iframe, Idinstrumento) VALUES (\"$nome\",\"$autor\",\"$genero\",\"$path\",\"$path/$PDFName\",\"$path/$PNGName\",\"$path/$MSCName\", \"$pathMP3Name\",\"$PDFName\",\"$PNGName\",\"$MSCName\", \"$MP3Name\",\"$iframe\",\"$Idinstrumento\")";
         if (mysqli_query($conn,$sql)) {
             echo "arquivo salvo!";
             header("Location: criarMusica.php");
@@ -89,11 +111,14 @@ if (isset($_FILES['part1']) && isset($_FILES['part2']) && isset($_FILES['part3']
             unlink("../../../".$path/$PDFName);
             unlink("../../../".$path/$PNGName);
             unlink("../../../".$path/$MSCName);
+            unlink("../../../".$path/$MP3Name);
             
             rmdir("../../../$path");
 
             echo "Erro em salvar no BD!";
         };
+
+
 
     }
 }
