@@ -29,7 +29,7 @@ $totalPartituras = mysqli_num_rows($res);
 if (isset($_POST['psq'])) {
     $psq = $_POST['psq'];
 
-    $sql = "SELECT musica.id, musica.nome, instrumento.nome As instrumento, genero.nome As genero from musica join instrumento on instrumento.id = musica.IdInstrumento join genero on genero.id = musica.genero_fid where musica.nome Like '%$psq%' or musica.id Like '%$psq%' or instrumento.nome Like \"%$psq%\" or genero.nome Like \"%$psq%\" limit 10";
+    $sql = "SELECT musica.id, musica.nome, instrumento.nome As instrumento, genero.nome As genero from musica join instrumento on instrumento.id = musica.IdInstrumento join genero on genero.id = musica.genero_fid where musica.nome Like \"%$psq%\" or musica.id Like \"%$psq%\" or instrumento.nome Like \"%$psq%\" or genero.nome Like \"%$psq%\" limit 10";
     $resMusica = mysqli_query($conn, $sql);
 } else {
     $sql = "SELECT musica.id, musica.nome, instrumento.nome As instrumento from musica join instrumento on instrumento.id = musica.IdInstrumento order by -upload_time limit 10 ";
