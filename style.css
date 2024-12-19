@@ -14,6 +14,9 @@
     --cor2:#111;
     --cor3:#1F1700;
 }
+html{
+    overflow-x: hidden;
+}
 body{
     max-width: 100vw;
     overflow-x: hidden;
