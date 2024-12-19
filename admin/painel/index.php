@@ -29,7 +29,7 @@ $totalPartituras = mysqli_num_rows($res);
 if (isset($_POST['psq'])) {
     $psq = $_POST['psq'];
 
-    $sql = "SELECT musica.id, musica.nome, instrumento.nome As instrumento, genero.nome As genero from musica join instrumento on instrumento.id = musica.IdInstrumento join genero on genero.id = musica.genero_fid where musica.nome Like '%$psq%' or musica.id Like '%$psq%' or instrumento.nome Like \'%$psq%\' or genero.nome Like \'%$psq%\' limit 10";
+    $sql = "SELECT musica.id, musica.nome, instrumento.nome As instrumento, genero.nome As genero from musica join instrumento on instrumento.id = musica.IdInstrumento join genero on genero.id = musica.genero_fid where musica.nome Like '%$psq%' or musica.id Like '%$psq%' or instrumento.nome Like \"%$psq%\" or genero.nome Like \"%$psq%\" limit 10";
     $resMusica = mysqli_query($conn, $sql);
 } else {
     $sql = "SELECT musica.id, musica.nome, instrumento.nome As instrumento from musica join instrumento on instrumento.id = musica.IdInstrumento order by -upload_time limit 10 ";
@@ -40,7 +40,7 @@ if (isset($_POST['psq'])) {
 if (isset($_POST['psq1'])) {
     $psq = $_POST['psq1'];
     
-    $sql = "SELECT * FROM autor where nome Like \'%$psq%\' or id Like \'%$psq%\' limit 10";
+    $sql = "SELECT * FROM autor where nome Like \"%$psq%\" or id Like \"%$psq%\" limit 10";
     $resAutor = mysqli_query($conn, $sql);
 } else {    
     $sql = "SELECT * FROM autor limit 10";
@@ -51,7 +51,7 @@ if (isset($_POST['psq1'])) {
 if (isset($_POST['psq2'])) {
     $psq = $_POST['psq2'];
     
-    $sql = "SELECT * FROM genero where nome Like \'%$psq%\' or id Like \'%$psq%\' limit 10";
+    $sql = "SELECT * FROM genero where nome Like \"%$psq%\" or id Like \"%$psq%\" limit 10";
     $resGenero = mysqli_query($conn, $sql);
 } else {    
     $sql = "SELECT * FROM genero limit 10";
@@ -62,7 +62,7 @@ if (isset($_POST['psq2'])) {
 if (isset($_POST['psq3'])) {
     $psq = $_POST['psq3'];
     
-    $sql = "SELECT * FROM admin where nome Like \'%$psq%\' or id Like \'%$psq%\' limit 10";
+    $sql = "SELECT * FROM admin where nome Like \"%$psq%\" or id Like \"%$psq%\" limit 10";
     $resAdm = mysqli_query($conn, $sql);
 } else {    
     $sql = "SELECT * FROM admin limit 10";
@@ -73,7 +73,7 @@ if (isset($_POST['psq3'])) {
 if (isset($_POST['psq4'])) {
     $psq = $_POST['psq4'];
     
-    $sql = "SELECT * FROM instrumento where nome Like \'%$psq%\' or id Like \'%$psq%\' limit 10";
+    $sql = "SELECT * FROM instrumento where nome Like \"%$psq%\" or id Like \"%$psq%\" limit 10";
     $resInstrumento = mysqli_query($conn, $sql);
 } else {    
     $sql = "SELECT * FROM instrumento";
