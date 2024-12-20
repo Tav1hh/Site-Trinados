@@ -111,7 +111,7 @@ if(!isset($_SESSION['home'])) {
     </header>
     <main>
         <div class="apresentacao">
-            Curiosidades e Noticias da Música
+            <img src="imagens/apresentacao/ap3.gif" alt="">
         </div>
         
         <h2>Músicas</h2>

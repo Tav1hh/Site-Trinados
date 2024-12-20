@@ -131,18 +131,19 @@ main {
 main .apresentacao {
     display: flex;
     max-width: 600px;
-    min-height: 300px;
-    padding: 20px 0px;
+    max-height: 300px;
+    overflow: hidden;
+    /* padding: 20px 0px; */
     margin: auto;
     border-radius: 20px;
     background-color: white;
     color: black;
     align-items: center;
+    text-align: center;
     justify-content: center;
 }
-
 main .apresentacao img {
-    height: 300px;
+    min-width: 100%;
 }
 
 
@@ -191,7 +192,6 @@ h3 {
     justify-content: space-between;
 
 }
-
 .btn-left{
     all:unset;
     pointer-events: all;
@@ -341,5 +341,17 @@ footer a:hover {
     }
     to{
         transform: translateX(0px);
+    }
+}
+
+@keyframes apresentacaoLeft {
+    
+    to {
+        transform: translateX(-100%);
+    }
+}
+@keyframes apresentacaoRight {
+    to {
+        transform: translateX(100%);
     }
 }
