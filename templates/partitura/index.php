@@ -101,25 +101,27 @@ $resGen = mysqli_query($conn,$sql);
             </div>
         </div>
         
-        <h2>Semelhantes</h2>
-        <div class="botoes">
-            <div class="left"><button class="btn-left" onclick="javascript:document.querySelector('.musicas').scrollBy({left:-370, behavior:'smooth'})"></button></div>
-            <div class="right"><button class="btn-right" onclick="javascript:document.querySelector('.musicas').scrollBy({left:370, behavior:'smooth'})"></button></div>
-        </div>
-        <section class="musicas">
         <?php
-        while ($linha = mysqli_fetch_array($resGen) ) {
-            if ($linha['id'] != $idmusica) {
-
-                echo "
-                <a href=\"index.php?id=".$linha['id']." \">
-                    <div class=\"card\">
-                        <img src=\"../../".$linha['path_png']."\" alt=\"Partitura\" loading=\"lazy\">
-                        <p>".$linha['nome_musica']."</p> 
-                        <p>".$linha['instrumento']."</p>
-                    </div>
-                </a>
-                ";
+        if(mysqli_num_rows($resGen) > 1) {
+            print "<h2>Semelhantes</h2>";
+            print '<div class="botoes">';
+            print '    <div class="left"><button class="btn-left" onclick="javascript:document.querySelector(\'.musicas\').scrollBy({left:-370, behavior:\'smooth\'})"></button></div>';
+            print '    <div class="right"><button class="btn-right" onclick="javascript:document.querySelector(\'.musicas\').scrollBy({left:370, behavior:\'smooth\'})"></button></div>';
+            print "</div>";
+            print '<section class="musicas">';
+            while ($linha = mysqli_fetch_array($resGen) ) {
+                if ($linha['id'] != $idmusica) {
+    
+                    echo "
+                    <a href=\"index.php?id=".$linha['id']." \">
+                        <div class=\"card\">
+                            <img src=\"../../".$linha['path_png']."\" alt=\"Partitura\" loading=\"lazy\">
+                            <p>".$linha['nome_musica']."</p> 
+                            <p>".$linha['instrumento']."</p>
+                        </div>
+                    </a>
+                    ";
+                }
             }
         }
         ?>
